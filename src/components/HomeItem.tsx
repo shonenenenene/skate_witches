@@ -5,7 +5,7 @@ const HomeItem = () => {
 
     const StyledHomeItem = styled.div`
         width: 120px;
-        height: 140px;
+        height: 150px;
         display: flex;
         flex-direction: column;
         align-items: center;
