@@ -19,9 +19,7 @@ const Home = () => {
     `
   return (
     <StyledHome>
-        {pages.map((e) => {
-          return <HomeItem key={e.id} text={e.name} image={e.icon}/>
-        })}
+        {pages.map((e) => <HomeItem key={e.id} text={e.name} image={e.icon}/>)}
     </StyledHome>
   )
 }

@@ -37,3 +37,26 @@ export const pages = [
         icon: wide,
     },
   ]
+
+  export const navs = [
+    {   
+        id: 1,
+        name: "File",
+    },
+    {   
+        id: 1,
+        name: "Edit",
+    },
+    {   
+        id: 1,
+        name: "View",
+    },
+    {   
+        id: 1,
+        name: "Options",
+    },
+    {   
+        id: 1,
+        name: "Arabfunny",
+    },
+  ]

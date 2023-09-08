@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import NavItem from './NavItem'
 import CloseButton from './UI/Button'
+import { navs } from '../constants'
 
 const NavBar = () => {
 
@@ -25,11 +26,7 @@ const NavBar = () => {
 
   return (
     <StyledNavBar>
-        <NavItem text='file'/>
-        <NavItem text='options'/>
-        <NavItem text='prikols'/>
-        <NavItem text='about'/>
-        <NavItem text='arabfunny'/>
+        {navs.map((e) => <NavItem key={e.id} text={e.name}/>)}
         <CloseButton/>
     </StyledNavBar>
   )
