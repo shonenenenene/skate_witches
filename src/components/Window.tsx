@@ -3,6 +3,8 @@ import NavBar from './NavBar'
 import Home from './Home'
 
 
+
+
 const Window = () => {
 
     const StyledWindow = styled.div`
@@ -17,8 +19,8 @@ const Window = () => {
           min-width: 100%;
           min-height: 100%;
         }
-
     `
+
 
   return (
     <StyledWindow>

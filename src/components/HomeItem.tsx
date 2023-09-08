@@ -1,7 +1,9 @@
+import { FC } from "react"
 import styled from "styled-components"
-import anime from "../assets/anime.png"
+import { IHomeItem } from "../types"
 
-const HomeItem = () => {
+
+const HomeItem:FC<IHomeItem> = ({image, text}) => {
 
     const StyledHomeItem = styled.div`
         width: 120px;
@@ -28,8 +30,8 @@ const HomeItem = () => {
 
   return (
     <StyledHomeItem>
-        <img src={anime}/>
-        <p>item ggg</p>
+        <img src={image}/>
+        <p>{text}</p>
     </StyledHomeItem>
   )
 }

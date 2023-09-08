@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import HomeItem from "./HomeItem"
+import { pages }  from '../constants'
 
 const Home = () => {
 
@@ -18,16 +19,9 @@ const Home = () => {
     `
   return (
     <StyledHome>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
-        <HomeItem/>
+        {pages.map((e) => {
+          return <HomeItem key={e.id} text={e.name} image={e.icon}/>
+        })}
     </StyledHome>
   )
 }
