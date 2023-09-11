@@ -5,6 +5,7 @@ export const pages = [
         id: 1,
         name: "anime",
         icon: anime,
+        path: 'anime',
     },
     {
         id: 2,

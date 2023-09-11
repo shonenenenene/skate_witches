@@ -1,23 +1,23 @@
-import styled from "styled-components"
-import { INavItem } from "../types"
-import { FC } from "react"
+import styled from 'styled-components';
+import { FC } from 'react';
 
-const NavItem:FC<INavItem> = ({text}) => {
+const StyledNavItem = styled.a`
+    padding: 5px 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: black;
+        transition: 0.3s;
+    }
+`;
 
-    const StyledNavItem = styled.a`
-        padding: 5px 10px;
-        &:hover {
-            background-color: white;
-            color: black;
-            transition: 0.3s;
-        }
-    `
-
-  return (
-    <StyledNavItem>
-        {text}
-    </StyledNavItem>
-  )
+export interface NavItemProps {
+    text: string;
+    link?: string;
 }
 
-export default NavItem
+const NavItem: FC<NavItemProps> = ({ text }) => {
+    return <StyledNavItem>{text}</StyledNavItem>;
+};
+
+export default NavItem;
