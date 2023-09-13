@@ -4,14 +4,16 @@ import Home from './Home';
 import { useMemo, useState } from 'react';
 import AnimePage from './HomeContent/AnimePage';
 import PicsPage from './HomeContent/PicsPage';
+import Winamp from './Winamp';
 
 const StyledWindow = styled.div`
-    background-color: rgb(0, 0, 233);
+    position: relative;
     max-width: 960px;
     min-width: 960px;
     min-height: 620px;
     border: 2px solid whitesmoke;
     border-radius: 8px;
+    background-color: rgb(0, 0, 233);
     @media (max-width: 970px) {
         max-width: 100%;
         min-width: 100%;
@@ -38,6 +40,7 @@ const Window = () => {
         <StyledWindow>
             <NavBar />
             <main>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>
+            <Winamp />
         </StyledWindow>
     );
 };

@@ -4,7 +4,6 @@ import CloseButton from './UI/Button';
 import { navs } from '../constants';
 
 const StyledNavBar = styled.nav`
-    background-color: rgb(0, 0, 124);
     height: 35px;
     padding: 0 40px;
     padding-right: 15px;
@@ -13,6 +12,7 @@ const StyledNavBar = styled.nav`
     justify-content: flex-start;
     gap: 15px;
     border-bottom: 2px solid whitesmoke;
+    background-color: rgb(0, 0, 124);
     button {
         margin-left: auto;
         padding-bottom: 2px;

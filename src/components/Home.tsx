@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import HomeItem from './HomeItem';
 import { pages } from '../constants';
 import { FC } from 'react';
+import Winamp from './Winamp';
 
 const StyledHome = styled.div`
     padding: 30px;
