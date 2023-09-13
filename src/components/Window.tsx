@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import Home from './Home';
+import { useMemo, useState } from 'react';
+import AnimePage from './HomeContent/AnimePage';
+import PicsPage from './HomeContent/PicsPage';
 
 const StyledWindow = styled.div`
     background-color: rgb(0, 0, 233);
-    max-width: 1100px;
+    max-width: 960px;
     min-width: 960px;
     min-height: 620px;
     border: 2px solid whitesmoke;
@@ -16,12 +19,25 @@ const StyledWindow = styled.div`
     }
 `;
 const Window = () => {
+    const [page, setPage] = useState('');
+
+    const pageComponent = useMemo(() => {
+        switch (page) {
+            case 'anime':
+                return <AnimePage />;
+
+            case 'pics':
+                return <PicsPage />;
+
+            default:
+                return <></>;
+        }
+    }, [page]);
+
     return (
         <StyledWindow>
             <NavBar />
-            <main>
-                <Home />
-            </main>
+            <main>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>
         </StyledWindow>
     );
 };

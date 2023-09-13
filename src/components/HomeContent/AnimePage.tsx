@@ -1,5 +1,5 @@
 const AnimePage = () => {
-    return <div>AnimePageSDFHDFKHSDHKSDH:KSDHSD</div>;
+    return <div>AnimePage he he he</div>;
 };
 
 export default AnimePage;

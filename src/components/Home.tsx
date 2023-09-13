@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import HomeItem from './HomeItem';
 import { pages } from '../constants';
-import { useMemo, useState } from 'react';
-import AnimePage from './AnimePage';
+import { FC } from 'react';
 
 const StyledHome = styled.div`
     padding: 30px;
@@ -17,26 +16,17 @@ const StyledHome = styled.div`
         grid-template-columns: repeat(2, 1fr);
     }
 `;
-const Home = () => {
-    const [page, setPage] = useState('');
 
-    const pageComponent = useMemo(() => {
-        switch (page) {
-            case 'anime':
-                return <AnimePage />;
+interface HomeProps {
+    setPage: React.Dispatch<React.SetStateAction<string>>;
+}
 
-            default:
-                return <></>;
-        }
-    }, [page]);
-
-    console.log(page, 'page');
-
+const Home: FC<HomeProps> = ({ setPage }) => {
     return (
         <StyledHome>
-            {!Boolean(page)
-                ? pages.map((e) => <HomeItem onClick={() => setPage(e.path || '')} key={e.id} text={e.name} image={e.icon} />)
-                : pageComponent}
+            {pages.map((e) => (
+                <HomeItem onClick={() => setPage(e.path || '')} key={e.id} text={e.name} image={e.icon} />
+            ))}
         </StyledHome>
     );
 };
