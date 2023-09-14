@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import NavItem from './NavItem';
-import CloseButton from './UI/Button';
+import CustomButton from './UI/CustomButton';
 import { navs } from '../constants';
 
 const StyledNavBar = styled.nav`
@@ -20,13 +20,14 @@ const StyledNavBar = styled.nav`
     @media (max-width: 632px) {
     }
 `;
+
 const NavBar = () => {
     return (
         <StyledNavBar>
             {navs.map((e) => (
                 <NavItem key={e.id} text={e.name} />
             ))}
-            <CloseButton />
+            <CustomButton text='x' />
         </StyledNavBar>
     );
 };

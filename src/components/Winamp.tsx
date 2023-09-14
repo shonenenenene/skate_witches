@@ -6,14 +6,14 @@ import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 import viraCover from '../assets/music/covers/vira.jpg';
 import styled from 'styled-components';
+import CustomButton from './UI/CustomButton';
 
 const StyledWinamp = styled.article`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    flex-direction: column;
     border: 2px solid whitesmoke;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #000000b5;
     img {
         width: 120px;
@@ -28,6 +28,7 @@ const StyledWinamp = styled.article`
 `;
 
 const Winamp = () => {
+    const [isOpened, setIsOpened] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [play, { pause, duration, sound }] = useSound(vira);
     const [currTime, setCurrTime] = useState({
@@ -48,16 +49,6 @@ const Winamp = () => {
     };
 
     useEffect(() => {
-        const sec = duration / 1000;
-        const min = Math.floor(sec / 60);
-        const secRemain = Math.floor(sec % 60);
-        const time = {
-            min: min,
-            sec: secRemain,
-        };
-    });
-
-    useEffect(() => {
         const interval = setInterval(() => {
             if (sound) {
                 setSeconds(sound.seek([])); // устанавливаем состояние с текущим значением в секундах
@@ -72,56 +63,69 @@ const Winamp = () => {
         return () => clearInterval(interval);
     }, [sound]);
 
+    const openHandler = () => {
+        pause();
+        setIsPlaying(false);
+        setIsOpened(!isOpened);
+        console.log('asd');
+    };
+
     return (
         <StyledWinamp>
-            <img src={viraCover} />
-            <div>
-                <h3>VIOLENT VIRA</h3>
-                <p>I DON'T CARE NIGHTCORE</p>
-                <span>
-                    <button>
-                        <IconContext.Provider value={{ size: '3em', color: 'white' }}>
-                            <BiSkipPrevious />
-                        </IconContext.Provider>
-                    </button>
-                    {!isPlaying ? (
-                        <button onClick={playingButton}>
-                            <IconContext.Provider value={{ size: '3em', color: 'white' }}>
-                                <AiFillPlayCircle />
-                            </IconContext.Provider>
-                        </button>
-                    ) : (
-                        <button onClick={playingButton}>
-                            <IconContext.Provider value={{ size: '3em', color: 'white' }}>
-                                <AiFillPauseCircle />
-                            </IconContext.Provider>
-                        </button>
-                    )}
-                    <button>
-                        <IconContext.Provider value={{ size: '3em', color: 'white' }}>
-                            <BiSkipNext />
-                        </IconContext.Provider>
-                    </button>
-                </span>
+            <CustomButton text={!isOpened ? '⮛' : '⮙'} onClick={openHandler} />
+            {isOpened ? (
                 <div>
+                    <img src={viraCover} />
                     <div>
-                        <p>
-                            {currTime.min}:{currTime.sec}
-                        </p>
+                        <h3>VIOLENT VIRA</h3>
+                        <p>I DON'T CARE NIGHTCORE</p>
+                        <span>
+                            <button>
+                                <IconContext.Provider value={{ size: '3em', color: 'white' }}>
+                                    <BiSkipPrevious />
+                                </IconContext.Provider>
+                            </button>
+                            {!isPlaying ? (
+                                <button onClick={playingButton}>
+                                    <IconContext.Provider value={{ size: '3em', color: 'white' }}>
+                                        <AiFillPlayCircle />
+                                    </IconContext.Provider>
+                                </button>
+                            ) : (
+                                <button onClick={playingButton}>
+                                    <IconContext.Provider value={{ size: '3em', color: 'white' }}>
+                                        <AiFillPauseCircle />
+                                    </IconContext.Provider>
+                                </button>
+                            )}
+                            <button>
+                                <IconContext.Provider value={{ size: '3em', color: 'white' }}>
+                                    <BiSkipNext />
+                                </IconContext.Provider>
+                            </button>
+                        </span>
+                        <div>
+                            <div>
+                                <p>
+                                    {currTime.min}:{currTime.sec}
+                                </p>
+                            </div>
+                            <input
+                                type='range'
+                                min='0'
+                                max={duration / 1000}
+                                value={seconds}
+                                defaultValue='0'
+                                onChange={(e) => {
+                                    sound.seek([e.target.value]);
+                                }}
+                            />
+                        </div>
                     </div>
-                    <input
-                        type='range'
-                        min='0'
-                        max={duration / 1000}
-                        value={seconds}
-                        defaultValue='0'
-                        className='timeline'
-                        onChange={(e) => {
-                            sound.seek([e.target.value]);
-                        }}
-                    />
                 </div>
-            </div>
+            ) : (
+                <></>
+            )}
         </StyledWinamp>
     );
 };

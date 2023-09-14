@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import AnimePage from './HomeContent/AnimePage';
 import PicsPage from './HomeContent/PicsPage';
 import Winamp from './Winamp';
+import CustomButton from './UI/CustomButton';
 
 const StyledWindow = styled.div`
     position: relative;
@@ -14,6 +15,8 @@ const StyledWindow = styled.div`
     border: 2px solid whitesmoke;
     border-radius: 8px;
     background-color: rgb(0, 0, 233);
+    display: flex;
+    flex-direction: column;
     @media (max-width: 970px) {
         max-width: 100%;
         min-width: 100%;
@@ -39,7 +42,7 @@ const Window = () => {
     return (
         <StyledWindow>
             <NavBar />
-            <main>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>
+            <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>
             <Winamp />
         </StyledWindow>
     );
