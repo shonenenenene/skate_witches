@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import NavBar from './NavBar';
-import Home from './Home';
+import { NavBar } from './NavBar/NavBar';
+import { Home } from './Home/Home';
 import { useMemo, useState } from 'react';
-import AnimePage from './HomeContent/AnimePage';
-import PicsPage from './HomeContent/PicsPage';
+import AnimePage from './Pages/AnimePage';
+import PicsPage from './Pages/PicsPage';
 import Winamp from './Winamp';
-import CustomButton from './UI/CustomButton';
 
 const StyledWindow = styled.div`
     position: relative;
@@ -23,6 +22,7 @@ const StyledWindow = styled.div`
         min-height: 100%;
     }
 `;
+
 const Window = () => {
     const [page, setPage] = useState('');
 
@@ -41,7 +41,7 @@ const Window = () => {
 
     return (
         <StyledWindow>
-            <NavBar />
+            <NavBar setPage={setPage} isPageOpen={Boolean(page)} />
             <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>
             <Winamp />
         </StyledWindow>

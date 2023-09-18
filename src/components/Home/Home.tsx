@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import HomeItem from './HomeItem';
-import { pages } from '../constants';
+import { HomeItem } from './HomeItem';
+import { pages } from '../../constants';
 import { FC } from 'react';
-import Winamp from './Winamp';
 
 const StyledHome = styled.div`
     padding: 30px;
@@ -22,7 +21,7 @@ interface HomeProps {
     setPage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Home: FC<HomeProps> = ({ setPage }) => {
+export const Home: FC<HomeProps> = ({ setPage }) => {
     return (
         <StyledHome>
             {pages.map((e) => (
@@ -31,5 +30,3 @@ const Home: FC<HomeProps> = ({ setPage }) => {
         </StyledHome>
     );
 };
-
-export default Home;

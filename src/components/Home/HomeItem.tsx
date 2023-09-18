@@ -29,7 +29,7 @@ export interface HomeItemProps {
     onClick?: () => void;
 }
 
-const HomeItem: FC<HomeItemProps> = ({ image, text, onClick }) => {
+export const HomeItem: FC<HomeItemProps> = ({ image, text, onClick }) => {
     return (
         <StyledHomeItem onClick={onClick}>
             <img src={image} />
@@ -37,5 +37,3 @@ const HomeItem: FC<HomeItemProps> = ({ image, text, onClick }) => {
         </StyledHomeItem>
     );
 };
-
-export default HomeItem;

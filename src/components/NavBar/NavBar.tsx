@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import NavItem from './NavItem';
-import CustomButton from './UI/CustomButton';
-import { navs } from '../constants';
+import { NavItem } from './NavItem';
+import { CustomButton } from '../UI';
+import { navs } from '../../constants';
 
 const StyledNavBar = styled.nav`
     height: 35px;
@@ -21,15 +21,24 @@ const StyledNavBar = styled.nav`
     }
 `;
 
-const NavBar = () => {
+interface NavBarProps {
+    setPage: React.Dispatch<React.SetStateAction<string>>;
+    isPageOpen: boolean;
+}
+
+export const NavBar = ({ setPage, isPageOpen }: NavBarProps) => {
     return (
         <StyledNavBar>
             {navs.map((e) => (
                 <NavItem key={e.id} text={e.name} />
             ))}
-            <CustomButton text='x' />
+            <CustomButton
+                onClick={() => {
+                    setPage('');
+                }}
+            >
+                {isPageOpen ? '<' : 'x'}
+            </CustomButton>
         </StyledNavBar>
     );
 };
-
-export default NavBar;

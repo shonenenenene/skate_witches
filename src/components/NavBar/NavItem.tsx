@@ -16,8 +16,6 @@ export interface NavItemProps {
     link?: string;
 }
 
-const NavItem: FC<NavItemProps> = ({ text }) => {
+export const NavItem: FC<NavItemProps> = ({ text }) => {
     return <StyledNavItem>{text}</StyledNavItem>;
 };
-
-export default NavItem;

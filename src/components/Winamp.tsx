@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// @ts-ignore
 import useSound from 'use-sound';
 import vira from '../assets/music/iDontCare.mp3';
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai';
@@ -6,7 +7,7 @@ import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 import viraCover from '../assets/music/covers/vira.jpg';
 import styled from 'styled-components';
-import CustomButton from './UI/CustomButton';
+import { CustomButton } from './UI/UI.styles';
 
 const StyledWinamp = styled.article`
     display: flex;
@@ -72,7 +73,7 @@ const Winamp = () => {
 
     return (
         <StyledWinamp>
-            <CustomButton text={!isOpened ? '⮛' : '⮙'} onClick={openHandler} />
+            <CustomButton onClick={openHandler}>{!isOpened ? '⮛' : '⮙'}</CustomButton>
             {isOpened ? (
                 <div>
                     <img src={viraCover} />
