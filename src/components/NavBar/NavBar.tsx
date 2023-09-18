@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { NavItem } from './NavItem';
-import { CustomButton } from '../UI';
+import { CustomButton, NavDropdown, NavDropdownItem } from '../UI';
 import { navs } from '../../constants';
+import { NavItem } from './NavItem';
+import { useState } from 'react';
 
 const StyledNavBar = styled.nav`
     height: 35px;
@@ -17,8 +18,6 @@ const StyledNavBar = styled.nav`
         margin-left: auto;
         padding-bottom: 2px;
     }
-    @media (max-width: 632px) {
-    }
 `;
 
 interface NavBarProps {
@@ -27,10 +26,14 @@ interface NavBarProps {
 }
 
 export const NavBar = ({ setPage, isPageOpen }: NavBarProps) => {
+    const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>(false);
     return (
         <StyledNavBar>
             {navs.map((e) => (
-                <NavItem key={e.id} text={e.name} />
+                <NavItem onClick={() => setDropdownIsOpen(!dropdownIsOpen)} key={e.id}>
+                    {e.name}
+                    {dropdownIsOpen ? <NavDropdown>{e.name}</NavDropdown> : null}
+                </NavItem>
             ))}
             <CustomButton
                 onClick={() => {

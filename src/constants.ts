@@ -15,7 +15,7 @@ export const pages = [
     },
     {
         id: 3,
-        name: 'niggers',
+        name: 'nuggets',
         icon: chain,
     },
     {
@@ -138,6 +138,12 @@ export const navs = [
     {
         id: 1,
         name: 'File',
+        content: [
+            {
+                label: 'About',
+                href: '/About',
+            },
+        ],
     },
     {
         id: 2,
