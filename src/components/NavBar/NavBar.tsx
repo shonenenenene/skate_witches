@@ -23,9 +23,10 @@ const StyledNavBar = styled.nav`
 interface NavBarProps {
     setPage: React.Dispatch<React.SetStateAction<string>>;
     isPageOpen: boolean;
+    setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavBar = ({ setPage, isPageOpen }: NavBarProps) => {
+export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
     const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>(false);
     return (
         <StyledNavBar>
@@ -35,13 +36,23 @@ export const NavBar = ({ setPage, isPageOpen }: NavBarProps) => {
                     {dropdownIsOpen ? <NavDropdown>{e.name}</NavDropdown> : null}
                 </NavItem>
             ))}
-            <CustomButton
-                onClick={() => {
-                    setPage('');
-                }}
-            >
-                {isPageOpen ? '<' : 'x'}
-            </CustomButton>
+            {isPageOpen ? (
+                <CustomButton
+                    onClick={() => {
+                        setPage('');
+                    }}
+                >
+                    ⬷
+                </CustomButton>
+            ) : (
+                <CustomButton
+                    onClick={() => {
+                        setTurnOn(false);
+                    }}
+                >
+                    x
+                </CustomButton>
+            )}
         </StyledNavBar>
     );
 };

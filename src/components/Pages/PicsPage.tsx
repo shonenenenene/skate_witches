@@ -35,7 +35,7 @@ const PicsPage: FC = () => {
 
     const picsComponent = (id: number) => {
         const chosen = pics.find((e) => e.id === id);
-        return <img src={chosen?.pic} alt={chosen?.name} onClick={() => setPictureId(null)} />;
+        return <img style={{ height: '500px' }} src={chosen?.pic} alt={chosen?.name} onClick={() => setPictureId(null)} />;
     };
 
     return (
