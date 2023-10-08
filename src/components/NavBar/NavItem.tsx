@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { FC, PropsWithChildren } from 'react';
+import { FC, useState } from 'react';
+import { NavDropdown } from '../UI';
 
 const StyledNavItem = styled.div`
     position: relative;
@@ -13,9 +14,18 @@ const StyledNavItem = styled.div`
 `;
 
 interface NavItemProps {
-    onClick: () => void;
+    item: {
+        name: string;
+    };
 }
 
-export const NavItem: FC<PropsWithChildren<NavItemProps>> = ({ children, onClick }) => {
-    return <StyledNavItem onClick={onClick}>{children}</StyledNavItem>;
+export const NavItem: FC<NavItemProps> = ({ item }) => {
+    const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>(false);
+
+    return (
+        <StyledNavItem onClick={() => setDropdownIsOpen(!dropdownIsOpen)}>
+            {item.name}
+            {dropdownIsOpen ? <NavDropdown>SOON</NavDropdown> : null}
+        </StyledNavItem>
+    );
 };

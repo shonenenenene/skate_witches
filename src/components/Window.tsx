@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavBar } from './NavBar/NavBar';
 import { Home } from './Home/Home';
 import { FC, useMemo, useState } from 'react';
-import { TurnOff } from './TurnOff';
+import { TurnOffScreen } from './TurnOffScreen';
 import AnimePage from './Pages/AnimePage';
 import PicsPage from './Pages/PicsPage';
 
@@ -39,7 +39,7 @@ const Window: FC = () => {
         }
     }, [page]);
 
-    const [turnOn, setTurnOn] = useState(true);
+    const [turnOn, setTurnOn] = useState(false);
 
     return (
         <StyledWindow>
@@ -49,7 +49,7 @@ const Window: FC = () => {
                     <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>{' '}
                 </>
             ) : (
-                <TurnOff />
+                <TurnOffScreen setTurnOn={setTurnOn} />
             )}
         </StyledWindow>
     );
