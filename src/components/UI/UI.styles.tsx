@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const CustomButton = styled.button`
     font-size: 20px;
-
+    min-height: 35px;
     ${({ color }) => css`
         color: ${color || '#fff'};
     `};
