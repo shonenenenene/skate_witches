@@ -30,12 +30,41 @@ const StyledPicsPage = styled.div<{ isSelected: boolean }>`
     }
 `;
 
+const StyledPicsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 10px;
+`;
+const StyledPicsHandler = styled.button`
+    background-color: #ffffff1d;
+    max-width: 100px;
+    min-width: 30px;
+    font-size: 30px;
+    flex-grow: 1;
+    &:hover {
+        background-color: #ffffff4c;
+        transition: 0.3s;
+    }
+`;
+
 const PicsPage: FC = () => {
     const [pictureId, setPictureId] = useState<number | null>(null);
 
     const picsComponent = (id: number) => {
         const chosen = pics.find((e) => e.id === id);
-        return <img style={{ height: '500px' }} src={chosen?.pic} alt={chosen?.name} onClick={() => setPictureId(null)} />;
+        return (
+            <StyledPicsContainer>
+                <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state > 1 ? state - 1 : null))}>
+                    ❮
+                </StyledPicsHandler>
+                <img style={{ height: '500px' }} src={chosen?.pic} alt={chosen?.name} onClick={() => setPictureId(null)} />
+                <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state < pics.length ? state + 1 : null))}>
+                    ❯
+                </StyledPicsHandler>
+            </StyledPicsContainer>
+        );
     };
 
     return (

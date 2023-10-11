@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { CustomButton } from '../UI';
 import { navs } from '../../constants';
 import { NavItem } from './NavItem';
+import { useState } from 'react';
 
 const StyledNavBar = styled.nav`
     height: 35px;
@@ -26,10 +27,12 @@ interface NavBarProps {
 }
 
 export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
+    const [activeNav, setActiveNav] = useState<string | null>(null);
+
     return (
         <StyledNavBar>
-            {navs.map((e) => (
-                <NavItem item={e} key={e.id} />
+            {navs.map((item) => (
+                <NavItem activeNav={activeNav} setActiveNav={setActiveNav} item={item} key={item.id} />
             ))}
             {isPageOpen ? (
                 <CustomButton
