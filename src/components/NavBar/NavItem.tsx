@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FC } from 'react';
 import { NavDropdown } from '../UI';
 
@@ -6,9 +6,13 @@ const StyledNavItem = styled.div`
     position: relative;
     padding: 5px 10px;
     cursor: pointer;
+    ${({ color }) => css`
+        background-color: ${color || '#ffffff0'};
+        color: ${color === '#ffffff' ? '#000' : '#ffffff'};
+    `};
     &:hover {
-        background-color: white;
-        color: black;
+        background-color: #ffffff;
+        color: #000;
         transition: 0.3s;
     }
 `;
@@ -25,7 +29,7 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav }) => 
     const isActiveNav = activeNav === item.name;
 
     return (
-        <StyledNavItem onClick={() => setActiveNav(isActiveNav ? null : item.name)}>
+        <StyledNavItem color={isActiveNav ? '#ffffff' : '#ffffff0'} onClick={() => setActiveNav(isActiveNav ? null : item.name)}>
             {item.name}
             {isActiveNav ? <NavDropdown>SOON</NavDropdown> : null}
         </StyledNavItem>

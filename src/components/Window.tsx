@@ -5,6 +5,7 @@ import { FC, useMemo, useState } from 'react';
 import { TurnOffScreen } from './TurnOffScreen';
 import AnimePage from './Pages/AnimePage';
 import PicsPage from './Pages/PicsPage';
+import RadioPage from './Pages/RadioPage';
 
 const StyledWindow = styled.div`
     position: relative;
@@ -46,6 +47,9 @@ const Window: FC = () => {
 
             case 'pics':
                 return <PicsPage />;
+
+            case 'radio':
+                return <RadioPage />;
 
             default:
                 return <></>;

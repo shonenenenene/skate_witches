@@ -1,4 +1,4 @@
-import { anime, broadcast, chain, paint, place, service, wide } from './assets/icons';
+import { anime, radio, chain, paint, place, service, wide } from './assets/icons';
 import { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, poles, ps1, sailor, shoe, synth, pepe } from './assets/pics';
 
 export const pages = [
@@ -10,8 +10,9 @@ export const pages = [
     },
     {
         id: 2,
-        name: 'broadcast',
-        icon: broadcast,
+        name: 'radio',
+        icon: radio,
+        path: 'radio',
     },
     {
         id: 3,

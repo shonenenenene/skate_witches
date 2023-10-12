@@ -15,9 +15,9 @@ export const NavDropdown = styled.div`
     z-index: 99;
     top: 32px;
     left: 0;
-    background-color: #fff;
-    width: 30px;
-    height: 70px;
+    background-color: #ffffff;
+    width: 180px;
+    height: 90px;
 `;
 
 export const NavDropdownItem = styled.div`
