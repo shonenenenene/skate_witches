@@ -14,4 +14,25 @@ import shoe from './shoe.jpg';
 import synth from './synth.jpg';
 import pepe from './pepe.jpg';
 
-export { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, poles, ps1, sailor, shoe, synth, pepe };
+import breakcoreGirl from './breakcore.png';
+import vaporwaveGirl from './vapor.png';
+
+export {
+    aeth,
+    bible,
+    crystal,
+    drift,
+    drip,
+    haunt,
+    kitty,
+    machete,
+    moonchild,
+    poles,
+    ps1,
+    sailor,
+    shoe,
+    synth,
+    pepe,
+    breakcoreGirl,
+    vaporwaveGirl,
+};

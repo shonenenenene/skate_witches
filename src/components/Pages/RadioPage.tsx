@@ -1,29 +1,124 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { RadioBrowserApi } from 'radio-browser-api';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { breakcoreGirl, vaporwaveGirl } from '../../assets/pics';
+import styled, { css } from 'styled-components';
+import { LoaderProvider } from '../UI';
+
+const StyledRadioContainer = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    & {
+        h3 {
+            margin: 20px;
+            font-size: 16px;
+        }
+    }
+
+    .rhap_container {
+        background-color: black;
+        border-radius: 0 0 6px 6px;
+    }
+
+    .rhap_controls-section {
+        display: flex;
+        width: calc(50% + 64px);
+        margin-left: auto;
+    }
+    .rhap_progress-section {
+        display: none;
+    }
+`;
+
+const StyledRadioStyle = styled.div`
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: start;
+`;
+const StyledRadioStation = styled.img<{ isSelected?: boolean }>`
+    width: 45%;
+    transition: 0.15s;
+    cursor: pointer;
+    display: block;
+    border-radius: 8px;
+    ${({ isSelected }) => css`
+        border: ${isSelected ? '6px solid #1202fff5' : '1px solid #000'};
+    `}
+    &:hover {
+        box-shadow: 0px 0px 11px 9px rgba(240, 0, 255, 1);
+    }
+`;
+
+const STATIONS = {
+    BREAKCORE: {
+        name: 'Breakcore Mashcore Radio.Mosco.win',
+        girl: breakcoreGirl,
+    },
+    WITCH_HOUSE: {
+        name: 'SomaFM Vaporwaves',
+        girl: vaporwaveGirl,
+    },
+} as const;
+
+type Station = (typeof STATIONS)[keyof typeof STATIONS]['name'];
+
+const STATIONS_KEYS = Object.keys(STATIONS) as Array<keyof typeof STATIONS>;
 
 const RadioPage = () => {
-    const [station, setStation] = useState('');
-    useEffect(() => {
-        const radioApi = async () => {
-            const api = new RadioBrowserApi('My Radio App');
-            const station = await api.getStationsBy('byName', 'Breakcore Mashcore Radio.Mosco.win');
-            setStation(station[0].urlResolved);
-        };
-        radioApi();
-    }, []);
+    const [stationUrl, setStationUrl] = useState<string | null>(null);
+    const [selectedStation, setSelectedStation] = useState<Station | null>(null);
+    const [isLoading, setLoading] = useState(false);
+
+    const api = new RadioBrowserApi('My Radio App');
+
+    const radioApi = useCallback(
+        async (name: Station) => {
+            if (name === selectedStation) {
+                setStationUrl(null);
+                setSelectedStation(null);
+                return;
+            }
+            setLoading(true);
+            const station = await api.getStationsBy('byName', name);
+            setLoading(false);
+            setStationUrl(station[0].urlResolved);
+            setSelectedStation(name);
+        },
+        [selectedStation]
+    );
 
     return (
-        <div>
-            <AudioPlayer
-                src={station}
-                volume={0.2}
-                customProgressBarSection={[]}
-                autoPlayAfterSrcChange={false}
-                customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.VOLUME_CONTROLS]}
-            />
-        </div>
+        <StyledRadioContainer>
+            <h3>choose station</h3>
+            <StyledRadioStyle>
+                {STATIONS_KEYS.map((key) => (
+                    <StyledRadioStation
+                        key={STATIONS[key].name}
+                        draggable='false'
+                        isSelected={selectedStation === STATIONS[key].name}
+                        src={STATIONS[key].girl}
+                        onClick={() => radioApi(STATIONS[key].name)}
+                    />
+                ))}
+            </StyledRadioStyle>
+
+            <LoaderProvider isLoading={isLoading}>
+                {stationUrl ? (
+                    <AudioPlayer
+                        src={stationUrl}
+                        volume={0.2}
+                        customProgressBarSection={[]}
+                        autoPlayAfterSrcChange={false}
+                        customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.VOLUME_CONTROLS]}
+                    />
+                ) : null}
+            </LoaderProvider>
+        </StyledRadioContainer>
     );
 };
 

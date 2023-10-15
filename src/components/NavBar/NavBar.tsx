@@ -13,6 +13,7 @@ const StyledNavBar = styled.nav`
     justify-content: flex-start;
     gap: 15px;
     border-bottom: 2px solid whitesmoke;
+    border-radius: 6px 6px 0 0;
     background-color: rgb(0, 0, 124);
     button {
         margin-left: auto;
