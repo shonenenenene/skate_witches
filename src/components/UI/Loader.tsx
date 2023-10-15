@@ -5,14 +5,14 @@ const StyledLoader = styled.div`
     width: 100%;
     height: 12px;
     display: inline-block;
-    background-color: #fff;
+    background-color: #ea36af;
     background-image: linear-gradient(
         45deg,
-        rgba(0, 0, 0, 0.25) 25%,
+        rgb(0, 0, 233) 25%,
         transparent 25%,
         transparent 50%,
-        rgba(0, 0, 0, 0.25) 50%,
-        rgba(0, 0, 0, 0.25) 75%,
+        rgba(0, 0, 233) 50%,
+        rgba(0, 0, 233) 75%,
         transparent 75%,
         transparent
     );

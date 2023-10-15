@@ -20,17 +20,37 @@ const StyledRadioContainer = styled.div`
     }
 
     .rhap_container {
-        background-color: black;
+        background-color: #ffffff28;
         border-radius: 0 0 6px 6px;
+        padding: 5px 25px;
     }
 
     .rhap_controls-section {
-        display: flex;
-        width: calc(50% + 64px);
-        margin-left: auto;
+        padding: 0;
+        margin: 0;
     }
     .rhap_progress-section {
         display: none;
+    }
+
+    .rhap_forward-button,
+    .rhap_rewind-button {
+        display: none;
+    }
+
+    .rhap_play-pause-button {
+        width: 60px;
+        height: 60px;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    svg {
+        path {
+            fill: #fff;
+        }
     }
 `;
 
@@ -47,10 +67,11 @@ const StyledRadioStation = styled.img<{ isSelected?: boolean }>`
     display: block;
     border-radius: 8px;
     ${({ isSelected }) => css`
-        border: ${isSelected ? '6px solid #1202fff5' : '1px solid #000'};
+        border: ${isSelected ? '5px solid #ffffff' : '1px solid #ffffff'};
+        box-shadow: ${isSelected ? '0px 0px 14px 10px rgb(255, 0, 255)' : 'none'};
     `}
     &:hover {
-        box-shadow: 0px 0px 11px 9px rgba(240, 0, 255, 1);
+        box-shadow: 0px 0px 16px 8px #8a31ff;
     }
 `;
 
