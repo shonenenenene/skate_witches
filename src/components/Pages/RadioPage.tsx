@@ -133,8 +133,8 @@ const RadioPage = () => {
                     <AudioPlayer
                         src={stationUrl}
                         volume={0.2}
+                        autoPlay
                         customProgressBarSection={[]}
-                        autoPlayAfterSrcChange={false}
                         customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.VOLUME_CONTROLS]}
                     />
                 ) : null}

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.15.3",
     "@reduxjs/toolkit": "^1.9.5",
     "radio-browser-api": "^6.0.1",
     "react": "^18.2.0",
@@ -17,11 +18,13 @@
     "react-h5-audio-player": "^3.9.0",
     "react-icons": "^4.11.0",
     "styled-components": "^6.0.7",
+    "three": "^0.157.0",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/three": "^0.157.2",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
