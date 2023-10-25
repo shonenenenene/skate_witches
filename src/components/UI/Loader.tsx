@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-const StyledLoader = styled.div`
+export const StyledLoader = styled.div`
     width: 100%;
     height: 12px;
     display: inline-block;

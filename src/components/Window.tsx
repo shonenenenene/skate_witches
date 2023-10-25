@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { NavBar } from './NavBar/NavBar';
 import { Home } from './Home/Home';
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo, useState, Suspense } from 'react';
 import { TurnOffScreen } from './TurnOffScreen';
 import AnimePage from './Pages/AnimePage';
 import PicsPage from './Pages/PicsPage';
 import RadioPage from './Pages/RadioPage';
 import LogoPage from './Pages/LogoPage';
+import { StyledLoader } from './UI';
 
 const StyledWindow = styled.div`
     position: relative;
@@ -53,7 +54,11 @@ const Window: FC = () => {
                 return <RadioPage />;
 
             case 'logo':
-                return <LogoPage />;
+                return (
+                    <Suspense fallback={<StyledLoader />}>
+                        <LogoPage />
+                    </Suspense>
+                );
 
             default:
                 return <></>;
