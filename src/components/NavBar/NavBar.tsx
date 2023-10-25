@@ -21,6 +21,10 @@ const StyledNavBar = styled.nav`
     }
 `;
 
+const StyledToLogo = styled.div`
+    cursor: pointer;
+`;
+
 interface NavBarProps {
     setPage: React.Dispatch<React.SetStateAction<string>>;
     isPageOpen: boolean;
@@ -32,6 +36,13 @@ export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
 
     return (
         <StyledNavBar>
+            <StyledToLogo
+                onClick={() => {
+                    setPage('logo');
+                }}
+            >
+                S_W
+            </StyledToLogo>
             {navs.map((item) => (
                 <NavItem activeNav={activeNav} setActiveNav={setActiveNav} item={item} key={item.id} />
             ))}

@@ -6,6 +6,7 @@ import { TurnOffScreen } from './TurnOffScreen';
 import AnimePage from './Pages/AnimePage';
 import PicsPage from './Pages/PicsPage';
 import RadioPage from './Pages/RadioPage';
+import LogoPage from './Pages/LogoPage';
 
 const StyledWindow = styled.div`
     position: relative;
@@ -50,6 +51,9 @@ const Window: FC = () => {
 
             case 'radio':
                 return <RadioPage />;
+
+            case 'logo':
+                return <LogoPage />;
 
             default:
                 return <></>;
