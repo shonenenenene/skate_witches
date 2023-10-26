@@ -1,4 +1,4 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useCubeTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
@@ -11,9 +11,9 @@ declare module '@react-three/fiber' {
 }
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import * as pixelFont from '../../assets/fonts/pixels.json';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
-const LogoPage = () => {
+const Mesh = () => {
     const font = new FontLoader().parse(pixelFont);
 
     const mesh = useRef<THREE.Mesh | null>(null);
@@ -24,11 +24,17 @@ const LogoPage = () => {
         height: 1,
     };
 
+    useFrame(() => {
+        if (mesh.current != null) {
+            mesh.current.rotation.y += 0.0003;
+            mesh.current.geometry.center;
+        }
+    });
+
     // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
     const spaceTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/space/' });
-
     return (
-        <Canvas>
+        <>
             <ambientLight />
             <pointLight position={[5, 5, 5]} intensity={1} />
             <pointLight position={[-3, -3, 2]} />
@@ -38,6 +44,14 @@ const LogoPage = () => {
                 <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
                 <meshBasicMaterial attach='material' envMap={spaceTexture} />
             </mesh>
+        </>
+    );
+};
+
+const LogoPage = () => {
+    return (
+        <Canvas style={{ cursor: 'grab' }}>
+            <Mesh />
         </Canvas>
     );
 };

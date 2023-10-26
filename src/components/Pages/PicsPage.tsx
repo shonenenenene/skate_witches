@@ -6,7 +6,7 @@ const StyledPicsPage = styled.div<{ isSelected: boolean }>`
     padding: 30px;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px 30px;
-
+    transition: all 0.2s;
     img {
         cursor: pointer;
     }
