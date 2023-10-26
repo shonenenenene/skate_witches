@@ -158,8 +158,4 @@ export const navs = [
         id: 4,
         name: 'Options',
     },
-    {
-        id: 5,
-        name: 'Arabfunny',
-    },
 ];
