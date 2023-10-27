@@ -12,6 +12,13 @@ declare module '@react-three/fiber' {
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import * as pixelFont from '../../assets/fonts/pixels.json';
 import { useRef } from 'react';
+import { styled } from 'styled-components';
+import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing';
+import { BlendFunction, GlitchMode } from 'postprocessing';
+const StyledLogoWrapper = styled.div`
+    height: 100%;
+    cursor: grab;
+`;
 
 const Mesh = () => {
     const font = new FontLoader().parse(pixelFont);
@@ -26,7 +33,8 @@ const Mesh = () => {
 
     useFrame(() => {
         if (mesh.current != null) {
-            mesh.current.rotation.y += 0.0003;
+            mesh.current.rotation.y -= 0.0002;
+            mesh.current.rotation.x += 0.0001;
             mesh.current.geometry.center;
         }
     });
@@ -39,8 +47,19 @@ const Mesh = () => {
             <pointLight position={[5, 5, 5]} intensity={1} />
             <pointLight position={[-3, -3, 2]} />
             <OrbitControls />
+            <EffectComposer>
+                <Noise premultiply blendFunction={BlendFunction.ADD} />
+                <Glitch
+                    delay={[0.5, 1.5]}
+                    duration={[0.6, 1.0]}
+                    strength={[0.1, 0.2]}
+                    mode={GlitchMode.CONSTANT_MILD}
+                    active
+                    ratio={0.85}
+                />
+            </EffectComposer>
             <fog attach='fog' args={['#000', 5, 14]} />
-            <mesh ref={mesh} position={[-5.4, 0, -3]}>
+            <mesh ref={mesh} position={[-5.4, 0, -2]}>
                 <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
                 <meshBasicMaterial attach='material' envMap={spaceTexture} />
             </mesh>
@@ -50,9 +69,11 @@ const Mesh = () => {
 
 const LogoPage = () => {
     return (
-        <Canvas style={{ cursor: 'grab' }}>
-            <Mesh />
-        </Canvas>
+        <StyledLogoWrapper>
+            <Canvas>
+                <Mesh />
+            </Canvas>
+        </StyledLogoWrapper>
     );
 };
 
