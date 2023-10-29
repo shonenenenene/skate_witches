@@ -69,14 +69,16 @@ const Window: FC = () => {
 
     return (
         <StyledWindow>
-            {turnOn ? (
+            {/* {turnOn ? (
                 <>
                     <NavBar setTurnOn={setTurnOn} setPage={setPage} isPageOpen={Boolean(page)} />
                     <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>{' '}
                 </>
             ) : (
                 <TurnOffScreen setTurnOn={setTurnOn} />
-            )}
+            )} */}
+            <NavBar setTurnOn={setTurnOn} setPage={setPage} isPageOpen={Boolean(page)} />
+            <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>{' '}
         </StyledWindow>
     );
 };

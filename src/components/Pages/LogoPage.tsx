@@ -1,5 +1,5 @@
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useCubeTexture } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stage, Stars, useCubeTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 import { extend, Object3DNode } from '@react-three/fiber';
@@ -15,6 +15,7 @@ import { useRef } from 'react';
 import { styled } from 'styled-components';
 import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing';
 import { BlendFunction, GlitchMode } from 'postprocessing';
+
 const StyledLogoWrapper = styled.div`
     height: 100%;
     cursor: grab;
@@ -31,13 +32,9 @@ const Mesh = () => {
         height: 1,
     };
 
-    useFrame(() => {
-        if (mesh.current != null) {
-            mesh.current.rotation.y -= 0.0002;
-            mesh.current.rotation.x += 0.0001;
-            mesh.current.geometry.center;
-        }
-    });
+    const delayProp = new THREE.Vector2(3, 5);
+    const durationProp = new THREE.Vector2(0.1, 1);
+    const strengthProp = new THREE.Vector2(0.1, 0.3);
 
     // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
     const spaceTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/space/' });
@@ -46,23 +43,23 @@ const Mesh = () => {
             <ambientLight />
             <pointLight position={[5, 5, 5]} intensity={1} />
             <pointLight position={[-3, -3, 2]} />
-            <OrbitControls />
+            <OrbitControls autoRotate autoRotateSpeed={0.2} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 2} />
+            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
             <EffectComposer>
                 <Noise premultiply blendFunction={BlendFunction.ADD} />
-                <Glitch
-                    delay={[0.5, 1.5]}
-                    duration={[0.6, 1.0]}
-                    strength={[0.1, 0.2]}
-                    mode={GlitchMode.CONSTANT_MILD}
-                    active
-                    ratio={0.85}
-                />
+                <Glitch delay={delayProp} duration={durationProp} strength={strengthProp} mode={GlitchMode.SPORADIC} active ratio={0.85} />
             </EffectComposer>
-            <fog attach='fog' args={['#000', 5, 14]} />
-            <mesh ref={mesh} position={[-5.4, 0, -2]}>
-                <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
-                <meshBasicMaterial attach='material' envMap={spaceTexture} />
-            </mesh>
+            <Stage
+                preset='soft'
+                shadows={{ type: 'contact', color: '#4f68f7', colorBlend: 2, opacity: 0.8, offset: 0.05, scale: 50 }}
+                intensity={1}
+                environment='night'
+            >
+                <mesh ref={mesh} position={[-5.4, 0, -2.5]}>
+                    <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
+                    <meshBasicMaterial attach='material' envMap={spaceTexture} />
+                </mesh>
+            </Stage>
         </>
     );
 };
