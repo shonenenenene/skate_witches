@@ -32,7 +32,7 @@ export interface HomeItemProps {
 export const HomeItem: FC<HomeItemProps> = ({ image, text, onClick }) => {
     return (
         <StyledHomeItem onClick={onClick}>
-            <img src={image} />
+            <img src={image} draggable='false' />
             <p>{text}</p>
         </StyledHomeItem>
     );

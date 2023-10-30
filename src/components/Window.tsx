@@ -12,9 +12,9 @@ import { StyledLoader } from './UI';
 const StyledWindow = styled.div`
     position: relative;
     z-index: 99;
-    max-width: 960px;
-    min-width: 960px;
-    height: 620px;
+    max-width: 1060px;
+    min-width: 1060px;
+    height: 680px;
     border: 2px solid whitesmoke;
     border-radius: 8px;
     background-color: #0000e9;
@@ -25,7 +25,7 @@ const StyledWindow = styled.div`
     animation-name: textflicker;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    @media (max-width: 970px) {
+    @media (max-width: 1060px) {
         max-width: 100%;
         min-width: 100%;
         height: 100vh;
