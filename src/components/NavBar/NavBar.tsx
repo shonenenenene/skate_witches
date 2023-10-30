@@ -14,7 +14,7 @@ const StyledNavBar = styled.nav`
     gap: 15px;
     border-bottom: 2px solid whitesmoke;
     border-radius: 6px 6px 0 0;
-    background-color: rgb(0, 0, 124);
+    background-color: #00007c;
     button {
         margin-left: auto;
         padding-bottom: 2px;

@@ -11,12 +11,13 @@ import { StyledLoader } from './UI';
 
 const StyledWindow = styled.div`
     position: relative;
+    z-index: 99;
     max-width: 960px;
     min-width: 960px;
     height: 620px;
     border: 2px solid whitesmoke;
     border-radius: 8px;
-    background-color: rgb(0, 0, 233);
+    background-color: #0000e9;
     display: flex;
     flex-direction: column;
     text-shadow: 0.06rem 0 0.06rem #ea36af, -0.05rem 0 0.06rem #75fa69;
@@ -27,7 +28,7 @@ const StyledWindow = styled.div`
     @media (max-width: 970px) {
         max-width: 100%;
         min-width: 100%;
-        min-height: 100%;
+        height: 100vh;
     }
     @keyframes textflicker {
         from {
