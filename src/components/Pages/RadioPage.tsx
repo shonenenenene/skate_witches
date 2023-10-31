@@ -93,11 +93,13 @@ const StyledPlayAnimation = styled.div`
     width: 100%;
     top: 0;
     left: 0;
-    opacity: 0.2;
+    opacity: 0.4;
+    z-index: -10;
     display: flex;
     justify-content: center;
     align-items: end;
     div {
+        z-index: -9;
         background: #ffffff;
         width: 50px;
         animation: sound 0ms -800ms linear infinite alternate;

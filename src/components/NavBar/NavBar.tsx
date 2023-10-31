@@ -24,9 +24,10 @@ const StyledNavBar = styled.nav`
 const StyledToLogo = styled.div`
     cursor: pointer;
     font-size: 22px;
+    padding: 0 5px;
     &:hover {
-        color: #ff0000;
         transition: 0.3s all;
+        background-color: #0000e9;
     }
 `;
 
@@ -46,7 +47,7 @@ export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
                     setPage('logo');
                 }}
             >
-                ♡🧙
+                🔮🧙‍♂️
             </StyledToLogo>
             {navs.map((item) => (
                 <NavItem activeNav={activeNav} setActiveNav={setActiveNav} item={item} key={item.id} />

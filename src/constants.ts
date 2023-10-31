@@ -27,8 +27,9 @@ export const pages = [
     },
     {
         id: 5,
-        name: 'place',
+        name: 'maps',
         icon: place,
+        path: 'maps',
     },
     {
         id: 6,

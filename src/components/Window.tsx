@@ -7,6 +7,7 @@ import AnimePage from './Pages/AnimePage';
 import PicsPage from './Pages/PicsPage';
 import RadioPage from './Pages/RadioPage';
 import LogoPage from './Pages/LogoPage';
+import MapsPage from './Pages/MapsPage';
 import { StyledLoader } from './UI';
 
 const StyledWindow = styled.div`
@@ -60,6 +61,9 @@ const Window: FC = () => {
                         <LogoPage />
                     </Suspense>
                 );
+
+            case 'maps':
+                return <MapsPage />;
 
             default:
                 return <></>;
