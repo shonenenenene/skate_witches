@@ -3,7 +3,7 @@ import { NavBar } from './NavBar/NavBar';
 import { Home } from './Home/Home';
 import { FC, useMemo, useState, Suspense } from 'react';
 import { TurnOffScreen } from './TurnOffScreen';
-import AnimePage from './Pages/AnimePage';
+import CVPage from './Pages/CVPage';
 import PicsPage from './Pages/PicsPage';
 import RadioPage from './Pages/RadioPage';
 import LogoPage from './Pages/LogoPage';
@@ -46,8 +46,8 @@ const Window: FC = () => {
 
     const pageComponent = useMemo(() => {
         switch (page) {
-            case 'anime':
-                return <AnimePage />;
+            case 'CV':
+                return <CVPage />;
 
             case 'pics':
                 return <PicsPage />;

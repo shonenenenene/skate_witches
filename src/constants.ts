@@ -4,9 +4,9 @@ import { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, po
 export const pages = [
     {
         id: 1,
-        name: 'anime',
+        name: 'CV',
         icon: anime,
-        path: 'anime',
+        path: 'CV',
     },
     {
         id: 2,
