@@ -4,7 +4,7 @@ import { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, po
 export const pages = [
     {
         id: 1,
-        name: 'CV',
+        name: 'about me',
         icon: anime,
         path: 'CV',
     },
@@ -142,6 +142,7 @@ export const navs = [
         name: 'File',
         content: [
             {
+                id: 1,
                 label: 'About',
                 href: '/About',
             },
@@ -154,6 +155,12 @@ export const navs = [
     {
         id: 3,
         name: 'View',
+        content: [
+            {
+                id: 1,
+                label: '🗖 fullscreen',
+            },
+        ],
     },
     {
         id: 4,

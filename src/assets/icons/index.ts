@@ -8,5 +8,7 @@ import wide from './wide.png';
 
 import switchIcon from './switchIcon.png';
 import switchIconOff from './switchIconOff.png';
+import switchIconMini from './switchIconMini.png';
+import switchIconOffMini from './switchIconOffMini.png';
 
-export { anime, radio, chain, paint, place, service, wide, switchIcon, switchIconOff };
+export { anime, radio, chain, paint, place, service, wide, switchIcon, switchIconOff, switchIconMini, switchIconOffMini };

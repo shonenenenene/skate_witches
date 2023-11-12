@@ -3,6 +3,8 @@ import { CustomButton } from '../UI';
 import { navs } from '../../constants';
 import { NavItem } from './NavItem';
 import { useState } from 'react';
+import { switchIconMini, switchIconOffMini } from '../../assets/icons';
+import { StyledTurnOnIcon } from '../TurnOffScreen';
 
 const StyledNavBar = styled.nav`
     height: 35px;
@@ -17,7 +19,7 @@ const StyledNavBar = styled.nav`
     background-color: #00007c;
     button {
         margin-left: auto;
-        padding-bottom: 2px;
+        width: 42px;
     }
 `;
 
@@ -34,10 +36,22 @@ const StyledToLogo = styled.div`
 interface NavBarProps {
     setPage: React.Dispatch<React.SetStateAction<string>>;
     isPageOpen: boolean;
+    turnOnImageFlag: boolean;
+    setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean>>;
     setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
+    fullscreenWindow: boolean;
+    setFullscreenWindow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
+export const NavBar = ({
+    setTurnOn,
+    setPage,
+    isPageOpen,
+    setTurnOnImageFlag,
+    turnOnImageFlag,
+    fullscreenWindow,
+    setFullscreenWindow,
+}: NavBarProps) => {
     const [activeNav, setActiveNav] = useState<string | null>(null);
 
     return (
@@ -50,8 +64,16 @@ export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
                 🔮🧙‍♂️
             </StyledToLogo>
             {navs.map((item) => (
-                <NavItem activeNav={activeNav} setActiveNav={setActiveNav} item={item} key={item.id} />
+                <NavItem
+                    activeNav={activeNav}
+                    setActiveNav={setActiveNav}
+                    fullscreenWindow={fullscreenWindow}
+                    setFullscreenWindow={setFullscreenWindow}
+                    item={item}
+                    key={item.id}
+                />
             ))}
+
             {isPageOpen ? (
                 <CustomButton
                     onClick={() => {
@@ -63,10 +85,13 @@ export const NavBar = ({ setTurnOn, setPage, isPageOpen }: NavBarProps) => {
             ) : (
                 <CustomButton
                     onClick={() => {
-                        setTurnOn(false);
+                        setTurnOnImageFlag(false);
+                        setTimeout(() => {
+                            setTurnOn(false);
+                        }, 500);
                     }}
                 >
-                    x
+                    <StyledTurnOnIcon src={turnOnImageFlag ? switchIconMini : switchIconOffMini} />
                 </CustomButton>
             )}
         </StyledNavBar>
