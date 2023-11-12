@@ -14,7 +14,7 @@ const StyledRadioContainer = styled.div`
     justify-content: flex-start;
     & {
         h3 {
-            margin: 20px;
+            margin: 25px;
             font-size: 16px;
         }
     }
@@ -23,6 +23,7 @@ const StyledRadioContainer = styled.div`
         background-color: #ffffff28;
         border-radius: 0 0 6px 6px;
         padding: 5px 25px;
+        height: 130px;
     }
 
     .rhap_controls-section {
@@ -67,7 +68,7 @@ const StyledRadioStyle = styled.div`
 `;
 const StyledRadioStation = styled.div<{ isSelectedStation?: boolean }>`
     position: relative;
-    width: 45%;
+    width: 40%;
     transition: 0.15s;
     cursor: pointer;
     display: block;
@@ -96,7 +97,7 @@ const StyledPlayAnimation = styled.div`
     opacity: 0.4;
     z-index: -10;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: end;
     div {
         z-index: -9;

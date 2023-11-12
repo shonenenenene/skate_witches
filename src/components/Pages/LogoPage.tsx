@@ -58,7 +58,7 @@ const Mesh = () => {
                 environment='night'
             >
                 <mesh ref={mesh}>
-                    <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
+                    <textGeometry attach='geometry' args={['скейт ведьмочки', textOptions]} />
                     <meshBasicMaterial attach='material' envMap={spaceTexture} />
                 </mesh>
             </Stage>

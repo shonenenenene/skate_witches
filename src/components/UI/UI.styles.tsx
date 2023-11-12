@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const CustomButton = styled.button`
-    font-size: inherit;
     min-height: 35px;
     text-shadow: inherit;
     width: 100%;
@@ -14,6 +13,7 @@ export const NavDropdown = styled.div`
     position: absolute;
     display: flex;
     flex-direction: column;
+    cursor: auto;
     z-index: 99;
     top: 32px;
     left: 0;
@@ -25,6 +25,7 @@ export const NavDropdown = styled.div`
 export const NavDropdownItem = styled.div`
     color: #000;
     padding: 3px 3px 5px 8px;
+    cursor: pointer;
     &:hover {
         background-color: #bcccff;
     }

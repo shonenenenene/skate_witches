@@ -17,7 +17,7 @@ const StyledTurnOffScreen = styled.div`
 const StyledHelper = styled.div`
     position: absolute;
     bottom: -40px;
-    left: 60px;
+    left: 54px;
     text-shadow: none;
 `;
 
@@ -27,8 +27,8 @@ export const StyledTurnOnIcon = styled.img`
 
 interface TurnOffScreenProps {
     setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
-    setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean>>;
-    turnOnImageFlag: boolean;
+    setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean | null>>;
+    turnOnImageFlag: boolean | null;
 }
 
 export const TurnOffScreen: FC<TurnOffScreenProps> = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag }) => {
@@ -42,7 +42,7 @@ export const TurnOffScreen: FC<TurnOffScreenProps> = ({ setTurnOn, setTurnOnImag
                     }, 1500);
                 }}
             >
-                <StyledTurnOnIcon src={turnOnImageFlag ? switchIconOff : switchIcon} />
+                <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconOff : switchIcon} />
             </CustomButton>
             <StyledHelper>🠕 press the button and wait for the boot</StyledHelper>
         </StyledTurnOffScreen>

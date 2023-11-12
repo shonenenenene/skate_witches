@@ -36,8 +36,8 @@ const StyledToLogo = styled.div`
 interface NavBarProps {
     setPage: React.Dispatch<React.SetStateAction<string>>;
     isPageOpen: boolean;
-    turnOnImageFlag: boolean;
-    setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean>>;
+    turnOnImageFlag: boolean | null;
+    setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean | null>>;
     setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
     fullscreenWindow: boolean;
     setFullscreenWindow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -80,7 +80,7 @@ export const NavBar = ({
                         setPage('');
                     }}
                 >
-                    ⮪
+                    ⮌
                 </CustomButton>
             ) : (
                 <CustomButton

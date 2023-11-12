@@ -5,9 +5,12 @@ const API_KEY = '0eb65888-66fd-40ce-acf9-8d9784f88aaa';
 
 const StyledMapWrapper = styled.div`
     width: 100%;
-    height: 640px;
+    height: 100%;
     @media (max-width: 1060px) {
         height: 100%;
+    }
+    .ymaps-2-1-79-float-button {
+        display: none;
     }
 `;
 

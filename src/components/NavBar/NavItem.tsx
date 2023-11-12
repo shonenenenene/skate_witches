@@ -43,7 +43,7 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
                     {item.content?.map((e) =>
                         e.label === '🗖 fullscreen' ? (
                             <NavDropdownItem onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}>
-                                {e.label}
+                                {fullscreenWindow ? e.label + ' off' : e.label + ' on'}
                             </NavDropdownItem>
                         ) : (
                             <NavDropdownItem key={e.id}>{e.label}</NavDropdownItem>
@@ -54,9 +54,3 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
         </StyledNavItem>
     );
 };
-
-{
-    /* <CustomButton onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}>
-    🗖 fullscreen
-</CustomButton> */
-}
