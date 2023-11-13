@@ -41,12 +41,44 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
                 animation-timing-function: ease, ease-out;
                 animation-fill-mode: none, forwards;
                 animation-delay: 1s;
+
+                &::after {
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background: rgba(18, 16, 16, 0.055);
+                    opacity: 0;
+                    z-index: 2;
+                    pointer-events: none;
+                    animation: flicker 0.15s infinite;
+                    animation-delay: 1.5s;
+                }
+                &::before {
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.151) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+                    z-index: 2;
+                    background-size: 100% 2px, 3px 100%;
+                    pointer-events: none;
+
+                    animation: powerOn 1.5s forwards ease-out;
+                }
             `;
         } else if (turnOnImageFlag !== null && !turnOnImageFlag) {
             return css`
-                animation: crt-power-off 1s forwards ease-in-out;
-                animation-delay: 0.3s;
-                border: 2px solid whitesmoke;
+                animation: crt-power-off 0.6s forwards ease-in-out;
+                animation-delay: 0.15s;
+                border: 2px solid #fff;
                 background-color: #0000e9;
             `;
         } else if (!turnOnImageFlag) {
@@ -61,6 +93,120 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
         min-width: 100%;
         height: 94vh;
         margin-bottom: auto;
+    }
+
+    @keyframes powerOn {
+        0% {
+            opacity: 0;
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        99% {
+            opacity: 0;
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        100% {
+            opacity: 1;
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+    }
+
+    @keyframes flicker {
+        0% {
+            opacity: 0.20861;
+        }
+        5% {
+            opacity: 0.30769;
+        }
+        10% {
+            opacity: 0.20604;
+        }
+        15% {
+            opacity: 0.80626;
+        }
+        20% {
+            opacity: 0.80128;
+        }
+        25% {
+            opacity: 0.80891;
+        }
+        30% {
+            opacity: 0.60583;
+        }
+        35% {
+            opacity: 0.60807;
+        }
+        40% {
+            opacity: 0.20559;
+        }
+        45% {
+            opacity: 0.80693;
+        }
+        50% {
+            opacity: 0.86019;
+        }
+        55% {
+            opacity: 0.00594;
+        }
+        60% {
+            opacity: 0.10313;
+        }
+        65% {
+            opacity: 0.61988;
+        }
+        70% {
+            opacity: 0.43455;
+        }
+        75% {
+            opacity: 0.27288;
+        }
+        80% {
+            opacity: 0.61428;
+        }
+        85% {
+            opacity: 0.60419;
+        }
+        90% {
+            opacity: 0.6003;
+        }
+        95% {
+            opacity: 0.30108;
+        }
+        100% {
+            opacity: 0.20387;
+        }
     }
 
     @keyframes textflicker {
@@ -100,7 +246,7 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
             filter: contrast(1) brightness(1) saturate(1);
             opacity: 1;
             background-color: #0000e9;
-            border: 2px solid whitesmoke;
+            border: 2px solid #fff;
         }
     }
 
@@ -109,7 +255,7 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
             transform: scale(1, 1.3) translate3d(0, 0, 0);
             filter: brightness(1);
             background-color: #0000e9;
-            border: 2px solid whitesmoke;
+            border: 2px solid #fff;
         }
         60% {
             transform: scale(1.3, 0.001) translate3d(0, 0, 0);

@@ -91,7 +91,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #0000a8ff;
-    color: white;
+    color: #fff;
     font-family: 'IBM Plex Mono', monospace, Sans-Serif;
   }
-`
+`;

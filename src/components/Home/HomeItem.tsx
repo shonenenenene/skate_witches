@@ -11,10 +11,10 @@ const StyledHomeItem = styled.div`
     cursor: pointer;
     img {
         width: 80px;
-        filter: saturate(500%) contrast(800%) brightness(500%) invert(80%) sepia(50%) hue-rotate(120deg);
+        filter: saturate(500%) contrast(800%) brightness(600%) invert(80%) sepia(50%) hue-rotate(120deg);
     }
     &:hover {
-        background-color: white;
+        background-color: #fff;
         color: black;
         transition: 0.3s;
         img {
