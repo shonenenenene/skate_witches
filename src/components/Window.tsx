@@ -17,7 +17,6 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
     display: flex;
     flex-direction: column;
     border: 2px solid rgba(255, 255, 255, 0);
-
     ${({ fullscreenWindow }) =>
         fullscreenWindow
             ? css`
@@ -26,9 +25,9 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
                   margin-bottom: auto;
               `
             : css`
-                  max-width: 1060px;
-                  min-width: 1060px;
-                  height: 680px;
+                  max-width: 1120px;
+                  min-width: 1120px;
+                  height: 740px;
               `};
     ${({ turnOnImageFlag }) => {
         if (turnOnImageFlag) {
@@ -77,7 +76,7 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
         } else if (turnOnImageFlag !== null && !turnOnImageFlag) {
             return css`
                 animation: crt-power-off 0.6s forwards ease-in-out;
-                animation-delay: 0.15s;
+                animation-delay: 0.05s;
                 border: 2px solid #fff;
                 background-color: #0000e9;
             `;
@@ -275,6 +274,26 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
     }
 `;
 
+const StyledMain = styled.main`
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+        width: 8px;
+        position: absolute;
+    }
+    &::-webkit-scrollbar-track {
+        background: #0000e9;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #00007c;
+        border-radius: 8px;
+        border: 3px solid #00007c;
+    }
+`;
+
 const Window: FC = () => {
     const [page, setPage] = useState('');
 
@@ -334,7 +353,7 @@ const Window: FC = () => {
                         fullscreenWindow={fullscreenWindow}
                         setFullscreenWindow={setFullscreenWindow}
                     />
-                    <main style={{ flexGrow: 1 }}>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</main>{' '}
+                    <StyledMain>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</StyledMain>
                 </>
             ) : (
                 <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />

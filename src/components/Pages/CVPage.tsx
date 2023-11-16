@@ -39,16 +39,15 @@ const CVPage = () => {
     return (
         <StyledCVPage>
             <StyledStackWrapper>
-                <StyledCVPhoto draggable={false} src='/public/photos/hh.jpg' />
+                <StyledCVPhoto draggable={false} src='/photos/hh.jpg' />
             </StyledStackWrapper>
-
             <h2>Даниил Сытаев</h2>
             <h3>React Developer</h3>
-            <h4>Опыт работы: 3 месяца стажировки в IT компании</h4>
+            <h4>Опыт работы: 3 месяца</h4>
             <h5>Tech Stack:</h5>
             <StyledTechStackList>
-                <StyledTechStackItem>⊗ JavaScript, HTML, CSS(SASS/LESS), React, Styled-Components, TypeScript, Git</StyledTechStackItem>
-                <StyledTechStackItem>⊗ react-three</StyledTechStackItem>
+                <StyledTechStackItem>⊗ react, typescript, styled-components</StyledTechStackItem>
+                <StyledTechStackItem>⊗ redux, react-three, git</StyledTechStackItem>
                 <StyledTechStackItem>⊗ Русский, English (B1)</StyledTechStackItem>
             </StyledTechStackList>
         </StyledCVPage>

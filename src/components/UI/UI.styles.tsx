@@ -14,7 +14,7 @@ export const NavDropdown = styled.div`
     display: flex;
     flex-direction: column;
     cursor: auto;
-    z-index: 99;
+    z-index: 1;
     top: 32px;
     left: 0;
     background-color: #ffffff;

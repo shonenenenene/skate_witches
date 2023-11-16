@@ -106,28 +106,28 @@ const StyledPlayAnimation = styled.div`
         animation: sound 0ms -800ms linear infinite alternate;
     }
     div:nth-child(1) {
-        animation-duration: 474ms;
+        animation-duration: 574ms;
     }
     div:nth-child(2) {
-        animation-duration: 433ms;
+        animation-duration: 533ms;
     }
     div:nth-child(3) {
-        animation-duration: 407ms;
+        animation-duration: 507ms;
     }
     div:nth-child(4) {
-        animation-duration: 458ms;
+        animation-duration: 558ms;
     }
     div:nth-child(5) {
-        animation-duration: 400ms;
+        animation-duration: 500ms;
     }
     div:nth-child(6) {
-        animation-duration: 427ms;
+        animation-duration: 527ms;
     }
     div:nth-child(7) {
-        animation-duration: 407ms;
+        animation-duration: 507ms;
     }
     div:nth-child(8) {
-        animation-duration: 487ms;
+        animation-duration: 587ms;
     }
 
     @keyframes sound {
@@ -143,13 +143,13 @@ const StyledPlayAnimation = styled.div`
 `;
 
 const STATIONS = {
+    VAPORWAVE: {
+        name: 'SomaFM Vaporwaves',
+        girl: vaporwaveGirl,
+    },
     BREAKCORE: {
         name: 'Breakcore Mashcore Radio.Mosco.win',
         girl: breakcoreGirl,
-    },
-    WITCH_HOUSE: {
-        name: 'SomaFM Vaporwaves',
-        girl: vaporwaveGirl,
     },
 } as const;
 

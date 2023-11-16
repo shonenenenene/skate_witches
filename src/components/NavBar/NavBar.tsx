@@ -91,7 +91,7 @@ export const NavBar = ({
                         }, 500);
                     }}
                 >
-                    <StyledTurnOnIcon src={turnOnImageFlag ? switchIconMini : switchIconOffMini} />
+                    <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconMini : switchIconOffMini} />
                 </CustomButton>
             )}
         </StyledNavBar>

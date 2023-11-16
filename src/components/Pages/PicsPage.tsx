@@ -8,6 +8,7 @@ const StyledPicsPage = styled.div<{ isSelected: boolean }>`
     padding: 30px;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px 30px;
+    box-sizing: border-box;
     img {
         cursor: pointer;
     }
