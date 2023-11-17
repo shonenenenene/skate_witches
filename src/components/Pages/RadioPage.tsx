@@ -146,10 +146,12 @@ const STATIONS = {
     VAPORWAVE: {
         name: 'SomaFM Vaporwaves',
         girl: vaporwaveGirl,
+        path: 'http://ice5.somafm.com/vaporwaves-128-mp3', // временное решение
     },
     BREAKCORE: {
         name: 'Breakcore Mashcore Radio.Mosco.win',
         girl: breakcoreGirl,
+        path: 'http://radio.mosco.win:2082/play', // временное решение
     },
 } as const;
 
@@ -173,19 +175,16 @@ const RadioPage = () => {
                 return;
             }
             setLoading(true);
-            const station = await api.getStationsBy('byName', name);
+            // const station = await api.getStationsBy('byName', name);
             setLoading(false);
-            setStationUrl(radioApiUrlConverter(station[0].urlResolved));
+            // setStationUrl(station[0].urlResolved);
+
+            STATIONS.BREAKCORE.name === name ? setStationUrl(STATIONS.BREAKCORE.path) : setStationUrl(STATIONS.VAPORWAVE.path); // временное решение
+
             setSelectedStation(name);
         },
         [selectedStation]
     );
-
-    const radioApiUrlConverter = (url: string) => {
-        console.log(url.substring(0, 4) + 's' + url.substring(4));
-        return url.substring(0, 4) + 's' + url.substring(4);
-    };
-    // http://ice2.somafm.com/vaporwaves-128-mp3
 
     return (
         <StyledRadioContainer>
