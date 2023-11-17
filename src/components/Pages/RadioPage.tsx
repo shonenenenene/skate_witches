@@ -175,11 +175,17 @@ const RadioPage = () => {
             setLoading(true);
             const station = await api.getStationsBy('byName', name);
             setLoading(false);
-            setStationUrl(station[0].urlResolved);
+            setStationUrl(radioApiUrlConverter(station[0].urlResolved));
             setSelectedStation(name);
         },
         [selectedStation]
     );
+
+    const radioApiUrlConverter = (url: string) => {
+        console.log(url.substring(0, 4) + 's' + url.substring(4));
+        return url.substring(0, 4) + 's' + url.substring(4);
+    };
+    // http://ice2.somafm.com/vaporwaves-128-mp3
 
     return (
         <StyledRadioContainer>

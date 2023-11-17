@@ -38,7 +38,7 @@ const Mesh = () => {
     const strengthProp = new THREE.Vector2(0.1, 0.3);
 
     // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
-    const spaceTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/space/' });
+    const spaceTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/skate_witches/space/' });
     return (
         <>
             <ambientLight />
