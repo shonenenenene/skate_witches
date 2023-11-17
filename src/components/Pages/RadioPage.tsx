@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { RadioBrowserApi } from 'radio-browser-api';
+// import { RadioBrowserApi } from 'radio-browser-api';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { breakcoreGirl, vaporwaveGirl } from '../../assets/pics';
@@ -165,7 +165,7 @@ const RadioPage = () => {
     const [isLoading, setLoading] = useState(false);
     const [onPlay, setOnPlay] = useState(false);
 
-    const api = new RadioBrowserApi('My Radio App');
+    // const api = new RadioBrowserApi('My Radio App');
 
     const radioApi = useCallback(
         async (name: Station) => {
