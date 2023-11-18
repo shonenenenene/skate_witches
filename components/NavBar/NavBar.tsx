@@ -1,41 +1,13 @@
-import styled from 'styled-components';
-import { CustomButton } from '../UI';
-import { navs } from '../../constants';
+import { CustomButton } from '@/ui/styles';
+import { navs } from '@/utils/constants';
 import { NavItem } from './NavItem';
 import { useState } from 'react';
-import { switchIconMini, switchIconOffMini } from '../../assets/icons';
+import { switchIconMini, switchIconOffMini } from '@/assets/icons';
 import { StyledTurnOnIcon } from '../TurnOffScreen';
-
-const StyledNavBar = styled.nav`
-    height: 35px;
-    padding: 0 40px;
-    padding-right: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
-    border-bottom: 2px solid whitesmoke;
-    border-radius: 6px 6px 0 0;
-    background-color: #00007c;
-    button {
-        margin-left: auto;
-        width: 42px;
-    }
-`;
-
-const StyledToLogo = styled.div`
-    cursor: pointer;
-    font-size: 22px;
-    padding: 0 5px;
-    &:hover {
-        transition: 0.3s all;
-        background-color: #0000e9;
-    }
-`;
+import { StyledNavBar, StyledToLogo } from './NavBar.styles';
+import { useRouter } from 'next/router';
 
 interface NavBarProps {
-    setPage: React.Dispatch<React.SetStateAction<string>>;
-    isPageOpen: boolean;
     turnOnImageFlag: boolean | null;
     setTurnOnImageFlag: React.Dispatch<React.SetStateAction<boolean | null>>;
     setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,22 +15,18 @@ interface NavBarProps {
     setFullscreenWindow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavBar = ({
-    setTurnOn,
-    setPage,
-    isPageOpen,
-    setTurnOnImageFlag,
-    turnOnImageFlag,
-    fullscreenWindow,
-    setFullscreenWindow,
-}: NavBarProps) => {
+export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscreenWindow, setFullscreenWindow }: NavBarProps) => {
     const [activeNav, setActiveNav] = useState<string | null>(null);
+
+    const router = useRouter();
+
+    const isPageOpen = router.asPath !== '/';
 
     return (
         <StyledNavBar>
             <StyledToLogo
                 onClick={() => {
-                    setPage('logo');
+                    router.push('/logo');
                 }}
             >
                 🔮🧙‍♂️
@@ -77,7 +45,7 @@ export const NavBar = ({
             {isPageOpen ? (
                 <CustomButton
                     onClick={() => {
-                        setPage('');
+                        router.push('/');
                     }}
                 >
                     ⮌
@@ -91,7 +59,7 @@ export const NavBar = ({
                         }, 500);
                     }}
                 >
-                    <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconMini : switchIconOffMini} />
+                    <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconMini.src : switchIconOffMini.src} />
                 </CustomButton>
             )}
         </StyledNavBar>

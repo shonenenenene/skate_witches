@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import avatar from '@/assets/photos/hh.jpg';
+
 const StyledCVPage = styled.div`
     h2 {
         font-size: 50px;
@@ -39,7 +41,7 @@ const CVPage = () => {
     return (
         <StyledCVPage>
             <StyledStackWrapper>
-                <StyledCVPhoto draggable={false} src='/photos/hh.jpg' />
+                <StyledCVPhoto draggable={false} src={avatar.src} />
             </StyledStackWrapper>
             <h2>Даниил Сытаев</h2>
             <h3>React Developer</h3>

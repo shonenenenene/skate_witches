@@ -1,6 +1,7 @@
 import { css, styled } from 'styled-components';
-import { pics } from '../../constants';
+import { pics } from '@/utils/constants';
 import { useState, FC } from 'react';
+import Image from 'next/image';
 
 const StyledPicsPage = styled.div<{ isSelected: boolean }>`
     height: 100%;
@@ -54,7 +55,7 @@ const StyledPicsHandler = styled.button`
     }
 `;
 
-const StyledPic = styled.img`
+const StyledPic = styled(Image)`
     object-fit: contain;
     height: 580px;
 `;
@@ -64,12 +65,16 @@ const PicsPage: FC = () => {
 
     const picsComponent = (id: number) => {
         const chosen = pics.find((e) => e.id === id);
+
+        if (!chosen) {
+            return <></>;
+        }
         return (
             <StyledPicsContainer>
                 <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state > 1 ? state - 1 : null))}>
                     ❮
                 </StyledPicsHandler>
-                <StyledPic src={chosen?.pic} alt={chosen?.name} onClick={() => setPictureId(null)} />
+                <StyledPic alt={chosen?.name || ''} onClick={() => setPictureId(null)} {...chosen.pic} />
                 <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state < pics.length ? state + 1 : null))}>
                     ❯
                 </StyledPicsHandler>
@@ -81,7 +86,7 @@ const PicsPage: FC = () => {
         <StyledPicsPage isSelected={pictureId !== null}>
             {pictureId !== null
                 ? picsComponent(pictureId)
-                : pics.map((e) => <img key={e.id} src={e.pic} alt={e.name} onClick={() => setPictureId(e.id)} />)}
+                : pics.map((e) => <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />)}
         </StyledPicsPage>
     );
 };

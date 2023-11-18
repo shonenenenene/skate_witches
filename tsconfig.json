@@ -1,25 +1,37 @@
 {
     "compilerOptions": {
         "target": "ES2020",
+        "baseUrl": ".",
+        "paths": {
+            "@/assets/*": ["assets/*"],
+            "@/components/*": ["components/*"],
+            "@/utils/*": ["utils/*"],
+            "@/ui/*": ["ui/*"]
+        },
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "module": "ESNext",
+        "esModuleInterop": true,
         "skipLibCheck": true,
-
-        /* Bundler mode */
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react-jsx",
-
-        /* Linting */
+        "jsx": "preserve",
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "include": ["src"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./dist/types/**/*.ts"],
+    "exclude": ["./node_modules"]
 }

@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { FC } from 'react';
-import { NavDropdown, NavDropdownItem } from '../UI';
 
 const StyledNavItem = styled.div`
     position: relative;
@@ -14,6 +13,28 @@ const StyledNavItem = styled.div`
         background-color: #ffffff;
         color: #000;
         transition: 0.3s;
+    }
+`;
+
+const NavDropdown = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    cursor: auto;
+    z-index: 1;
+    top: 32px;
+    left: 0;
+    background-color: #ffffff;
+    width: 180px;
+    height: 90px;
+`;
+
+const NavDropdownItem = styled.div`
+    color: #000;
+    padding: 3px 3px 5px 8px;
+    cursor: pointer;
+    &:hover {
+        background-color: #bcccff;
     }
 `;
 

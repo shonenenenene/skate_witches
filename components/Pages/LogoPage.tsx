@@ -1,8 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sparkles, Stage, Stars, useCubeTexture } from '@react-three/drei';
 import * as THREE from 'three';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { extend, Object3DNode } from '@react-three/fiber';
+import textures from '@/assets/space';
 extend({ TextGeometry });
 declare module '@react-three/fiber' {
     interface ThreeElements {
@@ -10,7 +11,7 @@ declare module '@react-three/fiber' {
     }
 }
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import * as pixelFont from '../../assets/fonts/pixels.json';
+import * as pixelFont from '@/assets/fonts/pixels.json';
 import { useRef } from 'react';
 import { styled } from 'styled-components';
 import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing';
@@ -38,7 +39,12 @@ const Mesh = () => {
     const strengthProp = new THREE.Vector2(0.1, 0.3);
 
     // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
-    const spaceTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/skate_witches/space/' });
+    const spaceTexture = useCubeTexture(
+        [textures.px.src, textures.nx.src, textures.py.src, textures.ny.src, textures.pz.src, textures.nz.src],
+        {
+            path: '',
+        }
+    );
     return (
         <>
             <ambientLight />
@@ -49,7 +55,7 @@ const Mesh = () => {
             <Sparkles count={50} scale={20} size={4} speed={1} color={'#dd8eb8'} />
             <EffectComposer>
                 <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.7} />
-                <Glitch delay={delayProp} duration={durationProp} strength={strengthProp} mode={GlitchMode.SPORADIC} active ratio={0.85} />
+                {/* <Glitch delay={delayProp} duration={durationProp} strength={strengthProp} mode={GlitchMode.SPORADIC} active ratio={0.85} /> */}
             </EffectComposer>
             <Stage
                 preset='soft'

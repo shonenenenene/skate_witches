@@ -2,9 +2,9 @@ import { useCallback, useState } from 'react';
 // import { RadioBrowserApi } from 'radio-browser-api';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { breakcoreGirl, vaporwaveGirl } from '../../assets/pics';
+import { breakcoreGirl, vaporwaveGirl } from '@/assets/pics';
 import styled, { css } from 'styled-components';
-import { LoaderProvider } from '../UI';
+import { LoaderProvider } from '@/ui/Loader';
 
 const StyledRadioContainer = styled.div`
     height: 100%;
@@ -145,13 +145,13 @@ const StyledPlayAnimation = styled.div`
 const STATIONS = {
     VAPORWAVE: {
         name: 'SomaFM Vaporwaves',
-        girl: vaporwaveGirl,
-        path: 'http://ice5.somafm.com/vaporwaves-128-mp3', // временное решение
+        girl: vaporwaveGirl.src,
+        path: 'https://ice5.somafm.com/vaporwaves-128-mp3', // временное решение
     },
     BREAKCORE: {
         name: 'Breakcore Mashcore Radio.Mosco.win',
-        girl: breakcoreGirl,
-        path: 'http://radio.mosco.win:2082/play', // временное решение
+        girl: breakcoreGirl.src,
+        path: 'https://radio.mosco.win:2082/play', // временное решение
     },
 } as const;
 
@@ -159,7 +159,7 @@ type Station = (typeof STATIONS)[keyof typeof STATIONS]['name'];
 
 const STATIONS_KEYS = Object.keys(STATIONS) as Array<keyof typeof STATIONS>;
 
-const RadioPage = () => {
+const Radio = () => {
     const [stationUrl, setStationUrl] = useState<string | null>(null);
     const [selectedStation, setSelectedStation] = useState<Station | null>(null);
     const [isLoading, setLoading] = useState(false);
@@ -230,4 +230,4 @@ const RadioPage = () => {
     );
 };
 
-export default RadioPage;
+export default Radio;

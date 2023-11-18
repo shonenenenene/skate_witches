@@ -1,5 +1,5 @@
-import { anime, radio, chain, paint, place, service, wide } from './assets/icons';
-import { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, poles, ps1, sailor, shoe, synth, pepe } from './assets/pics';
+import { anime, radio, chain, paint, place, service, wide } from '../assets/icons';
+import { aeth, bible, crystal, drift, drip, haunt, kitty, machete, moonchild, poles, ps1, sailor, shoe, synth, pepe } from '../assets/pics';
 
 export const pages = [
     {

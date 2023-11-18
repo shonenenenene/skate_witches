@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { CustomButton } from './UI';
-import { switchIcon, switchIconOff } from './../assets/icons';
+import { CustomButton } from '@/ui/styles';
+import { switchIcon, switchIconOff } from '@/assets/icons';
 
 const StyledTurnOffScreen = styled.div`
     position: relative;
@@ -42,7 +42,7 @@ export const TurnOffScreen: FC<TurnOffScreenProps> = ({ setTurnOn, setTurnOnImag
                     }, 1500);
                 }}
             >
-                <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconOff : switchIcon} />
+                <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconOff.src : switchIcon.src} />
             </CustomButton>
             <StyledHelper>🠕 press the button and wait for the boot</StyledHelper>
         </StyledTurnOffScreen>

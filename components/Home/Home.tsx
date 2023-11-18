@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { HomeItem } from './HomeItem';
-import { pages } from '../../constants';
+import { pages } from '@/utils/constants';
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 
 const StyledHome = styled.div`
     padding: 30px;
@@ -17,15 +18,20 @@ const StyledHome = styled.div`
     }
 `;
 
-interface HomeProps {
-    setPage: React.Dispatch<React.SetStateAction<string>>;
-}
+export const Home: FC = () => {
+    const router = useRouter();
 
-export const Home: FC<HomeProps> = ({ setPage }) => {
     return (
         <StyledHome>
             {pages.map((e) => (
-                <HomeItem onClick={() => setPage(e.path || '')} key={e.id} text={e.name} image={e.icon} />
+                <HomeItem
+                    onClick={() => {
+                        router.push(e.path || '');
+                    }}
+                    key={e.id}
+                    text={e.name}
+                    image={e.icon.src}
+                />
             ))}
         </StyledHome>
     );

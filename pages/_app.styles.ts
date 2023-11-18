@@ -1,16 +1,8 @@
 import styled, { css } from 'styled-components';
-import { NavBar } from './NavBar/NavBar';
-import { Home } from './Home/Home';
-import { FC, useMemo, useState, Suspense, useEffect } from 'react';
-import { TurnOffScreen } from './TurnOffScreen';
-import CVPage from './Pages/CVPage';
-import PicsPage from './Pages/PicsPage';
-import RadioPage from './Pages/RadioPage';
-import LogoPage from './Pages/LogoPage';
-import MapsPage from './Pages/MapsPage';
-import { StyledLoader } from './UI';
 
-const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: boolean | null }>`
+import glitch from '@/assets/textures/glitch.jpg';
+
+export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: boolean | null }>`
     position: relative;
     z-index: 99;
     border-radius: 8px;
@@ -274,7 +266,7 @@ const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: bo
     }
 `;
 
-const StyledMain = styled.main`
+export const StyledMain = styled.main`
     flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
@@ -294,72 +286,30 @@ const StyledMain = styled.main`
     }
 `;
 
-const Window: FC = () => {
-    const [page, setPage] = useState('');
+export const StyledApp = styled.div`
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
-    const [turnOn, setTurnOn] = useState(false);
-
-    const [turnOnImageFlag, setTurnOnImageFlag] = useState<boolean | null>(null);
-
-    const [fullscreenWindow, setFullscreenWindow] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (!turnOn) {
-            setFullscreenWindow(false);
+export const StyledBackground = styled.div`
+    position: absolute;
+    inset: -200%;
+    opacity: 20%;
+    background-image: url(${glitch.src});
+    background-size: 5%;
+    animation: shift 50s linear infinite both;
+    @keyframes shift {
+        0% {
+            transform: translateX(10%) translateY(10%);
         }
-        if (!fullscreenWindow) {
-            document.exitFullscreen();
-        } else {
-            document.documentElement.requestFullscreen();
+
+        100% {
+            transform: translateX(-10%) translateY(-10%);
         }
-    }, [turnOn, fullscreenWindow]);
-
-    const pageComponent = useMemo(() => {
-        switch (page) {
-            case 'CV':
-                return <CVPage />;
-
-            case 'pics':
-                return <PicsPage />;
-
-            case 'radio':
-                return <RadioPage />;
-
-            case 'logo':
-                return (
-                    <Suspense fallback={<StyledLoader />}>
-                        <LogoPage />
-                    </Suspense>
-                );
-
-            case 'maps':
-                return <MapsPage />;
-
-            default:
-                return <></>;
-        }
-    }, [page]);
-
-    return (
-        <StyledWindow fullscreenWindow={fullscreenWindow} turnOnImageFlag={turnOnImageFlag}>
-            {turnOn ? (
-                <>
-                    <NavBar
-                        setTurnOn={setTurnOn}
-                        setPage={setPage}
-                        isPageOpen={Boolean(page)}
-                        turnOnImageFlag={turnOnImageFlag}
-                        setTurnOnImageFlag={setTurnOnImageFlag}
-                        fullscreenWindow={fullscreenWindow}
-                        setFullscreenWindow={setFullscreenWindow}
-                    />
-                    <StyledMain>{!Boolean(page) ? <Home setPage={setPage} /> : pageComponent}</StyledMain>
-                </>
-            ) : (
-                <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />
-            )}
-        </StyledWindow>
-    );
-};
-
-export default Window;
+    }
+`;
