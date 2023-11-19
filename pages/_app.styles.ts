@@ -302,7 +302,7 @@ export const StyledBackground = styled.div`
     opacity: 20%;
     background-image: url(${glitch.src});
     background-size: 5%;
-    animation: shift 50s linear infinite both;
+    animation: shift 150s linear infinite both;
     @keyframes shift {
         0% {
             transform: translateX(10%) translateY(10%);

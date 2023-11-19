@@ -14,8 +14,8 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import * as pixelFont from '@/assets/fonts/pixels.json';
 import { useRef } from 'react';
 import { styled } from 'styled-components';
-import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing';
-import { BlendFunction, GlitchMode } from 'postprocessing';
+import { EffectComposer, Noise } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
 
 const StyledLogoWrapper = styled.div`
     height: 100%;
@@ -34,9 +34,9 @@ const Mesh = () => {
         height: 1,
     };
 
-    const delayProp = new THREE.Vector2(3, 5);
-    const durationProp = new THREE.Vector2(0.1, 1);
-    const strengthProp = new THREE.Vector2(0.1, 0.3);
+    // const delayProp = new THREE.Vector2(3, 5);
+    // const durationProp = new THREE.Vector2(0.1, 1);
+    // const strengthProp = new THREE.Vector2(0.1, 0.3);
 
     // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
     const spaceTexture = useCubeTexture(

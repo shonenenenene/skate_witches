@@ -4,7 +4,7 @@ import { NavItem } from './NavItem';
 import { useState } from 'react';
 import { switchIconMini, switchIconOffMini } from '@/assets/icons';
 import { StyledTurnOnIcon } from '../TurnOffScreen';
-import { StyledNavBar, StyledToLogo } from './NavBar.styles';
+import { StyledNavBar, StyledToLogo, StyledNavBtnsWrapper } from './NavBar.styles';
 import { useRouter } from 'next/router';
 
 interface NavBarProps {
@@ -41,16 +41,16 @@ export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscr
                     key={item.id}
                 />
             ))}
-
-            {isPageOpen ? (
-                <CustomButton
-                    onClick={() => {
-                        router.push('/');
-                    }}
-                >
-                    ⮌
-                </CustomButton>
-            ) : (
+            <StyledNavBtnsWrapper>
+                {isPageOpen ? (
+                    <CustomButton
+                        onClick={() => {
+                            router.push('/');
+                        }}
+                    >
+                        ⮌
+                    </CustomButton>
+                ) : null}
                 <CustomButton
                     onClick={() => {
                         setTurnOnImageFlag(false);
@@ -61,7 +61,7 @@ export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscr
                 >
                     <StyledTurnOnIcon draggable={false} src={turnOnImageFlag ? switchIconMini.src : switchIconOffMini.src} />
                 </CustomButton>
-            )}
+            </StyledNavBtnsWrapper>
         </StyledNavBar>
     );
 };
