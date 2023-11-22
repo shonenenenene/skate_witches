@@ -38,7 +38,6 @@ const Mesh = () => {
     // const durationProp = new THREE.Vector2(0.1, 1);
     // const strengthProp = new THREE.Vector2(0.1, 0.3);
 
-    // const skyTexture = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], { path: '/sky/' });
     const spaceTexture = useCubeTexture(
         [textures.px.src, textures.nx.src, textures.py.src, textures.ny.src, textures.pz.src, textures.nz.src],
         {

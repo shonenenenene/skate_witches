@@ -4,6 +4,7 @@ import { FC } from 'react';
 const StyledNavItem = styled.div`
     position: relative;
     padding: 5px 10px;
+    margin: 3px 0;
     cursor: pointer;
     ${({ color }) => css`
         background-color: ${color || '#ffffff0'};

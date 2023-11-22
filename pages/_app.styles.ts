@@ -274,10 +274,10 @@ export const StyledMain = styled.main`
     scroll-behavior: smooth;
     &::-webkit-scrollbar {
         width: 8px;
-        position: absolute;
     }
     &::-webkit-scrollbar-track {
         background: #0000e9;
+        border-radius: 8px;
     }
     &::-webkit-scrollbar-thumb {
         background-color: #00007c;

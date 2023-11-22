@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledNavBar = styled.nav`
-    box-sizing: border-box;
     height: 35px;
     padding: 0 40px;
     padding-right: 15px;
@@ -9,7 +8,7 @@ export const StyledNavBar = styled.nav`
     align-items: center;
     justify-content: flex-start;
     gap: 15px;
-    border-bottom: 2px solid whitesmoke;
+    border-bottom: 2px solid #f5f5f5;
     border-radius: 6px 6px 0 0;
     background-color: #00007c;
     button {
@@ -30,7 +29,8 @@ export const StyledToLogo = styled.div`
 
 export const StyledNavBtnsWrapper = styled.div`
     position: absolute;
-    right: 2px;
+    right: 3px;
+    top: -0.5px;
     display: flex;
     align-items: center;
 `;

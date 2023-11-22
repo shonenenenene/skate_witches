@@ -32,9 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   	font-weight: inherit;
   }
 
-  ul, ul li {
-  	list-style: none;
-  }
+  
 
   img {
   	vertical-align: top;
