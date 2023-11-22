@@ -151,7 +151,7 @@ const STATIONS = {
     BREAKCORE: {
         name: 'Breakcore Mashcore Radio.Mosco.win',
         girl: breakcoreGirl.src,
-        path: 'https://radio.mosco.win:2082/play', // временное решение
+        path: 'http://radio.mosco.win:2082/play', // временное решение
     },
 } as const;
 

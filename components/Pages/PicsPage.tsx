@@ -3,34 +3,9 @@ import { pics } from '@/utils/constants';
 import { useState, FC } from 'react';
 import Image from 'next/image';
 
-const StyledPicsPage = styled.div<{ isSelected: boolean }>`
+const StyledPicsPage = styled.div`
     height: 100%;
     width: 100%;
-    padding: 30px;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px 30px;
-    box-sizing: border-box;
-    img {
-        cursor: pointer;
-    }
-
-    ${({ isSelected }) =>
-        isSelected
-            ? css`
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-              `
-            : css`
-                  display: grid;
-              `};
-
-    @media (max-width: 970px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    @media (max-width: 632px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
 `;
 
 const StyledPicsContainer = styled.div`
@@ -57,7 +32,38 @@ const StyledPicsHandler = styled.button`
 
 const StyledPic = styled(Image)`
     object-fit: contain;
-    height: 580px;
+    height: 660px;
+    width: auto;
+    cursor: pointer;
+`;
+
+const StyledPicList = styled.div<{ isSelected: number | null }>`
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px 30px;
+    box-sizing: border-box;
+
+    img {
+        cursor: pointer;
+    }
+
+    ${({ isSelected }) =>
+        isSelected !== null
+            ? css`
+                  display: none;
+              `
+            : css`
+                  display: grid;
+              `}
+
+    @media (max-width: 970px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 632px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `;
 
 const PicsPage: FC = () => {
@@ -83,10 +89,13 @@ const PicsPage: FC = () => {
     };
 
     return (
-        <StyledPicsPage isSelected={pictureId !== null}>
-            {pictureId !== null
-                ? picsComponent(pictureId)
-                : pics.map((e) => <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />)}
+        <StyledPicsPage>
+            {pictureId !== null ? picsComponent(pictureId) : null}
+            <StyledPicList isSelected={pictureId}>
+                {pics.map((e) => (
+                    <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />
+                ))}
+            </StyledPicList>
         </StyledPicsPage>
     );
 };

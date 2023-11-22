@@ -16,11 +16,6 @@ export const pages = [
     },
     {
         id: 3,
-        name: 'nuggets',
-        icon: chain,
-    },
-    {
-        id: 4,
         name: 'pics',
         icon: paint,
         path: 'pics',
@@ -30,16 +25,6 @@ export const pages = [
         name: 'maps',
         icon: place,
         path: 'maps',
-    },
-    {
-        id: 6,
-        name: 'service',
-        icon: service,
-    },
-    {
-        id: 7,
-        name: 'za warudo',
-        icon: wide,
     },
 ];
 
