@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import avatar from '@/assets/photos/hh.jpg';
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 
 const StyledCVPage = styled.div`
     display: flex;
@@ -84,68 +85,73 @@ const StyledTechStackItem = styled.li`
 
 const CVPage = () => {
     return (
-        <StyledCVPage>
-            <StyledAboutMeWrapper>
-                <StyledCVPhoto>
-                    <img draggable={false} src={avatar.src} />
-                </StyledCVPhoto>
-                <h2>Daniil Sytaev</h2>
-                <h3>React Developer</h3>
-                <h4>
-                    Work experience: 3 months <span>(hotels.ru internship)</span>
-                </h4>
-                <p>
-                    Quickly mastered HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
-                    TypeScript, Next, Redux, Styled-Components stack.
-                </p>
-                <p>
-                    I try to improve my use of current technologies and learn new ones. I have internship experience at an IT product
-                    company.
-                </p>
-                <p>Looking for a company where I can realize my potential as a Frontend developer. Ready for long-term cooperation.</p>
-                <h4>Links:</h4>
-                <a href='https://github.com/shonenenenene' target='_blank'>
-                    github
-                </a>
-                <a href='https://t.me/shonethegrappler' target='_blank'>
-                    tg: @shonethegrappler
-                </a>
-                <a href='mailto:danya.sytaev@gmail.com' target='_blank'>
-                    mail: danya.sytaev@gmail.com
-                </a>
-            </StyledAboutMeWrapper>
+        <SwitchPageAnimationProvider>
+            <StyledCVPage>
+                <StyledAboutMeWrapper>
+                    <StyledCVPhoto>
+                        <img draggable={false} src={avatar.src} />
+                    </StyledCVPhoto>
+                    <h2>Daniil Sytaev</h2>
+                    <h3>React Developer</h3>
+                    <h4>
+                        Work experience: 3 months <span>(hotels.ru internship)</span>
+                    </h4>
+                    <p>
+                        Quickly mastered HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
+                        TypeScript, Next, Redux, Styled-Components stack.
+                    </p>
+                    <p>
+                        I try to improve my use of current technologies and learn new ones. I have internship experience at an IT product
+                        company.
+                    </p>
+                    <p>Looking for a company where I can realize my potential as a Frontend developer. Ready for long-term cooperation.</p>
+                    <h4>Links:</h4>
+                    <a href='https://github.com/shonenenenene' target='_blank'>
+                        github
+                    </a>
+                    <a href='https://t.me/shonethegrappler' target='_blank'>
+                        tg: @shonethegrappler
+                    </a>
+                    <a href='mailto:danya.sytaev@gmail.com' target='_blank'>
+                        mail: danya.sytaev@gmail.com
+                    </a>
+                    <a href='/CV_Sytaev_Daniil.pdf' target='_blank' rel='noopener noreferrer' download>
+                        Download PDF
+                    </a>
+                </StyledAboutMeWrapper>
 
-            <StyledTechStackWrapper>
-                <h5>Tech Stack:</h5>
+                <StyledTechStackWrapper>
+                    <h5>Tech Stack:</h5>
 
-                <h6>Main:</h6>
+                    <h6>Main:</h6>
 
-                <StyledTechStackList>
-                    <StyledTechStackItem>react, typescript, styled-components</StyledTechStackItem>
-                </StyledTechStackList>
+                    <StyledTechStackList>
+                        <StyledTechStackItem>react, typescript, styled-components</StyledTechStackItem>
+                    </StyledTechStackList>
 
-                <h6>Other technologies I used:</h6>
+                    <h6>Other technologies I used:</h6>
 
-                <StyledTechStackList>
-                    <StyledTechStackItem>next</StyledTechStackItem>
-                    <StyledTechStackItem>redux, valtio</StyledTechStackItem>
-                    <StyledTechStackItem>react-three</StyledTechStackItem>
-                    <StyledTechStackItem>scss/sass</StyledTechStackItem>
-                    <StyledTechStackItem>git</StyledTechStackItem>
-                </StyledTechStackList>
+                    <StyledTechStackList>
+                        <StyledTechStackItem>next</StyledTechStackItem>
+                        <StyledTechStackItem>redux, valtio</StyledTechStackItem>
+                        <StyledTechStackItem>react-three</StyledTechStackItem>
+                        <StyledTechStackItem>scss/sass</StyledTechStackItem>
+                        <StyledTechStackItem>git</StyledTechStackItem>
+                    </StyledTechStackList>
 
-                <h6>Skills:</h6>
+                    <h6>Skills:</h6>
 
-                <StyledTechStackList>
-                    <StyledTechStackItem>experience in developing React applications using functional components</StyledTechStackItem>
-                    <StyledTechStackItem>adaptive/responsive layout (flex, grid)</StyledTechStackItem>
-                    <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
-                    <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
-                    <StyledTechStackItem>quick learner and perseverance</StyledTechStackItem>
-                    <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
-                </StyledTechStackList>
-            </StyledTechStackWrapper>
-        </StyledCVPage>
+                    <StyledTechStackList>
+                        <StyledTechStackItem>experience in developing React applications using functional components</StyledTechStackItem>
+                        <StyledTechStackItem>adaptive/responsive layout (flex, grid)</StyledTechStackItem>
+                        <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
+                        <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
+                        <StyledTechStackItem>quick learner and perseverance</StyledTechStackItem>
+                        <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
+                    </StyledTechStackList>
+                </StyledTechStackWrapper>
+            </StyledCVPage>
+        </SwitchPageAnimationProvider>
     );
 };
 

@@ -16,15 +16,16 @@ const App = ({ Component, pageProps }: AppProps) => {
     const [fullscreenWindow, setFullscreenWindow] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!turnOn) {
+        if (!fullscreenWindow) {
             setFullscreenWindow(false);
         }
-        if (document.fullscreenElement || !fullscreenWindow) {
-            document.exitFullscreen().catch((e) => console.error(e));
-        } else {
+        // if (document.fullscreenElement || !fullscreenWindow) {
+        //     document.exitFullscreen().catch((e) => console.error(e));
+        // }
+        else {
             document.documentElement.requestFullscreen().catch((e) => console.error(e));
         }
-    }, [turnOn, fullscreenWindow]);
+    }, [fullscreenWindow]);
 
     return (
         <StyledApp>

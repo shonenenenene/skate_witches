@@ -2,6 +2,7 @@ import { css, styled } from 'styled-components';
 import { pics } from '@/utils/constants';
 import { useState, FC } from 'react';
 import Image from 'next/image';
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 
 const StyledPicsPage = styled.div`
     height: 100%;
@@ -89,14 +90,16 @@ const PicsPage: FC = () => {
     };
 
     return (
-        <StyledPicsPage>
-            {pictureId !== null ? picsComponent(pictureId) : null}
-            <StyledPicList isSelected={pictureId}>
-                {pics.map((e) => (
-                    <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />
-                ))}
-            </StyledPicList>
-        </StyledPicsPage>
+        <SwitchPageAnimationProvider>
+            <StyledPicsPage>
+                {pictureId !== null ? picsComponent(pictureId) : null}
+                <StyledPicList isSelected={pictureId}>
+                    {pics.map((e) => (
+                        <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />
+                    ))}
+                </StyledPicList>
+            </StyledPicsPage>
+        </SwitchPageAnimationProvider>
     );
 };
 

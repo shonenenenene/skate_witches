@@ -5,6 +5,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import { breakcoreGirl, vaporwaveGirl } from '@/assets/pics';
 import styled, { css } from 'styled-components';
 import { LoaderProvider } from '@/ui/Loader';
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 
 const StyledRadioContainer = styled.div`
     height: 100%;
@@ -187,46 +188,48 @@ const Radio = () => {
     );
 
     return (
-        <StyledRadioContainer>
-            <h3>{selectedStation === null ? 'choose station' : selectedStation}</h3>
-            <StyledRadioStyle>
-                {STATIONS_KEYS.map((key) => (
-                    <StyledRadioStation
-                        key={STATIONS[key].name}
-                        isSelectedStation={selectedStation === STATIONS[key].name}
-                        onClick={() => radioApi(STATIONS[key].name)}
-                    >
-                        <img src={STATIONS[key].girl} draggable='false' />
-                        {onPlay && selectedStation === STATIONS[key].name ? (
-                            <StyledPlayAnimation>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </StyledPlayAnimation>
-                        ) : null}
-                    </StyledRadioStation>
-                ))}
-            </StyledRadioStyle>
+        <SwitchPageAnimationProvider>
+            <StyledRadioContainer>
+                <h3>{selectedStation === null ? 'choose station' : selectedStation}</h3>
+                <StyledRadioStyle>
+                    {STATIONS_KEYS.map((key) => (
+                        <StyledRadioStation
+                            key={STATIONS[key].name}
+                            isSelectedStation={selectedStation === STATIONS[key].name}
+                            onClick={() => radioApi(STATIONS[key].name)}
+                        >
+                            <img src={STATIONS[key].girl} draggable='false' />
+                            {onPlay && selectedStation === STATIONS[key].name ? (
+                                <StyledPlayAnimation>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </StyledPlayAnimation>
+                            ) : null}
+                        </StyledRadioStation>
+                    ))}
+                </StyledRadioStyle>
 
-            <LoaderProvider isLoading={isLoading}>
-                {stationUrl ? (
-                    <AudioPlayer
-                        onPlay={() => setOnPlay(true)}
-                        onPause={() => setOnPlay(false)}
-                        src={stationUrl}
-                        volume={0.2}
-                        autoPlay
-                        customProgressBarSection={[]}
-                        customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.VOLUME_CONTROLS]}
-                    />
-                ) : null}
-            </LoaderProvider>
-        </StyledRadioContainer>
+                <LoaderProvider isLoading={isLoading}>
+                    {stationUrl ? (
+                        <AudioPlayer
+                            onPlay={() => setOnPlay(true)}
+                            onPause={() => setOnPlay(false)}
+                            src={stationUrl}
+                            volume={0.2}
+                            autoPlay
+                            customProgressBarSection={[]}
+                            customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.VOLUME_CONTROLS]}
+                        />
+                    ) : null}
+                </LoaderProvider>
+            </StyledRadioContainer>
+        </SwitchPageAnimationProvider>
     );
 };
 

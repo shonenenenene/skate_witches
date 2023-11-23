@@ -1,3 +1,4 @@
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { YMaps, Map } from '@pbe/react-yandex-maps';
 import styled from 'styled-components';
 
@@ -21,16 +22,18 @@ const MapsPage = () => {
     };
 
     return (
-        <StyledMapWrapper>
-            <YMaps
-                query={{
-                    load: 'package.full',
-                    apikey: API_KEY,
-                }}
-            >
-                <Map width='100%' height='100%' defaultState={defaultState} />
-            </YMaps>
-        </StyledMapWrapper>
+        <SwitchPageAnimationProvider>
+            <StyledMapWrapper>
+                <YMaps
+                    query={{
+                        load: 'package.full',
+                        apikey: API_KEY,
+                    }}
+                >
+                    <Map width='100%' height='100%' defaultState={defaultState} />
+                </YMaps>
+            </StyledMapWrapper>
+        </SwitchPageAnimationProvider>
     );
 };
 
