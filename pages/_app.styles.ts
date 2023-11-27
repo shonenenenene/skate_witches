@@ -82,7 +82,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
     @media (max-width: 1060px) {
         max-width: 100%;
         min-width: 100%;
-        height: 94vh;
+        height: 100vh;
         margin-bottom: auto;
     }
 
@@ -272,6 +272,7 @@ export const StyledMain = styled.main`
     overflow-x: hidden;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    height: 600px;
     &::-webkit-scrollbar {
         width: 8px;
     }

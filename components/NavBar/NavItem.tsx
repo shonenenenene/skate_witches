@@ -28,12 +28,20 @@ const NavDropdown = styled.div`
     background-color: #ffffff;
     width: 180px;
     height: 90px;
+    @media (max-width: 539px) {
+        width: 100%;
+        position: relative;
+        top: 0;
+        margin-top: 20px;
+    }
 `;
 
 const NavDropdownItem = styled.div`
     color: #000;
-    padding: 3px 3px 5px 8px;
+    padding: 6px 3px 8px 8px;
     cursor: pointer;
+    border-bottom: 1px solid #b1b1b1;
+    border-top: 1px solid #b1b1b1;
     &:hover {
         background-color: #bcccff;
     }

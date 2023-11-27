@@ -9,6 +9,7 @@ const StyledTurnOffScreen = styled.div`
     display: flex;
     justify-content: start;
     align-items: end;
+    padding-bottom: 60px;
     button {
         width: 120px;
     }
@@ -16,7 +17,7 @@ const StyledTurnOffScreen = styled.div`
 
 const StyledHelper = styled.div`
     position: absolute;
-    bottom: -40px;
+    bottom: 16px;
     left: 54px;
     text-shadow: none;
 `;

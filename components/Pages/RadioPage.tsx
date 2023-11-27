@@ -25,6 +25,7 @@ const StyledRadioContainer = styled.div`
         border-radius: 0 0 6px 6px;
         padding: 5px 25px;
         height: 130px;
+        margin-top: 25px;
     }
 
     .rhap_controls-section {
@@ -61,6 +62,7 @@ const StyledRadioStyle = styled.div`
     height: 100%;
     justify-content: space-evenly;
     align-items: start;
+    margin: 10px;
     @media (max-width: 900px) {
         flex-direction: column;
         justify-content: space-around;
@@ -86,6 +88,7 @@ const StyledRadioStation = styled.div<{ isSelectedStation?: boolean }>`
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        margin-bottom: 20px;
     }
 `;
 
@@ -149,10 +152,10 @@ const STATIONS = {
         girl: vaporwaveGirl.src,
         path: 'https://ice5.somafm.com/vaporwaves-128-mp3', // временное решение
     },
-    BREAKCORE: {
-        name: 'Breakcore Mashcore Radio.Mosco.win',
+    AFRICA: {
+        name: 'West Africa Democracy Radio',
         girl: breakcoreGirl.src,
-        path: 'http://radio.mosco.win:2082/play', // временное решение
+        path: 'https://westafricademocracyradio.ice.infomaniak.ch/westafricademocracyradio.mp3?download=false', // временное решение
     },
 } as const;
 
@@ -180,7 +183,7 @@ const Radio = () => {
             setLoading(false);
             // setStationUrl(station[0].urlResolved);
 
-            STATIONS.BREAKCORE.name === name ? setStationUrl(STATIONS.BREAKCORE.path) : setStationUrl(STATIONS.VAPORWAVE.path); // временное решение
+            STATIONS.AFRICA.name === name ? setStationUrl(STATIONS.AFRICA.path) : setStationUrl(STATIONS.VAPORWAVE.path); // временное решение
 
             setSelectedStation(name);
         },

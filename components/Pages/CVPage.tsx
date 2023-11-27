@@ -7,6 +7,10 @@ const StyledCVPage = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
+    @media (max-width: 800px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `;
 
 const StyledCVPhoto = styled.div`
@@ -65,6 +69,9 @@ const StyledTechStackWrapper = styled.div`
     h6 {
         font-size: 24px;
     }
+    @media (max-width: 800px) {
+        flex-basis: 92%;
+    }
 `;
 
 const StyledTechStackList = styled.ul`
@@ -72,6 +79,7 @@ const StyledTechStackList = styled.ul`
     font-size: 20px;
     background-color: #ffffff1d;
 `;
+
 const StyledTechStackItem = styled.li`
     display: list-item;
     margin: 10px;

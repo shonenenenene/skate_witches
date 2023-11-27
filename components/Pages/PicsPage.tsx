@@ -20,8 +20,8 @@ const StyledPicsContainer = styled.div`
 `;
 const StyledPicsHandler = styled.button`
     background-color: #ffffff1d;
-    max-width: 100px;
-    min-width: 30px;
+    max-width: 120px;
+    min-width: 60px;
     height: 100%;
     font-size: 30px;
     flex-grow: 1;
@@ -81,7 +81,9 @@ const PicsPage: FC = () => {
                 <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state > 1 ? state - 1 : null))}>
                     ❮
                 </StyledPicsHandler>
-                <StyledPic alt={chosen?.name || ''} onClick={() => setPictureId(null)} {...chosen.pic} />
+                <div>
+                    <StyledPic alt={chosen?.name || ''} onClick={() => setPictureId(null)} {...chosen.pic} draggable={false} />
+                </div>
                 <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state < pics.length ? state + 1 : null))}>
                     ❯
                 </StyledPicsHandler>
