@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import avatar from '@/assets/photos/hh.jpg';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
+import { useEffect, useRef } from 'react';
 
 const StyledCVPage = styled.div`
     display: flex;
@@ -92,9 +93,18 @@ const StyledTechStackItem = styled.li`
 `;
 
 const CVPage = () => {
+    const cvRef = useRef<HTMLDivElement>(null);
+    const bottomRef = useRef<HTMLLIElement>(null);
+
+    useEffect(() => {
+        if (bottomRef.current && cvRef.current) {
+            bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }, []);
+
     return (
         <SwitchPageAnimationProvider>
-            <StyledCVPage>
+            <StyledCVPage ref={cvRef}>
                 <StyledAboutMeWrapper>
                     <StyledCVPhoto>
                         <img draggable={false} src={avatar.src} />
@@ -105,7 +115,7 @@ const CVPage = () => {
                         Work experience: 3 months <span>(hotels.ru internship)</span>
                     </h4>
                     <p>
-                        Quickly mastered HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
+                        Quickly learned HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
                         TypeScript, Next, Redux, Styled-Components stack.
                     </p>
                     <p>
@@ -155,7 +165,7 @@ const CVPage = () => {
                         <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
                         <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
                         <StyledTechStackItem>quick learner and perseverance</StyledTechStackItem>
-                        <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
+                        <StyledTechStackItem ref={bottomRef}>Русский, English (B1)</StyledTechStackItem>
                     </StyledTechStackList>
                 </StyledTechStackWrapper>
             </StyledCVPage>

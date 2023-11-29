@@ -21,8 +21,8 @@ export const StyledToLogo = styled.div`
 
 export const StyledNavBtnsWrapper = styled.div`
     position: absolute;
-    right: 3px;
-    top: -0.5px;
+    right: 4px;
+    top: 0.5px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
