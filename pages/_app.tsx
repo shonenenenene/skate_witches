@@ -18,11 +18,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     useEffect(() => {
         if (!fullscreenWindow) {
             setFullscreenWindow(false);
-        }
-        // if (document.fullscreenElement || !fullscreenWindow) {
-        //     document.exitFullscreen().catch((e) => console.error(e));
-        // }
-        else {
+        } else {
             document.documentElement.requestFullscreen().catch((e) => console.error(e));
         }
     }, [fullscreenWindow]);

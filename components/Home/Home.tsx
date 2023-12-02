@@ -26,7 +26,7 @@ export const Home: FC = () => {
             {pages.map((e) => (
                 <HomeItem
                     onClick={() => {
-                        router.push(e.path || '');
+                        router.push(e.path);
                     }}
                     key={e.id}
                     text={e.name}

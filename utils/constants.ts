@@ -1,36 +1,46 @@
 import { anime, radio, paint, place, chain } from '../assets/icons';
 import { aeth, bible, crystal, drift, cs, haunt, kitty, machete, moonchild, poles, ps1, sailor, shoe, synth, pepe } from '../assets/pics';
 
+export const ROUTES = {
+    CV: 'CV',
+    RADIO: 'radio',
+    PICS: 'pics',
+    MAPS: 'maps',
+    TEKKEN: 'tekken',
+    LOGO: 'logo',
+    HOME: '/',
+} as const;
+
 export const pages = [
     {
         id: 1,
         name: 'about me',
         icon: anime,
-        path: 'CV',
+        path: ROUTES.CV,
     },
     {
         id: 2,
         name: 'radio',
         icon: radio,
-        path: 'radio',
+        path: ROUTES.RADIO,
     },
     {
         id: 3,
         name: 'pics',
         icon: paint,
-        path: 'pics',
+        path: ROUTES.PICS,
     },
     {
         id: 4,
         name: 'maps',
         icon: place,
-        path: 'maps',
+        path: ROUTES.MAPS,
     },
     {
         id: 5,
         name: 'tekken 3',
         icon: chain,
-        path: 'tekken',
+        path: ROUTES.TEKKEN,
     },
 ];
 
