@@ -12,7 +12,7 @@ export const StyledToLogo = styled.div`
     width: 72px;
     position: absolute;
     left: 20px;
-    top: 3px;
+    top: 2px;
     &:hover {
         transition: 0.3s all;
         background-color: #0000e9;

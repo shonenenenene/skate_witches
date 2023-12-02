@@ -79,7 +79,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
         }
     }}
 
-    @media (max-width: 1060px) {
+    @media (max-width: 1120px) {
         max-width: 100%;
         min-width: 100%;
         height: 100vh;

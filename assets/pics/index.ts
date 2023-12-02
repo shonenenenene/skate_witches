@@ -2,7 +2,7 @@ import aeth from './aeth.jpg';
 import bible from './bible.jpg';
 import crystal from './crystal.jpg';
 import drift from './drift.jpg';
-import drip from './drip.jpg';
+import cs from './cs.jpg';
 import haunt from './haunt.jpg';
 import kitty from './kitty.jpg';
 import machete from './machete.jpg';
@@ -22,7 +22,7 @@ export {
     bible,
     crystal,
     drift,
-    drip,
+    cs,
     haunt,
     kitty,
     machete,
