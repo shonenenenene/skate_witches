@@ -9,6 +9,7 @@ export const ROUTES = {
     TEKKEN: 'tekken',
     LOGO: 'logo',
     HOME: '/',
+    NEW_DIRECTORY: 'new-directory',
 } as const;
 
 export const pages = [
@@ -144,13 +145,16 @@ export const navs = [
         content: [
             {
                 id: 1,
-                label: 'About',
-                href: '/About',
+                label: 'Create New Directory',
+                path: ROUTES.NEW_DIRECTORY,
             },
             {
                 id: 2,
-                label: 'About',
-                href: '/About',
+                label: 'Print CV',
+            },
+            {
+                id: 3,
+                label: 'About Project',
             },
         ],
     },

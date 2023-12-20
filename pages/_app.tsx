@@ -7,8 +7,13 @@ import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
 
 import favicon from '@/assets/witch.svg';
+import { useRouter } from 'next/router';
 
 const App = ({ Component, pageProps }: AppProps) => {
+    const router = useRouter();
+
+    const isHome = !router.asPath.substring(1);
+
     const [turnOn, setTurnOn] = useState(false);
 
     const [turnOnImageFlag, setTurnOnImageFlag] = useState<boolean | null>(null);

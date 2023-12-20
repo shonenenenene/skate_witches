@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 const StyledNavItem = styled.div`
     position: relative;
@@ -27,7 +28,7 @@ const NavDropdown = styled.div`
     left: 0;
     background-color: #ffffff;
     width: 180px;
-    height: 90px;
+    height: fit-content;
     @media (max-width: 539px) {
         width: 100%;
         position: relative;
@@ -40,8 +41,7 @@ const NavDropdownItem = styled.div`
     color: #000;
     padding: 6px 3px 8px 8px;
     cursor: pointer;
-    border-bottom: 1px solid #b1b1b1;
-    border-top: 1px solid #b1b1b1;
+    border: 1px solid #b1b1b1;
     &:hover {
         background-color: #bcccff;
     }
@@ -54,6 +54,7 @@ interface NavItemProps {
         content?: {
             id: number;
             label: string;
+            path?: string;
         }[];
     };
     setActiveNav: React.Dispatch<React.SetStateAction<string | null>>;
@@ -64,19 +65,55 @@ interface NavItemProps {
 
 export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fullscreenWindow, setFullscreenWindow }) => {
     const isActiveNav = activeNav === item.name;
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+    const router = useRouter();
+
+    const closeOpenMenus = (e: MouseEvent) => {
+        if (dropdownRef.current && activeNav && !dropdownRef.current.contains(e.target as Node)) {
+            setActiveNav(null);
+        }
+    };
+
+    useEffect(() => {
+        if (!document) {
+            return;
+        }
+
+        if (isActiveNav) {
+            document?.addEventListener('mousedown', closeOpenMenus);
+        } else {
+            document?.removeEventListener('mousedown', closeOpenMenus);
+        }
+    }, [activeNav]);
 
     return (
-        <StyledNavItem color={isActiveNav ? '#ffffff' : '#ffffff0'} onClick={() => setActiveNav(isActiveNav ? null : item.name)}>
+        <StyledNavItem
+            color={isActiveNav ? '#ffffff' : '#ffffff0'}
+            onClick={() => {
+                if (!isActiveNav) {
+                    setActiveNav(item.name);
+                }
+            }}
+        >
             {item.name}
             {isActiveNav ? (
-                <NavDropdown>
+                <NavDropdown ref={dropdownRef}>
                     {item.content?.map((e) =>
                         e.label === '🗖 fullscreen' ? (
                             <NavDropdownItem onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}>
                                 {fullscreenWindow ? e.label + ' off' : e.label + ' on'}
                             </NavDropdownItem>
                         ) : (
-                            <NavDropdownItem key={e.id}>{e.label}</NavDropdownItem>
+                            <NavDropdownItem
+                                onClick={() => {
+                                    router.push('asdasd');
+                                    setActiveNav(null);
+                                }}
+                                key={e.id}
+                            >
+                                {e.label}
+                            </NavDropdownItem>
                         )
                     )}
                 </NavDropdown>
