@@ -38,7 +38,7 @@ const StyledPic = styled(Image)`
     cursor: pointer;
 `;
 
-const StyledPicList = styled.div<{ isSelected: number | null }>`
+const StyledPicList = styled.div<{ isselected: number | null }>`
     height: 100%;
     width: 100%;
     padding: 30px;
@@ -50,8 +50,8 @@ const StyledPicList = styled.div<{ isSelected: number | null }>`
         cursor: pointer;
     }
 
-    ${({ isSelected }) =>
-        isSelected !== null
+    ${({ isselected }) =>
+        isselected !== null
             ? css`
                   display: none;
               `
@@ -95,9 +95,9 @@ const PicsPage: FC = () => {
         <SwitchPageAnimationProvider>
             <StyledPicsPage>
                 {pictureId !== null ? picsComponent(pictureId) : null}
-                <StyledPicList isSelected={pictureId}>
+                <StyledPicList isselected={pictureId}>
                     {pics.map((e) => (
-                        <img key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} />
+                        <Image key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} width={300} height={300} />
                     ))}
                 </StyledPicList>
             </StyledPicsPage>

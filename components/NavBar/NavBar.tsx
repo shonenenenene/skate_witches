@@ -34,7 +34,7 @@ export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscr
             >
                 🔮🧙‍♂️
             </StyledToLogo>
-            <StyledNavsWrapper isOpenedBurger={isOpenedBurger}>
+            <StyledNavsWrapper isopenedburger={isOpenedBurger.toString()}>
                 <CustomButton
                     onClick={() => {
                         setIsOpenedBurger(!isOpenedBurger);

@@ -8,13 +8,13 @@ export const GoBackIcon = () => {
             xmlns='http://www.w3.org/2000/svg'
             aria-labelledby='previousAltIconTitle'
             stroke='#fff'
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             color='#fff'
         >
-            <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
-            <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g>
+            <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
+            <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
             <g id='SVGRepo_iconCarrier'>
                 <path d='M8 4L4 8L8 12'></path>
                 <path d='M4 8H14.5C17.5376 8 20 10.4624 20 13.5V13.5C20 16.5376 17.5376 19 14.5 19H5'></path>

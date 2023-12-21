@@ -162,7 +162,6 @@ const StyledLangSwitcherForm = styled.form`
 
 const CVPage = () => {
     const [lang, setLang] = useState('RU');
-    console.log(lang);
 
     return (
         <SwitchPageAnimationProvider>

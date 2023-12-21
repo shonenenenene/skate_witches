@@ -13,6 +13,7 @@ export const StyledToLogo = styled.div`
     position: absolute;
     left: 20px;
     top: 2px;
+    z-index: 99;
     &:hover {
         transition: 0.3s all;
         background-color: #0000e9;
@@ -26,13 +27,14 @@ export const StyledNavBtnsWrapper = styled.div`
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    z-index: 99;
     button {
         width: 42px;
         margin-left: 10px;
     }
 `;
 
-export const StyledNavsWrapper = styled.div<{ isOpenedBurger: boolean }>`
+export const StyledNavsWrapper = styled.div<{ isopenedburger: string }>`
     padding: 0 110px;
     display: flex;
     align-items: center;
@@ -55,9 +57,12 @@ export const StyledNavsWrapper = styled.div<{ isOpenedBurger: boolean }>`
         }
         flex-direction: column;
         overflow: hidden;
-        ${({ isOpenedBurger }) =>
-            isOpenedBurger
+        ${({ isopenedburger }) =>
+            isopenedburger === 'true'
                 ? css`
+                      position: absolute;
+                      width: 100%;
+                      z-index: 98;
                       height: auto;
                       gap: 5px;
                       text-align: center;

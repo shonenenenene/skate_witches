@@ -3,3 +3,4 @@ export * from './LogoPage';
 export * from './MapsPage';
 export * from './PicsPage';
 export * from './RadioPage';
+export * from './SoonPage';

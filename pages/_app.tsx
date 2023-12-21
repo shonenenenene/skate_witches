@@ -7,13 +7,8 @@ import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
 
 import favicon from '@/assets/witch.svg';
-import { useRouter } from 'next/router';
 
 const App = ({ Component, pageProps }: AppProps) => {
-    const router = useRouter();
-
-    const isHome = !router.asPath.substring(1);
-
     const [turnOn, setTurnOn] = useState(false);
 
     const [turnOnImageFlag, setTurnOnImageFlag] = useState<boolean | null>(null);
@@ -23,6 +18,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     useEffect(() => {
         if (!fullscreenWindow) {
             setFullscreenWindow(false);
+        } else if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+            console.log('oooops, fullscreen api on safari is broken');
         } else {
             document.documentElement.requestFullscreen().catch((e) => console.error(e));
         }
@@ -35,7 +32,10 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <link rel='icon' href={favicon.src} />
             </Head>
             <GlobalStyle />
-            <StyledWindow fullscreenWindow={fullscreenWindow} turnOnImageFlag={turnOnImageFlag}>
+            <StyledWindow
+                fullscreenwindow={fullscreenWindow.toString()}
+                turnonimageflag={turnOnImageFlag === null ? null : turnOnImageFlag.toString()}
+            >
                 {turnOn ? (
                     <>
                         <NavBar

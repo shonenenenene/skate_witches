@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FC, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import PrintLink from '@/ui/PrintLink';
 
 const StyledNavItem = styled.div`
     position: relative;
@@ -29,6 +30,15 @@ const NavDropdown = styled.div`
     background-color: #ffffff;
     width: 180px;
     height: fit-content;
+    animation: slide 0.1s ease 0.1s 1 normal both;
+    @keyframes slide {
+        0% {
+            transform: scaleY(0) translateY(-90%);
+        }
+        100% {
+            transform: scaleY(1) translateY(0);
+        }
+    }
     @media (max-width: 539px) {
         width: 100%;
         position: relative;
@@ -41,7 +51,11 @@ const NavDropdownItem = styled.div`
     color: #000;
     padding: 6px 3px 8px 8px;
     cursor: pointer;
-    border: 1px solid #b1b1b1;
+    border: 2px solid #b1b1b1;
+    border-width: 0 0 1px 0;
+    &:last-child {
+        border: none;
+    }
     &:hover {
         background-color: #bcccff;
     }
@@ -69,7 +83,7 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
 
     const router = useRouter();
 
-    const closeOpenMenus = (e: MouseEvent) => {
+    const closeNavDropdown = (e: MouseEvent) => {
         if (dropdownRef.current && activeNav && !dropdownRef.current.contains(e.target as Node)) {
             setActiveNav(null);
         }
@@ -81,9 +95,9 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
         }
 
         if (isActiveNav) {
-            document?.addEventListener('mousedown', closeOpenMenus);
+            document?.addEventListener('mousedown', closeNavDropdown);
         } else {
-            document?.removeEventListener('mousedown', closeOpenMenus);
+            document?.removeEventListener('mousedown', closeNavDropdown);
         }
     }, [activeNav]);
 
@@ -101,13 +115,20 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
                 <NavDropdown ref={dropdownRef}>
                     {item.content?.map((e) =>
                         e.label === '🗖 fullscreen' ? (
-                            <NavDropdownItem onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}>
+                            <NavDropdownItem
+                                key={e.id}
+                                onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}
+                            >
                                 {fullscreenWindow ? e.label + ' off' : e.label + ' on'}
+                            </NavDropdownItem>
+                        ) : e.label === 'Print' ? (
+                            <NavDropdownItem key={e.id}>
+                                <PrintLink />
                             </NavDropdownItem>
                         ) : (
                             <NavDropdownItem
                                 onClick={() => {
-                                    router.push('asdasd');
+                                    router.push(e.path || '');
                                     setActiveNav(null);
                                 }}
                                 key={e.id}

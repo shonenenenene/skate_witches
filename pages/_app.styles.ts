@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 
 import glitch from '@/assets/textures/glitch.jpg';
 
-export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageFlag: boolean | null }>`
+export const StyledWindow = styled.div<{ fullscreenwindow: string; turnonimageflag: string | null }>`
     position: relative;
     z-index: 99;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     border: 2px solid rgba(255, 255, 255, 0);
-    ${({ fullscreenWindow }) =>
-        fullscreenWindow
+    ${({ fullscreenwindow }) =>
+        fullscreenwindow === 'true'
             ? css`
                   width: 100%;
                   height: 100vh;
@@ -21,8 +21,8 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
                   min-width: 1120px;
                   height: 740px;
               `};
-    ${({ turnOnImageFlag }) => {
-        if (turnOnImageFlag) {
+    ${({ turnonimageflag }) => {
+        if (turnonimageflag === 'true') {
             return css`
                 text-shadow: 0.06rem 0 0.06rem #ea36af, -0.05rem 0 0.06rem #75fa69;
                 animation-duration: 0.01s, 2s;
@@ -43,7 +43,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
                     right: 0;
                     background: rgba(18, 16, 16, 0.055);
                     opacity: 0;
-                    z-index: 2;
+                    z-index: 999;
                     pointer-events: none;
                     animation: flicker 0.15s infinite;
                     animation-delay: 1.5s;
@@ -58,21 +58,21 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
                     right: 0;
                     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.151) 50%),
                         linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-                    z-index: 2;
+                    z-index: 999;
                     background-size: 100% 2px, 3px 100%;
                     pointer-events: none;
 
                     animation: powerOn 1.5s forwards ease-out;
                 }
             `;
-        } else if (turnOnImageFlag !== null && !turnOnImageFlag) {
+        } else if (turnonimageflag !== null && !(turnonimageflag === 'true')) {
             return css`
                 animation: crt-power-off 0.6s forwards ease-in-out;
                 animation-delay: 0.05s;
                 border: 2px solid #fff;
                 background-color: #0000e9;
             `;
-        } else if (!turnOnImageFlag) {
+        } else if (!(turnonimageflag === 'true')) {
             return css`
                 border: 2px solid rgba(255, 255, 255, 0);
             `;
@@ -98,7 +98,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
             right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
                 linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            z-index: 999;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
         }
@@ -113,7 +113,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
             right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
                 linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            z-index: 999;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
         }
@@ -128,7 +128,7 @@ export const StyledWindow = styled.div<{ fullscreenWindow: boolean; turnOnImageF
             right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
                 linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            z-index: 999;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
         }

@@ -69,16 +69,16 @@ const StyledRadioStyle = styled.div`
         align-items: center;
     }
 `;
-const StyledRadioStation = styled.div<{ isSelectedStation?: boolean }>`
+const StyledRadioStation = styled.div<{ isselectedstation?: string }>`
     position: relative;
     width: 40%;
     transition: 0.15s;
     cursor: pointer;
     display: block;
     border-radius: 8px;
-    ${({ isSelectedStation }) => css`
-        border: ${isSelectedStation ? '5px solid #ffffff' : '1px solid #ffffff'};
-        box-shadow: ${isSelectedStation ? '0px 0px 14px 10px #ff00ff' : 'none'};
+    ${({ isselectedstation }) => css`
+        border: ${isselectedstation === 'true' ? '5px solid #ffffff' : '1px solid #ffffff'};
+        box-shadow: ${isselectedstation === 'true' ? '0px 0px 14px 10px #ff00ff' : 'none'};
     `}
     &:hover {
         box-shadow: 0px 0px 16px 8px #8a31ff;
@@ -198,7 +198,7 @@ const Radio = () => {
                     {STATIONS_KEYS.map((key) => (
                         <StyledRadioStation
                             key={STATIONS[key].name}
-                            isSelectedStation={selectedStation === STATIONS[key].name}
+                            isselectedstation={(selectedStation === STATIONS[key].name).toString()}
                             onClick={() => radioApi(STATIONS[key].name)}
                         >
                             <img src={STATIONS[key].girl} draggable='false' />

@@ -9,5 +9,5 @@ const Styled404 = styled.div`
 `;
 
 export default function Custom404() {
-    return <Styled404>404 - Page Not Found</Styled404>;
+    return <Styled404>404 - Page Not Found :(</Styled404>;
 }
