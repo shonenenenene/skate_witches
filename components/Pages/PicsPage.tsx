@@ -48,6 +48,9 @@ const StyledPicList = styled.div<{ isselected: number | null }>`
 
     img {
         cursor: pointer;
+        object-fit: scale-down;
+        width: 180px;
+        height: 180px;
     }
 
     ${({ isselected }) =>
@@ -97,7 +100,15 @@ const PicsPage: FC = () => {
                 {pictureId !== null ? picsComponent(pictureId) : null}
                 <StyledPicList isselected={pictureId}>
                     {pics.map((e) => (
-                        <Image key={e.id} src={e.pic.src} alt={e.name} onClick={() => setPictureId(e.id)} width={300} height={300} />
+                        <Image
+                            key={e.id}
+                            src={e.pic.src}
+                            alt={e.name}
+                            onClick={() => setPictureId(e.id)}
+                            width={150}
+                            height={120}
+                            quality={20}
+                        />
                     ))}
                 </StyledPicList>
             </StyledPicsPage>

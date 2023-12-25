@@ -83,6 +83,7 @@ export const StyledWindow = styled.div<{ fullscreenwindow: string; turnonimagefl
         max-width: 100%;
         min-width: 100%;
         height: 100vh;
+        height: 100svh; // for mobile safari
         margin-bottom: auto;
     }
 

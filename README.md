@@ -8,7 +8,7 @@ Tech used:
 React, Typescript, Next, Styled-Components
 
 Other libs:
-react-three, radio-browser-api, react-h5-audio-player, react-yandex-maps
+react-three, radio-browser-api, react-h5-audio-player, react-yandex-maps, react-to-print
 
 ## Installation
 
