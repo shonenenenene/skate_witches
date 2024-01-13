@@ -118,17 +118,8 @@ const ASCII_RAIN = [
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ',
+
+    ,
 ].join('\n');
 
 const ASCII_STARS = [
@@ -187,6 +178,8 @@ class ComponentToPrint extends React.PureComponent {
                 <pre style={{ position: 'absolute', top: '500px', right: '30px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '600px', left: '300px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '900px', left: '100px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', bottom: '40px', left: '100px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', bottom: '-40px', left: '700px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '1000px', left: '600px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '400px', right: '100px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '200px', left: '900px' }}>{ASCII_STARS}</pre>

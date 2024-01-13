@@ -192,7 +192,7 @@ const CVPage = () => {
                                 стэке React, TypeScript, Styled-Components, Next, Redux
                             </p>
                             <p>
-                                Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Есть опыт стажировки в
+                                Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Имею опыт стажировки в
                                 продуктовой IT компании.
                             </p>
                             <p>
@@ -256,7 +256,7 @@ const CVPage = () => {
                             <StyledTechStackItem>react, typescript, styled-components</StyledTechStackItem>
                         </StyledTechStackList>
 
-                        <h6>Используемые мной технологии:</h6>
+                        <h6>В практике использовал:</h6>
 
                         <StyledTechStackList>
                             <StyledTechStackItem>next</StyledTechStackItem>
@@ -275,6 +275,7 @@ const CVPage = () => {
                             <StyledTechStackItem>адаптивная/отзывчивая верстка (flex, grid)</StyledTechStackItem>
                             <StyledTechStackItem>пользоваться документацией, в т.ч. на английском</StyledTechStackItem>
                             <StyledTechStackItem>умение гуглить и самостоятельно решать возникшие проблемы</StyledTechStackItem>
+                            <StyledTechStackItem>креативность</StyledTechStackItem>
                             <StyledTechStackItem>быстрая обучаемость и усидчивость</StyledTechStackItem>
                             <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
                         </StyledTechStackList>
@@ -308,6 +309,7 @@ const CVPage = () => {
                             <StyledTechStackItem>adaptive/responsive layout (flex, grid)</StyledTechStackItem>
                             <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
                             <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
+                            <StyledTechStackItem>creativity</StyledTechStackItem>
                             <StyledTechStackItem>quick learner and perseverance</StyledTechStackItem>
                             <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
                         </StyledTechStackList>

@@ -87,16 +87,16 @@ const SoonPage = () => {
                     <StyledPyramidGlow />
                     <div>
                         <span>
-                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} />
+                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} quality={30} />
                         </span>
                         <span>
-                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} />
+                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} quality={30} />
                         </span>
                         <span>
-                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} />
+                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} quality={30} />
                         </span>
                         <span>
-                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} />
+                            <Image alt='wiitchcraft' src={witchcraft.src} width={110} height={110} quality={30} />
                         </span>
                     </div>
                 </StyledPyramid>
