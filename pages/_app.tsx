@@ -7,6 +7,7 @@ import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
 
 import favicon from '@/assets/witch.svg';
+import { ContactsModal } from '@/ui/ContactsModal';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const [turnOn, setTurnOn] = useState(false);
@@ -47,6 +48,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                         />
                         <StyledMain>
                             <Component {...pageProps} />
+                            <ContactsModal />
                         </StyledMain>
                     </>
                 ) : (
