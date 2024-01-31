@@ -5,9 +5,8 @@ import { StyledApp, StyledBackground, StyledMain, StyledWindow } from './_app.st
 import { NavBar } from '@/components/NavBar';
 import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
-
+import { ContactsModal } from '@/ui/ContactsForm/ContactsModal';
 import favicon from '@/assets/witch.svg';
-import { ContactsModal } from '@/ui/ContactsModal';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const [turnOn, setTurnOn] = useState(false);
