@@ -62,7 +62,7 @@ export const ContactsModal = () => {
     const [openedModal, setOpenedModal] = useState(false);
     return (
         <StyledContactsModal>
-            <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>contact me</StyledModalButton>
+            <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>{openedModal ? 'close' : 'contact me'}</StyledModalButton>
             {openedModal ? <ContactsForm /> : null}
         </StyledContactsModal>
     );

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
+import Image from 'next/image';
+import bonfire from '@/assets/bonfire.gif';
 
 const StyledContactsForm = styled.div`
     padding: 10px;
     width: 100%;
+    min-height: 360px;
     word-wrap: break-word;
     animation: modal-appearance 0.2s ease-in-out both;
     form {
@@ -36,12 +39,25 @@ const StyledContactsForm = styled.div`
     }
 `;
 
+const StyledSentMessage = styled.h3`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 20px;
+`;
+
 const ContactsForm = () => {
     const [formData, setFormData] = useState({
         company: '',
         email: '',
         message: '',
     });
+
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,31 +67,66 @@ const ContactsForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        fetch('https://formcarry.com/s/Ki1A3ktimDE', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({ email: formData.email, message: formData.message }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.code === 200) {
+                    setSubmitted(true);
+                } else {
+                    setError(true);
+                }
+            });
     };
-    console.log(formData.company);
 
     return (
         <StyledContactsForm>
-            <form onSubmit={handleSubmit}>
-                <FormInput
-                    inputType='text'
-                    label='company/name'
-                    id='company'
-                    name='company'
-                    value={formData.company}
-                    onChange={handleChange}
-                />
-                <FormInput inputType='email' label='your email' id='email' name='email' value={formData.email} onChange={handleChange} />
-                <FormInput
-                    inputType='textarea'
-                    label='message'
-                    id='message'
-                    name='message'
-                    value={formData.message}
-                    onChange={handleChange}
-                />
-                <button type='submit'>send</button>
-            </form>
+            {submitted ? (
+                <StyledSentMessage>
+                    thank you! i will answer you as soon as possible ⋆
+                    <Image src={bonfire.src} alt='bonfire' width={200} height={200} />
+                </StyledSentMessage>
+            ) : error ? (
+                <StyledSentMessage>
+                    oh no... something went wrong <br />
+                    <br />
+                    write to me at
+                    <br />
+                    danya.sytaev@gmail.com
+                    <Image src={bonfire.src} alt='bonfire' width={200} height={200} />
+                </StyledSentMessage>
+            ) : (
+                <form onSubmit={handleSubmit}>
+                    <FormInput
+                        inputType='email'
+                        label='your email'
+                        id='email'
+                        name='email'
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder='
+                    enter your email'
+                    />
+                    <FormInput
+                        inputType='textarea'
+                        label='message'
+                        id='message'
+                        name='message'
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder='
+                    place for your suggestions :)
+                    '
+                    />
+                    <button type='submit'>send</button>
+                </form>
+            )}
         </StyledContactsForm>
     );
 };
