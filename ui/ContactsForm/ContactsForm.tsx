@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
 import Image from 'next/image';
+import ReCAPTCHA from 'react-google-recaptcha';
 import bonfire from '@/assets/bonfire.gif';
 
 const StyledContactsForm = styled.div`
@@ -59,6 +60,8 @@ const ContactsForm = () => {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
 
+    // const captchaRef = useRef(null);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         console.log(name, value);
@@ -67,6 +70,12 @@ const ContactsForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // if (captchaRef.current !== null) {
+        //     const token = captchaRef.current.getValue();
+        //     captchaRef.current.reset();
+        // }
+
         fetch('https://formcarry.com/s/Ki1A3ktimDE', {
             method: 'POST',
             headers: {
@@ -125,6 +134,7 @@ const ContactsForm = () => {
                     '
                     />
                     <button type='submit'>send</button>
+                    {/* <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} /> */}
                 </form>
             )}
         </StyledContactsForm>
