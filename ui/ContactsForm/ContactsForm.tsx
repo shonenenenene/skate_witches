@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+'use client';
+import { FormEvent, useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -52,29 +53,23 @@ const StyledSentMessage = styled.h3`
 
 const ContactsForm = () => {
     const [formData, setFormData] = useState({
-        company: '',
         email: '',
         message: '',
     });
+    console.log(process.env.RECAPTCHA_SITE_KEY);
 
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+    // const [captcha, setCaptcha] = useState<string | null>();
 
-    // const captchaRef = useRef(null);
-
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         console.log(name, value);
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-
-        // if (captchaRef.current !== null) {
-        //     const token = captchaRef.current.getValue();
-        //     captchaRef.current.reset();
-        // }
 
         fetch('https://formcarry.com/s/Ki1A3ktimDE', {
             method: 'POST',
@@ -134,7 +129,7 @@ const ContactsForm = () => {
                     '
                     />
                     <button type='submit'>send</button>
-                    {/* <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} /> */}
+                    <ReCAPTCHA sitekey={process.env.RECAPTCHA_SITE_KEY!} />
                 </form>
             )}
         </StyledContactsForm>
