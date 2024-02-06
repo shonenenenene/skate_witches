@@ -1,3 +1,5 @@
+'use client';
+
 import { FormEvent, useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
