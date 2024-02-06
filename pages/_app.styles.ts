@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import glitch from '@/assets/textures/glitch.jpg';
-import rain from '@/assets/textures/rain-back.gif';
 
 export const StyledWindow = styled.div<{ fullscreenwindow: string; turnonimageflag: string | null }>`
     position: relative;
