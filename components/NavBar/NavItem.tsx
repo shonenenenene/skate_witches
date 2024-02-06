@@ -75,9 +75,19 @@ interface NavItemProps {
     activeNav: string | null;
     fullscreenWindow: boolean;
     setFullscreenWindow: React.Dispatch<React.SetStateAction<boolean>>;
+    hideContactsform: boolean;
+    setHideContactsform: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fullscreenWindow, setFullscreenWindow }) => {
+export const NavItem: FC<NavItemProps> = ({
+    item,
+    setActiveNav,
+    activeNav,
+    fullscreenWindow,
+    setFullscreenWindow,
+    hideContactsform,
+    setHideContactsform,
+}) => {
     const isActiveNav = activeNav === item.name;
     const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -120,6 +130,13 @@ export const NavItem: FC<NavItemProps> = ({ item, setActiveNav, activeNav, fulls
                                 onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}
                             >
                                 {fullscreenWindow ? e.label + ' off' : e.label + ' on'}
+                            </NavDropdownItem>
+                        ) : e.label === '"contact me" button' ? (
+                            <NavDropdownItem
+                                key={e.id}
+                                onClick={() => (hideContactsform ? setHideContactsform(false) : setHideContactsform(true))}
+                            >
+                                {hideContactsform ? 'show ' + e.label : 'hide ' + e.label}
                             </NavDropdownItem>
                         ) : e.label === 'Print' ? (
                             <NavDropdownItem key={e.id}>

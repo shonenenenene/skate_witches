@@ -14,9 +14,19 @@ interface NavBarProps {
     setTurnOn: React.Dispatch<React.SetStateAction<boolean>>;
     fullscreenWindow: boolean;
     setFullscreenWindow: React.Dispatch<React.SetStateAction<boolean>>;
+    hideContactsform: boolean;
+    setHideContactsform: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscreenWindow, setFullscreenWindow }: NavBarProps) => {
+export const NavBar = ({
+    setTurnOn,
+    setTurnOnImageFlag,
+    turnOnImageFlag,
+    fullscreenWindow,
+    setFullscreenWindow,
+    hideContactsform,
+    setHideContactsform,
+}: NavBarProps) => {
     const [activeNav, setActiveNav] = useState<string | null>(null);
 
     const [isOpenedBurger, setIsOpenedBurger] = useState(false);
@@ -48,6 +58,8 @@ export const NavBar = ({ setTurnOn, setTurnOnImageFlag, turnOnImageFlag, fullscr
                         setActiveNav={setActiveNav}
                         fullscreenWindow={fullscreenWindow}
                         setFullscreenWindow={setFullscreenWindow}
+                        hideContactsform={hideContactsform}
+                        setHideContactsform={setHideContactsform}
                         item={item}
                         key={item.id}
                     />

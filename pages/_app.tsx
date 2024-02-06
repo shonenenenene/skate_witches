@@ -15,6 +15,8 @@ const App = ({ Component, pageProps }: AppProps) => {
 
     const [fullscreenWindow, setFullscreenWindow] = useState<boolean>(false);
 
+    const [hideContactsform, setHideContactsform] = useState<boolean>(false);
+
     useEffect(() => {
         if (!fullscreenWindow) {
             setFullscreenWindow(false);
@@ -44,10 +46,12 @@ const App = ({ Component, pageProps }: AppProps) => {
                             setTurnOnImageFlag={setTurnOnImageFlag}
                             fullscreenWindow={fullscreenWindow}
                             setFullscreenWindow={setFullscreenWindow}
+                            hideContactsform={hideContactsform}
+                            setHideContactsform={setHideContactsform}
                         />
                         <StyledMain>
                             <Component {...pageProps} />
-                            <ContactsModal />
+                            <ContactsModal hideContactsform={hideContactsform} />
                         </StyledMain>
                     </>
                 ) : (

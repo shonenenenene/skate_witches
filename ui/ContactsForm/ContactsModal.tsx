@@ -58,11 +58,17 @@ const StyledModalButton = styled.button`
     }
 `;
 
-export const ContactsModal = () => {
+interface ContactsModalProps {
+    hideContactsform: boolean;
+}
+
+export const ContactsModal = ({ hideContactsform }: ContactsModalProps) => {
     const [openedModal, setOpenedModal] = useState(false);
+
     const [submitted, setSubmitted] = useState(false);
+
     return (
-        <StyledContactsModal>
+        <StyledContactsModal style={{ display: hideContactsform ? 'none' : 'flex' }}>
             <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>{openedModal ? 'close' : 'contact me'}</StyledModalButton>
             {openedModal ? <ContactsForm submitted={submitted} setSubmitted={setSubmitted} /> : null}
         </StyledContactsModal>
