@@ -66,13 +66,17 @@ const StyledSendContainer = styled.div`
     }
 `;
 
-const ContactsForm = () => {
+interface ContactsFormProps {
+    submitted: boolean;
+    setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ContactsForm = ({ submitted, setSubmitted }: ContactsFormProps) => {
     const [formData, setFormData] = useState({
         email: '',
         message: '',
     });
 
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
 
     const [captcha, setCaptcha] = useState<null | string>(null);

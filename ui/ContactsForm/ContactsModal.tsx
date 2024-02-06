@@ -60,10 +60,11 @@ const StyledModalButton = styled.button`
 
 export const ContactsModal = () => {
     const [openedModal, setOpenedModal] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
     return (
         <StyledContactsModal>
             <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>{openedModal ? 'close' : 'contact me'}</StyledModalButton>
-            {openedModal ? <ContactsForm /> : null}
+            {openedModal ? <ContactsForm submitted={submitted} setSubmitted={setSubmitted} /> : null}
         </StyledContactsModal>
     );
 };
