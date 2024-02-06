@@ -1,10 +1,11 @@
-'use client';
 import { FormEvent, useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import bonfire from '@/assets/bonfire.gif';
+
+const CAPTCHA_KEY = process.env.NEXT_PUBLIC_SITE_KEY;
 
 const StyledContactsForm = styled.div`
     padding: 10px;
@@ -15,20 +16,6 @@ const StyledContactsForm = styled.div`
     form {
         display: flex;
         flex-direction: column;
-
-        button {
-            margin-top: 10px;
-            padding: 10px 30px;
-            align-self: center;
-            width: 140px;
-            border-radius: 8px;
-            background-color: #00007cdf;
-            transition: 0.2s;
-            background: linear-gradient(to top left, #0400ffb0, #00007cda);
-            &:hover {
-                background-color: #fff;
-            }
-        }
     }
 
     @keyframes modal-appearance {
@@ -51,16 +38,44 @@ const StyledSentMessage = styled.h3`
     font-size: 20px;
 `;
 
+const StyledSendContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    button {
+        padding: 10px;
+        align-self: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background-color: #00007cdf;
+        transition: 0.2s;
+        background: linear-gradient(to left, #0400ffb0, #00007cda);
+        &:hover {
+            background-color: #fff;
+        }
+        &:disabled {
+            background: linear-gradient(to left, #ff0000af, #000);
+            cursor: not-allowed;
+        }
+    }
+`;
+
 const ContactsForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         message: '',
     });
-    console.log(process.env.RECAPTCHA_SITE_KEY);
 
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
-    // const [captcha, setCaptcha] = useState<string | null>();
+
+    const [captcha, setCaptcha] = useState<null | string>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -128,8 +143,18 @@ const ContactsForm = () => {
                     place for your suggestions :)
                     '
                     />
-                    <button type='submit'>send</button>
-                    <ReCAPTCHA sitekey={process.env.RECAPTCHA_SITE_KEY!} />
+                    <StyledSendContainer>
+                        <ReCAPTCHA
+                            sitekey={CAPTCHA_KEY!}
+                            onChange={setCaptcha}
+                            theme='dark'
+                            size='normal'
+                            style={{ transform: 'scale(0.8)', width: '300px' }}
+                        />
+                        <button type='submit' disabled={!captcha}>
+                            →
+                        </button>
+                    </StyledSendContainer>
                 </form>
             )}
         </StyledContactsForm>
