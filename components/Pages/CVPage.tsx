@@ -196,8 +196,8 @@ const CVPage = () => {
                                 продуктовой IT компании.
                             </p>
                             <p>
-                                В поисках компании, в которой смогу реализовать свой потенциал и развиться в качестве Frontend-разработчика.
-                                Готов к длительному сотрудничеству.
+                                Стремлюсь создавать красивые современные приложения. Хочу попасть на интересный проект где смогу проявить
+                                себя.
                             </p>
                             <h4>Контакты:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>
@@ -227,8 +227,8 @@ const CVPage = () => {
                                 product company.
                             </p>
                             <p>
-                                Looking for a company where I can realize my potential as a Frontend developer. Ready for long-term
-                                cooperation.
+                                I strive to create beautiful modern applications. I want to get involved in an interesting project where I
+                                can prove myself.
                             </p>
                             <h4>Links:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>

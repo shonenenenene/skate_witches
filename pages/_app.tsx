@@ -5,7 +5,7 @@ import { StyledApp, StyledBackground, StyledMain, StyledWindow } from './_app.st
 import { NavBar } from '@/components/NavBar';
 import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
-
+import { ContactsModal } from '@/ui/ContactsForm/ContactsModal';
 import favicon from '@/assets/witch.svg';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -14,6 +14,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     const [turnOnImageFlag, setTurnOnImageFlag] = useState<boolean | null>(null);
 
     const [fullscreenWindow, setFullscreenWindow] = useState<boolean>(false);
+
+    const [hideContactsform, setHideContactsform] = useState<boolean>(false);
 
     useEffect(() => {
         if (!fullscreenWindow) {
@@ -44,9 +46,12 @@ const App = ({ Component, pageProps }: AppProps) => {
                             setTurnOnImageFlag={setTurnOnImageFlag}
                             fullscreenWindow={fullscreenWindow}
                             setFullscreenWindow={setFullscreenWindow}
+                            hideContactsform={hideContactsform}
+                            setHideContactsform={setHideContactsform}
                         />
                         <StyledMain>
                             <Component {...pageProps} />
+                            <ContactsModal hideContactsform={hideContactsform} />
                         </StyledMain>
                     </>
                 ) : (
