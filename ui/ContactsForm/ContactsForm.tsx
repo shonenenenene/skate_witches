@@ -1,13 +1,9 @@
-'use client';
-
 import { FormEvent, useState } from 'react';
 import FormInput from './FormInput';
 import styled from 'styled-components';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import bonfire from '@/assets/bonfire.gif';
-
-const CAPTCHA_KEY = process.env.NEXT_PUBLIC_SITE_KEY;
 
 const StyledContactsForm = styled.div`
     padding: 10px;
@@ -74,6 +70,8 @@ interface ContactsFormProps {
 }
 
 const ContactsForm = ({ submitted, setSubmitted }: ContactsFormProps) => {
+    const CAPTCHA_KEY = process.env.NEXT_PUBLIC_SITE_KEY;
+
     const [formData, setFormData] = useState({
         email: '',
         message: '',
