@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import glitch from '@/assets/textures/glitch.jpg';
-
 export const StyledWindow = styled.div<{ fullscreenwindow: string; turnonimageflag: string | null }>`
     position: relative;
     z-index: 99;
@@ -296,22 +294,4 @@ export const StyledApp = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`;
-
-export const StyledBackground = styled.div`
-    position: absolute;
-    inset: -200%;
-    opacity: 20%;
-    background-image: url(${glitch.src});
-    background-size: 5%;
-    animation: shift 150s linear infinite both;
-    @keyframes shift {
-        0% {
-            transform: translateX(10%) translateY(10%);
-        }
-
-        100% {
-            transform: translateX(-10%) translateY(-10%);
-        }
-    }
 `;

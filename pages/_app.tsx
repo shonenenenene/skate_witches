@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { StyledApp, StyledBackground, StyledMain, StyledWindow } from './_app.styles';
+import { StyledApp, StyledMain, StyledWindow } from './_app.styles';
 import { NavBar } from '@/components/NavBar';
 import { TurnOffScreen } from '@/components/TurnOffScreen';
 import { GlobalStyle } from '@/ui/global.styles';
 import { ContactsModal } from '@/ui/ContactsForm/ContactsModal';
 import favicon from '@/assets/witch.svg';
+import { Background } from '@/ui/Background/Background';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const [turnOn, setTurnOn] = useState(false);
@@ -58,7 +59,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                     <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />
                 )}
             </StyledWindow>
-            <StyledBackground />
+            <Background />
         </StyledApp>
     );
 };
