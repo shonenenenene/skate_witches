@@ -1,35 +1,51 @@
+import { Rain } from 'react-rainfall';
 import {
     StyledBackgroundButton,
     StyledBackgroundButtonsContainer,
     StyledSpaceBackground,
-    StyledSpaceBackgroundColor,
+    StyledBackgroundColor,
     StyledTextureBackground,
 } from './styles';
-import { PropsWithChildren } from 'react';
 
-const BackgroundButton = ({ children }: PropsWithChildren) => {
-    return <StyledBackgroundButton>{children}</StyledBackgroundButton>;
-};
+import { useState } from 'react';
 
-const backs = [
-    <StyledTextureBackground />,
-    <StyledSpaceBackgroundColor>
+const backgrounds = [
+    <StyledBackgroundColor>
         <StyledSpaceBackground />
-    </StyledSpaceBackgroundColor>,
+    </StyledBackgroundColor>,
+    <StyledBackgroundColor>
+        <Rain numDrops={40} />
+    </StyledBackgroundColor>,
+    <StyledTextureBackground />,
 ];
 
 export const Background = () => {
+    const [currentBackground, setCurrentBackground] = useState(0);
+
+    const backgroundIncrementor = () => {
+        if (currentBackground === backgrounds.length - 1) {
+            setCurrentBackground(0);
+            console.log(currentBackground);
+            return;
+        }
+        setCurrentBackground((state) => state + 1);
+    };
+
+    const backgroundDecrementor = () => {
+        if (currentBackground === 0) {
+            setCurrentBackground(backgrounds.length - 1);
+            return;
+        }
+        setCurrentBackground((state) => state - 1);
+    };
+
     return (
         <>
             <StyledBackgroundButtonsContainer>
-                <BackgroundButton>❮</BackgroundButton>
-                <BackgroundButton>❯</BackgroundButton>
+                <StyledBackgroundButton onClick={backgroundDecrementor}>❮</StyledBackgroundButton>
+                <StyledBackgroundButton onClick={backgroundIncrementor}>❯</StyledBackgroundButton>
             </StyledBackgroundButtonsContainer>
-
-            {/* <StyledTextureBackground /> */}
-            <StyledSpaceBackgroundColor>
-                <StyledSpaceBackground />
-            </StyledSpaceBackgroundColor>
+            {backgrounds[currentBackground]}
         </>
     );
 };

@@ -111,7 +111,7 @@ export const StyledBackgroundButtonsContainer = styled.div`
     z-index: 9;
 `;
 
-export const StyledSpaceBackgroundColor = styled.div`
+export const StyledBackgroundColor = styled.div`
     position: absolute;
     background-color: #000050;
     width: 100%;

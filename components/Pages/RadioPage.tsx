@@ -153,9 +153,9 @@ const STATIONS = {
         path: 'https://ice5.somafm.com/vaporwaves-128-mp3', // временное решение
     },
     AFRICA: {
-        name: 'West Africa Democracy Radio',
+        name: 'SomaFM Indie Pop Rocks!',
         girl: breakcoreGirl.src,
-        path: 'https://westafricademocracyradio.ice.infomaniak.ch/westafricademocracyradio.mp3?download=false', // временное решение
+        path: 'https://ice3.somafm.com/indiepop-128-aac', // временное решение
     },
 } as const;
 
