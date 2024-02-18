@@ -102,7 +102,6 @@ const PicsPage: FC = () => {
                         width={690}
                         height={690}
                         draggable={false}
-                        loading='lazy'
                     />
                 </div>
                 <StyledPicsHandler
