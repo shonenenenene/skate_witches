@@ -1,6 +1,5 @@
 import { css, styled } from 'styled-components';
-import { pics } from '@/utils/constants';
-import { useState, FC } from 'react';
+import { useState, FC, useEffect } from 'react';
 import Image from 'next/image';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 
@@ -29,13 +28,6 @@ const StyledPicsHandler = styled.button`
         background-color: #ffffff4c;
         transition: 0.3s;
     }
-`;
-
-const StyledPic = styled(Image)`
-    object-fit: contain;
-    height: 660px;
-    width: auto;
-    cursor: pointer;
 `;
 
 const StyledPicList = styled.div<{ isselected: number | null }>`
@@ -71,23 +63,51 @@ const StyledPicList = styled.div<{ isselected: number | null }>`
 `;
 
 const PicsPage: FC = () => {
-    const [pictureId, setPictureId] = useState<number | null>(null);
+    const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_KEY;
 
-    const picsComponent = (id: number) => {
-        const chosen = pics.find((e) => e.id === id);
+    const [pictureIndex, setPictureIndex] = useState<number | null>(null);
+
+    const [res, setRes] = useState([]);
+
+    const fetchRequest = async () => {
+        const data = await fetch(
+            `https://api.unsplash.com/search/photos?page=1&per_page=30&query=gothic architecture&client_id=${UNSPLASH_KEY}`
+        );
+        const dataJ = await data.json();
+        const result = dataJ.results;
+        console.log(result);
+        setRes(result);
+    };
+    useEffect(() => {
+        fetchRequest();
+    }, []);
+
+    const picsComponent = (index: number) => {
+        const chosen = res[index];
 
         if (!chosen) {
             return <></>;
         }
         return (
             <StyledPicsContainer>
-                <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state > 1 ? state - 1 : null))}>
+                <StyledPicsHandler onClick={() => setPictureIndex((state) => (state !== null && state > 1 ? state - 1 : null))}>
                     ❮
                 </StyledPicsHandler>
                 <div>
-                    <StyledPic alt={chosen?.name || ''} onClick={() => setPictureId(null)} {...chosen.pic} draggable={false} />
+                    <Image
+                        src={chosen?.urls.regular}
+                        alt={chosen?.alt_description || ''}
+                        onClick={() => setPictureIndex(null)}
+                        style={{ objectFit: 'contain', cursor: 'pointer', height: '690px', width: 'auto' }}
+                        width={690}
+                        height={690}
+                        draggable={false}
+                        loading='lazy'
+                    />
                 </div>
-                <StyledPicsHandler onClick={() => setPictureId((state) => (state !== null && state < pics.length ? state + 1 : null))}>
+                <StyledPicsHandler
+                    onClick={() => setPictureIndex((state) => (state !== null && state < res.length - 1 ? state + 1 : null))}
+                >
                     ❯
                 </StyledPicsHandler>
             </StyledPicsContainer>
@@ -97,14 +117,14 @@ const PicsPage: FC = () => {
     return (
         <SwitchPageAnimationProvider>
             <StyledPicsPage>
-                {pictureId !== null ? picsComponent(pictureId) : null}
-                <StyledPicList isselected={pictureId}>
-                    {pics.map((e) => (
+                {pictureIndex !== null ? picsComponent(pictureIndex) : null}
+                <StyledPicList isselected={pictureIndex}>
+                    {res.map((e, i) => (
                         <Image
                             key={e.id}
-                            src={e.pic.src}
-                            alt={e.name}
-                            onClick={() => setPictureId(e.id)}
+                            src={e.urls.thumb}
+                            alt={e.alt_description}
+                            onClick={() => setPictureIndex(i)}
                             width={150}
                             height={120}
                             quality={20}
