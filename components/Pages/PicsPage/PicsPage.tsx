@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import {
     StyledPicList,
-    StyledPicPaginator,
+    // StyledPicPaginator,
     StyledPicsContainer,
     StyledPicsForm,
     StyledPicsHandler,
     StyledPicsPage,
-    StyledPicsPaginatorHandler,
+    // StyledPicsPaginatorHandler,
 } from './PicsPage.styles';
 
 interface unsplashAPI {
@@ -27,12 +27,10 @@ const PicsPage: FC = () => {
 
     const [picSearch, setPicSearch] = useState<string>('gothic architecture');
     const [res, setRes] = useState<unsplashAPI[]>([]);
-    const [currPage, setCurrPage] = useState(1);
+    // const [currPage, setCurrPage] = useState(1);
 
     const fetchRequest = async () => {
-        const data = await fetch(
-            `https://api.unsplash.com/search/photos?page=${currPage}&per_page=30&query=${picSearch}&client_id=${UNSPLASH_KEY}`
-        );
+        const data = await fetch(`https://api.unsplash.com/search/photos?page=1&per_page=30&query=${picSearch}&client_id=${UNSPLASH_KEY}`);
         const dataJ = await data.json();
         const result = dataJ.results;
         console.log(result);
@@ -48,22 +46,22 @@ const PicsPage: FC = () => {
         fetchRequest();
     };
 
-    const paginanionHandler = (action: string) => {
-        switch (action) {
-            case 'incr':
-                setCurrPage(currPage + 1);
-                console.log(currPage);
-                fetchRequest();
-                break;
-            case 'decr':
-                console.log(currPage, 'decr');
-                setCurrPage(currPage === 1 ? currPage : currPage - 1);
-                fetchRequest();
-                break;
-            default:
-                fetchRequest();
-        }
-    };
+    // const paginanionHandler = (action: string) => {
+    //     switch (action) {
+    //         case 'incr':
+    //             setCurrPage(currPage + 1);
+    //             console.log(currPage);
+    //             fetchRequest();
+    //             break;
+    //         case 'decr':
+    //             console.log(currPage, 'decr');
+    //             setCurrPage(currPage === 1 ? currPage : currPage - 1);
+    //             fetchRequest();
+    //             break;
+    //         default:
+    //             fetchRequest();
+    //     }
+    // };
 
     const picsComponent = (index: number) => {
         const chosen = res[index];
@@ -124,12 +122,12 @@ const PicsPage: FC = () => {
                             quality={20}
                         />
                     ))}
-                    {pictureIndex === null ? (
+                    {/* {pictureIndex === null ? (
                         <StyledPicPaginator>
                             <StyledPicsPaginatorHandler onClick={() => paginanionHandler('decr')}>❮</StyledPicsPaginatorHandler>
                             <StyledPicsPaginatorHandler onClick={() => paginanionHandler('incr')}>❯</StyledPicsPaginatorHandler>
                         </StyledPicPaginator>
-                    ) : null}
+                    ) : null} */}
                 </StyledPicList>
             </StyledPicsPage>
         </SwitchPageAnimationProvider>
