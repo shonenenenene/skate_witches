@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import avatar from '@/assets/photos/hh.jpg';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const StyledCVPage = styled.div`
     display: flex;
@@ -168,7 +169,7 @@ const CVPage = () => {
             <StyledCVPage>
                 <StyledAboutMeWrapper>
                     <StyledCVPhoto>
-                        <img draggable={false} src={avatar.src} />
+                        <Image draggable={false} src={avatar.src} alt='my CV photo' width={300} height={313} />
                     </StyledCVPhoto>
                     <StyledLangSwitcherForm>
                         <label>
