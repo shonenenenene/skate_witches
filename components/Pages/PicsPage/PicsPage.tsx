@@ -1,86 +1,69 @@
-import { css, styled } from 'styled-components';
 import { useState, FC, useEffect } from 'react';
 import Image from 'next/image';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
+import {
+    StyledPicList,
+    StyledPicPaginator,
+    StyledPicsContainer,
+    StyledPicsForm,
+    StyledPicsHandler,
+    StyledPicsPage,
+    StyledPicsPaginatorHandler,
+} from './PicsPage.styles';
 
-const StyledPicsPage = styled.div`
-    height: 100%;
-    width: 100%;
-`;
-
-const StyledPicsContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 10px;
-`;
-const StyledPicsHandler = styled.button`
-    background-color: #ffffff1d;
-    max-width: 120px;
-    min-width: 60px;
-    height: 100%;
-    font-size: 30px;
-    flex-grow: 1;
-    &:hover {
-        background-color: #ffffff4c;
-        transition: 0.3s;
-    }
-`;
-
-const StyledPicList = styled.div<{ isselected: number | null }>`
-    height: 100%;
-    width: 100%;
-    padding: 30px;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px 30px;
-    box-sizing: border-box;
-
-    img {
-        cursor: pointer;
-        object-fit: scale-down;
-        width: 180px;
-        height: 180px;
-    }
-
-    ${({ isselected }) =>
-        isselected !== null
-            ? css`
-                  display: none;
-              `
-            : css`
-                  display: grid;
-              `}
-
-    @media (max-width: 970px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    @media (max-width: 632px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-`;
+interface unsplashAPI {
+    alt_description: string;
+    id: string;
+    urls: {
+        thumb: string;
+        regular: string;
+    };
+}
 
 const PicsPage: FC = () => {
     const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_KEY;
 
     const [pictureIndex, setPictureIndex] = useState<number | null>(null);
 
-    const [res, setRes] = useState([]);
+    const [picSearch, setPicSearch] = useState<string>('gothic architecture');
+    const [res, setRes] = useState<unsplashAPI[]>([]);
+    const [currPage, setCurrPage] = useState(1);
 
     const fetchRequest = async () => {
         const data = await fetch(
-            `https://api.unsplash.com/search/photos?page=1&per_page=30&query=gothic architecture&client_id=${UNSPLASH_KEY}`
+            `https://api.unsplash.com/search/photos?page=${currPage}&per_page=30&query=${picSearch}&client_id=${UNSPLASH_KEY}`
         );
         const dataJ = await data.json();
         const result = dataJ.results;
         console.log(result);
         setRes(result);
     };
+
     useEffect(() => {
         fetchRequest();
     }, []);
+
+    const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        fetchRequest();
+    };
+
+    const paginanionHandler = (action: string) => {
+        switch (action) {
+            case 'incr':
+                setCurrPage(currPage + 1);
+                console.log(currPage);
+                fetchRequest();
+                break;
+            case 'decr':
+                console.log(currPage, 'decr');
+                setCurrPage(currPage === 1 ? currPage : currPage - 1);
+                fetchRequest();
+                break;
+            default:
+                fetchRequest();
+        }
+    };
 
     const picsComponent = (index: number) => {
         const chosen = res[index];
@@ -116,7 +99,19 @@ const PicsPage: FC = () => {
     return (
         <SwitchPageAnimationProvider>
             <StyledPicsPage>
-                {pictureIndex !== null ? picsComponent(pictureIndex) : null}
+                {pictureIndex !== null ? (
+                    picsComponent(pictureIndex)
+                ) : (
+                    <StyledPicsForm onSubmit={(e) => submitForm(e)}>
+                        <input
+                            placeholder='what pics do we want to see?'
+                            type='text'
+                            value={picSearch}
+                            onChange={(e) => setPicSearch(e.target.value)}
+                        />
+                        <button type='submit'>🔍</button>
+                    </StyledPicsForm>
+                )}
                 <StyledPicList isselected={pictureIndex}>
                     {res.map((e, i) => (
                         <Image
@@ -129,6 +124,12 @@ const PicsPage: FC = () => {
                             quality={20}
                         />
                     ))}
+                    {pictureIndex === null ? (
+                        <StyledPicPaginator>
+                            <StyledPicsPaginatorHandler onClick={() => paginanionHandler('decr')}>❮</StyledPicsPaginatorHandler>
+                            <StyledPicsPaginatorHandler onClick={() => paginanionHandler('incr')}>❯</StyledPicsPaginatorHandler>
+                        </StyledPicPaginator>
+                    ) : null}
                 </StyledPicList>
             </StyledPicsPage>
         </SwitchPageAnimationProvider>

@@ -106,8 +106,8 @@ export const StyledBackgroundButton = styled.button`
 `;
 export const StyledBackgroundButtonsContainer = styled.div`
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 16px;
+    left: 16px;
     z-index: 9;
 `;
 
