@@ -22,7 +22,7 @@ export const StyledPicsForm = styled.form`
     }
     button {
         position: absolute;
-        right: 2%;
+        left: 2%;
         top: 0;
         height: 40px;
         width: 40px;
@@ -88,6 +88,10 @@ export const StyledPicPaginator = styled.div`
     place-self: center;
     grid-column-start: 3;
     background-color: #00007c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
 `;
 
 export const StyledPicsPaginatorHandler = styled.button`
@@ -99,4 +103,13 @@ export const StyledPicsPaginatorHandler = styled.button`
         background-color: #ffffff4c;
         transition: 0.3s;
     }
+`;
+
+export const StyledPicsNothingFound = styled.div`
+    padding-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
 `;

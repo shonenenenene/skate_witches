@@ -1,7 +1,7 @@
 {
-    "name": "nameless",
+    "name": "skate_witches",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.5",
     "type": "module",
     "scripts": {
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
