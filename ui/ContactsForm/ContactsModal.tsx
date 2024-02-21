@@ -20,12 +20,12 @@ const StyledModalButton = styled.button`
     position: absolute;
     right: 40px;
     top: -20px;
-    width: 80px;
+    width: 90px;
     height: 20px;
     border-radius: 8px 8px 0 0;
     transition: 0.2s;
     color: #fff;
-    font-size: 13px;
+    font-size: 0.78em;
     z-index: 1;
     background: linear-gradient(to top left, #0400ffab, #ff00ff9d);
     border: 1px solid #ff00ff5c;

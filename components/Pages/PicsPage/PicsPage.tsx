@@ -114,7 +114,9 @@ const PicsPage: FC = ({}) => {
                         <button type='submit'>🔍</button>
                     </StyledPicsForm>
                 )}
-                {!!totalPages ? (
+                {totalPages === 0 ? (
+                    <StyledPicsNothingFound>oh no, nothing found (╥﹏╥) </StyledPicsNothingFound>
+                ) : (
                     <StyledPicList isselected={pictureIndex}>
                         {res.map((e, i) => (
                             <Image
@@ -128,7 +130,8 @@ const PicsPage: FC = ({}) => {
                             />
                         ))}
                         {pictureIndex === null
-                            ? !!res.length && (
+                            ? !!res.length &&
+                              totalPages > 1 && (
                                   <StyledPicPaginator>
                                       <StyledPicsPaginatorHandler onClick={() => setCurrPage(currPage - 1)} disabled={currPage <= 1}>
                                           ❮
@@ -146,8 +149,6 @@ const PicsPage: FC = ({}) => {
                               )
                             : null}
                     </StyledPicList>
-                ) : (
-                    <StyledPicsNothingFound>oh no, nothing found (╥﹏╥) </StyledPicsNothingFound>
                 )}
             </StyledPicsPage>
         </SwitchPageAnimationProvider>
