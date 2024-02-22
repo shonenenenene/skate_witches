@@ -13,16 +13,16 @@ export const StyledPicsForm = styled.form`
     gap: 10px;
     background-color: #00007c;
     input {
-        width: 50%;
+        width: 70%;
         height: 40px;
-        padding: 0 30px;
+        padding: 0 40px;
         background-color: #0000aa;
         text-align: center;
         min-width: 160px;
     }
     button {
         position: absolute;
-        left: 2%;
+        left: 15.3%;
         top: 0;
         height: 40px;
         width: 40px;
@@ -41,7 +41,7 @@ export const StyledPicsContainer = styled.div`
 `;
 export const StyledPicsHandler = styled.button`
     background-color: #ffffff1d;
-    max-width: 120px;
+    max-width: 60px;
     min-width: 60px;
     height: 100%;
     font-size: 30px;
@@ -53,10 +53,12 @@ export const StyledPicsHandler = styled.button`
 `;
 
 export const StyledPicList = styled.div<{ isselected: number | null }>`
-    height: 80%;
+    overflow-y: auto;
+    height: 88.5%;
     width: 100%;
     padding: 30px;
     grid-template-columns: repeat(5, 1fr);
+    align-items: center;
     gap: 15px 30px;
     box-sizing: border-box;
 
@@ -85,13 +87,18 @@ export const StyledPicList = styled.div<{ isselected: number | null }>`
 `;
 
 export const StyledPicPaginator = styled.div`
-    place-self: center;
-    grid-column-start: 3;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: #00007c;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
+    span {
+        width: 40px;
+        text-align: center;
+    }
 `;
 
 export const StyledPicsPaginatorHandler = styled.button`
@@ -105,11 +112,17 @@ export const StyledPicsPaginatorHandler = styled.button`
     }
 `;
 
-export const StyledPicsNothingFound = styled.div`
-    padding-top: 200px;
+export const StyledPicsMessage = styled.div`
+    padding: 200px 50px 50px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction: column;
     font-size: 40px;
+    gap: 20px;
+    span {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 100;
+    }
 `;

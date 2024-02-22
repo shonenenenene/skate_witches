@@ -19,13 +19,16 @@ const backgrounds = [
     <StyledTextureBackground />,
 ];
 
-export const Background = () => {
+interface BackgroundProps {
+    turnOn: boolean;
+}
+
+export const Background = ({ turnOn }: BackgroundProps) => {
     const [currentBackground, setCurrentBackground] = useState(0);
 
     const backgroundIncrementor = () => {
         if (currentBackground === backgrounds.length - 1) {
             setCurrentBackground(0);
-            console.log(currentBackground);
             return;
         }
         setCurrentBackground((state) => state + 1);
@@ -41,7 +44,7 @@ export const Background = () => {
 
     return (
         <>
-            <StyledBackgroundButtonsContainer>
+            <StyledBackgroundButtonsContainer turnon={turnOn}>
                 <StyledBackgroundButton onClick={backgroundDecrementor}>❮</StyledBackgroundButton>
                 <StyledBackgroundButton onClick={backgroundIncrementor}>❯</StyledBackgroundButton>
             </StyledBackgroundButtonsContainer>

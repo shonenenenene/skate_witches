@@ -21,15 +21,15 @@ const StyledInput = styled.div`
         background-color: #00007cdf;
         height: 36px;
         min-width: 200px;
-        width: 50%;
+        width: 70%;
         padding: 4px 10px;
         border-radius: 4px;
         border: 1px solid black;
     }
     textarea {
-        width: 50%;
+        width: 70%;
         height: 200px;
-        max-width: 70%;
+        max-width: 80%;
         min-width: 200px;
         max-height: 440px;
         min-height: 80px;

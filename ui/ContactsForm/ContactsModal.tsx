@@ -6,7 +6,7 @@ const StyledContactsModal = styled.div`
     position: absolute;
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 92%;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, -0);
@@ -18,7 +18,7 @@ const StyledContactsModal = styled.div`
 
 const StyledModalButton = styled.button`
     position: absolute;
-    right: 40px;
+    right: 10px;
     top: -20px;
     width: 90px;
     height: 20px;

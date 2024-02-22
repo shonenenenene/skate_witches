@@ -59,7 +59,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                     <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />
                 )}
             </StyledWindow>
-            <Background />
+            <Background turnOn={turnOn} />
         </StyledApp>
     );
 };

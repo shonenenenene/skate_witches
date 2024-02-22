@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import glitch from '@/assets/textures/glitch.jpg';
 
@@ -104,11 +104,13 @@ export const StyledBackgroundButton = styled.button`
         background-color: #ffffff4c;
     }
 `;
-export const StyledBackgroundButtonsContainer = styled.div`
+export const StyledBackgroundButtonsContainer = styled.div<{ turnon?: boolean }>`
     position: absolute;
     top: 16px;
     left: 16px;
-    z-index: 90;
+    ${({ turnon }) => css`
+        z-index: ${turnon ? 90 : 99};
+    `}
 `;
 
 export const StyledBackgroundColor = styled.div`
