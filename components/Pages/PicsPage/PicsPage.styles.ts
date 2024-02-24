@@ -58,7 +58,7 @@ export const StyledPicList = styled.div<{ isselected: number | null }>`
     width: 100%;
     padding: 30px;
     grid-template-columns: repeat(5, 1fr);
-    align-items: center;
+    align-items: start;
     gap: 15px 30px;
     box-sizing: border-box;
 
