@@ -20,7 +20,7 @@ const StyledModalButton = styled.button`
     position: absolute;
     right: 10px;
     top: -20px;
-    width: 90px;
+    width: 40px;
     height: 20px;
     border-radius: 8px 8px 0 0;
     transition: 0.2s;
@@ -33,8 +33,8 @@ const StyledModalButton = styled.button`
 
     &:hover {
         background-color: #ff00ffc5;
-        height: 24px;
-        top: -24px;
+        height: 25px;
+        top: -25px;
         animation: none;
     }
 
@@ -42,18 +42,22 @@ const StyledModalButton = styled.button`
         0% {
             height: 20px;
             top: -20px;
+            background: linear-gradient(to top left, #0400ffab, #ff00ff9d);
         }
         5% {
             height: 23px;
             top: -23px;
+            background-color: #ff00ffc5;
         }
         10% {
             height: 20px;
             top: -20px;
+            background: linear-gradient(to top left, #0400ffab, #ff00ff9d);
         }
         100% {
             height: 20px;
             top: -20px;
+            background: linear-gradient(to top left, #0400ffab, #ff00ff9d);
         }
     }
 `;
@@ -69,7 +73,7 @@ export const ContactsModal = ({ hideContactsform }: ContactsModalProps) => {
 
     return (
         <StyledContactsModal style={{ display: hideContactsform ? 'none' : 'flex' }}>
-            <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>{openedModal ? 'close' : 'contact me'}</StyledModalButton>
+            <StyledModalButton onClick={() => setOpenedModal(!openedModal)}>{openedModal ? 'x' : '✎'}</StyledModalButton>
             {openedModal ? <ContactsForm submitted={submitted} setSubmitted={setSubmitted} /> : null}
         </StyledContactsModal>
     );
