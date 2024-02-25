@@ -83,7 +83,6 @@ const ContactsForm = ({ submitted, setSubmitted }: ContactsFormProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        console.log(name, value);
         setFormData({ ...formData, [name]: value });
     };
 
