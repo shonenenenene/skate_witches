@@ -1,4 +1,4 @@
-import { css, styled } from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledPicsPage = styled.div`
     height: 100%;
