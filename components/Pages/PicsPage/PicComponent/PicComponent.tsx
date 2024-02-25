@@ -28,7 +28,7 @@ export const PicComponent = ({ chosen, handlePictureIndex }: PicComponentProps) 
                 ❮
             </StyledPicsButton>
             <div>
-                {!isLoaded ? <StyledLoader /> : <></>}
+                {!isLoaded ? <StyledLoader style={{ position: 'absolute', top: 0, left: 0 }} /> : <></>}
                 <StyledImage
                     src={chosen?.urls.regular}
                     alt={chosen?.alt_description || ''}

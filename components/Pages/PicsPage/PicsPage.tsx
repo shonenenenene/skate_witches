@@ -6,10 +6,9 @@ import { useHandlePictureIndex } from './useHandlePictureIndex';
 import { PhotoItem, Status } from './types';
 import { PicComponent } from './PicComponent/PicComponent';
 import { ThumbnailsList } from './ThumbnailsList/ThumbnailsList';
-
-const UNSPLASH_KEY = 'I6YXF1NjY08ksyJ8zbuAVCX89oUAvgwjl_wRRAW54qg';
-
 const PicsPage: FC = () => {
+    const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_KEY;
+
     const [pictureIndex, setPictureIndex] = useState<number | null>(null);
 
     const [picSearch, setPicSearch] = useState<string>('gothic architecture');
