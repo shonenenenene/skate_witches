@@ -214,7 +214,7 @@ export const navs = [
         content: [
             {
                 id: 1,
-                label: '🗖 fullscreen',
+                label: '🖵 fullscreen',
             },
         ],
     },

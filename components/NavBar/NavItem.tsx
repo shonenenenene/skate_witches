@@ -124,7 +124,7 @@ export const NavItem: FC<NavItemProps> = ({
             {isActiveNav ? (
                 <NavDropdown ref={dropdownRef}>
                     {item.content?.map((e) =>
-                        e.label === '🗖 fullscreen' ? (
+                        e.label === '🖵 fullscreen' ? (
                             <NavDropdownItem
                                 key={e.id}
                                 onClick={() => (fullscreenWindow ? setFullscreenWindow(false) : setFullscreenWindow(true))}

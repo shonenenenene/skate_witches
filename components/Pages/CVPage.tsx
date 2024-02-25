@@ -185,20 +185,14 @@ const CVPage = () => {
                         <>
                             <h2>Даниил Сытаев</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>
-                                Опыт работы: 3 месяца <span>(стажировка hotels.ru)</span>
-                            </h4>
+                            <h4>Опыт работы: 1,5 года</h4>
                             <p>
                                 Отлично владею HTML, CSS/SASS, JavaScript. На данный момент использую в своих проектах и углубляю знания в
                                 стэке React, TypeScript, Styled-Components, Next, Redux
                             </p>
                             <p>
-                                Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Имею опыт стажировки в
-                                продуктовой IT компании.
-                            </p>
-                            <p>
-                                Стремлюсь создавать красивые современные приложения. Хочу попасть на интересный проект где смогу проявить
-                                себя.
+                                Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Стремлюсь создавать
+                                красивые современные приложения.
                             </p>
                             <h4>Контакты:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>
@@ -216,20 +210,14 @@ const CVPage = () => {
                         <>
                             <h2>Daniil Sytaev</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>
-                                Work experience: 3 months <span>(hotels.ru internship)</span>
-                            </h4>
+                            <h4>Work experience: 1,5 years</h4>
                             <p>
                                 Learned HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
                                 TypeScript, Next, Redux, Styled-Components stack.
                             </p>
                             <p>
-                                I try to improve my use of current technologies and learn new ones. I have internship experience at an IT
-                                product company.
-                            </p>
-                            <p>
-                                I strive to create beautiful modern applications. I want to get involved in an interesting project where I
-                                can prove myself.
+                                I try to improve my use of current technologies and learn new ones. I strive to create beautiful modern
+                                applications.
                             </p>
                             <h4>Links:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>
@@ -261,7 +249,7 @@ const CVPage = () => {
 
                         <StyledTechStackList>
                             <StyledTechStackItem>next</StyledTechStackItem>
-                            <StyledTechStackItem>redux, valtio</StyledTechStackItem>
+                            <StyledTechStackItem>redux</StyledTechStackItem>
                             <StyledTechStackItem>react-three</StyledTechStackItem>
                             <StyledTechStackItem>scss/sass</StyledTechStackItem>
                             <StyledTechStackItem>git</StyledTechStackItem>
@@ -295,7 +283,7 @@ const CVPage = () => {
 
                         <StyledTechStackList>
                             <StyledTechStackItem>next</StyledTechStackItem>
-                            <StyledTechStackItem>redux, valtio</StyledTechStackItem>
+                            <StyledTechStackItem>redux</StyledTechStackItem>
                             <StyledTechStackItem>react-three</StyledTechStackItem>
                             <StyledTechStackItem>scss/sass</StyledTechStackItem>
                             <StyledTechStackItem>git</StyledTechStackItem>
@@ -311,7 +299,6 @@ const CVPage = () => {
                             <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
                             <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
                             <StyledTechStackItem>creativity</StyledTechStackItem>
-                            <StyledTechStackItem>quick learner and perseverance</StyledTechStackItem>
                             <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
                         </StyledTechStackList>
                     </StyledTechStackWrapper>

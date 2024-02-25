@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         if (!fullscreenWindow) {
             setFullscreenWindow(false);
         } else if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-            console.log('oooops, fullscreen api on safari is broken');
+            console.error('oooops, fullscreen api on safari is broken');
         } else {
             document.documentElement.requestFullscreen().catch((e) => console.error(e));
         }

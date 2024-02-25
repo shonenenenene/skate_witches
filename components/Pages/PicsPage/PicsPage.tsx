@@ -1,36 +1,21 @@
 import { useState, FC, useEffect } from 'react';
-import Image from 'next/image';
-import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
-import {
-    StyledPicList,
-    StyledPicPaginator,
-    StyledPicsContainer,
-    StyledPicsForm,
-    StyledPicsHandler,
-    StyledPicsMessage,
-    StyledPicsPage,
-    StyledPicsPaginatorHandler,
-} from './PicsPage.styles';
-import { StyledLoader } from '@/ui/Loader';
 
-interface unsplashAPI {
-    alt_description: string;
-    id: string;
-    urls: {
-        thumb: string;
-        regular: string;
-    };
-}
-const PicsPage: FC = ({}) => {
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
+import { StyledPicPaginator, StyledPicsForm, StyledPicsPage, StyledPicsPaginatorButton } from './PicsPage.styles';
+import { useHandlePictureIndex } from './useHandlePictureIndex';
+import { PhotoItem, Status } from './types';
+import { PicComponent } from './PicComponent/PicComponent';
+import { ThumbnailsList } from './ThumbnailsList/ThumbnailsList';
+const PicsPage: FC = () => {
     const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_KEY;
 
     const [pictureIndex, setPictureIndex] = useState<number | null>(null);
 
     const [picSearch, setPicSearch] = useState<string>('gothic architecture');
 
-    const [status, setStatus] = useState('idle');
+    const [status, setStatus] = useState<Status>('idle');
 
-    const [res, setRes] = useState<unsplashAPI[]>([]);
+    const [res, setRes] = useState<PhotoItem[]>([]);
 
     const [currPage, setCurrPage] = useState(1);
 
@@ -45,8 +30,9 @@ const PicsPage: FC = ({}) => {
             const dataJ = await data.json();
             const result = dataJ.results;
             const totalPg = dataJ.total_pages;
+            const dataStatus = totalPg === 0 ? 'no-data' : 'success';
             setRes(result);
-            setStatus('success');
+            setStatus(dataStatus);
             setTotalPages(totalPg);
         } catch {
             setStatus('error');
@@ -54,7 +40,6 @@ const PicsPage: FC = ({}) => {
     };
     useEffect(() => {
         fetchRequest();
-        // mainRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currPage]);
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -65,58 +50,14 @@ const PicsPage: FC = ({}) => {
         }
     };
 
-    // const paginanionHandler = (action: string) => {
-    //     switch (action) {
-    //         case 'incr':
-    //             setCurrPage(currPage + 1);
-    //             console.log(currPage, 'incr');
-    //             fetchRequest();
-    //             break;
-    //         case 'decr':
-    //             setCurrPage(currPage === 1 ? currPage : currPage - 1);
-    //             console.log(currPage, 'decr');
-    //             fetchRequest();
-    //             break;
-    //         default:
-    //             fetchRequest();
-    //     }
-    // };
+    const handlePictureIndex = useHandlePictureIndex({ resLength: res.length, setPictureIndex });
 
-    const picsComponent = (index: number) => {
-        const chosen = res[index];
-        if (!chosen) {
-            return <></>;
-        }
-        return (
-            <StyledPicsContainer>
-                <StyledPicsHandler onClick={() => setPictureIndex((state) => (state !== null && state > 1 ? state - 1 : null))}>
-                    ❮
-                </StyledPicsHandler>
-                <div>
-                    <Image
-                        src={chosen?.urls.regular}
-                        alt={chosen?.alt_description || ''}
-                        onClick={() => setPictureIndex(null)}
-                        style={{ objectFit: 'contain', cursor: 'pointer', height: '690px', width: 'auto' }}
-                        width={690}
-                        height={690}
-                        draggable={false}
-                    />
-                </div>
-                <StyledPicsHandler
-                    onClick={() => setPictureIndex((state) => (state !== null && state < res.length - 1 ? state + 1 : null))}
-                >
-                    ❯
-                </StyledPicsHandler>
-            </StyledPicsContainer>
-        );
-    };
+    const isPagination = pictureIndex === null && status === 'success' && totalPages > 1;
+
     return (
         <SwitchPageAnimationProvider>
             <StyledPicsPage>
-                {pictureIndex !== null ? (
-                    picsComponent(pictureIndex)
-                ) : (
+                {pictureIndex === null ? (
                     <StyledPicsForm onSubmit={(e) => submitForm(e)}>
                         <input
                             placeholder='what pics do we want to see?'
@@ -126,47 +67,25 @@ const PicsPage: FC = ({}) => {
                         />
                         <button type='submit'>🔍</button>
                     </StyledPicsForm>
-                )}
-                {status === 'loading' ? (
-                    <StyledLoader />
-                ) : totalPages === 0 ? (
-                    <StyledPicsMessage>oh no, nothing found (╥﹏╥) </StyledPicsMessage>
-                ) : status === 'error' ? (
-                    <StyledPicsMessage>
-                        oh no, server is missing (＿ ＿*) Z z z
-                        <span>(skate_witches are limited to 50 requests per hour and the witches will certainly fix it)</span>
-                    </StyledPicsMessage>
                 ) : (
-                    <StyledPicList isselected={pictureIndex}>
-                        {res.map((e, i) => (
-                            <Image
-                                key={e.id}
-                                src={e.urls.thumb}
-                                alt={e.alt_description}
-                                onClick={() => setPictureIndex(i)}
-                                width={150}
-                                height={120}
-                                quality={20}
-                            />
-                        ))}
-                    </StyledPicList>
+                    <PicComponent handlePictureIndex={handlePictureIndex} chosen={res[pictureIndex]} />
                 )}
-                {pictureIndex === null
-                    ? status === 'success' &&
-                      totalPages > 1 && (
-                          <StyledPicPaginator>
-                              <StyledPicsPaginatorHandler onClick={() => setCurrPage(currPage - 1)} disabled={currPage <= 1}>
-                                  ❮
-                              </StyledPicsPaginatorHandler>
 
-                              <span>{currPage}</span>
+                <ThumbnailsList status={status} res={res} pictureIndex={pictureIndex} setPictureIndex={setPictureIndex} />
 
-                              <StyledPicsPaginatorHandler onClick={() => setCurrPage(currPage + 1)} disabled={currPage > totalPages}>
-                                  ❯
-                              </StyledPicsPaginatorHandler>
-                          </StyledPicPaginator>
-                      )
-                    : null}
+                {isPagination && (
+                    <StyledPicPaginator>
+                        <StyledPicsPaginatorButton onClick={() => setCurrPage(currPage - 1)} disabled={currPage <= 1}>
+                            ❮
+                        </StyledPicsPaginatorButton>
+
+                        <span>{currPage}</span>
+
+                        <StyledPicsPaginatorButton onClick={() => setCurrPage(currPage + 1)} disabled={currPage > totalPages}>
+                            ❯
+                        </StyledPicsPaginatorButton>
+                    </StyledPicPaginator>
+                )}
             </StyledPicsPage>
         </SwitchPageAnimationProvider>
     );
