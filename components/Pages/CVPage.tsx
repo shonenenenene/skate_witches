@@ -185,7 +185,7 @@ const CVPage = () => {
                         <>
                             <h2>Даниил Сытаев</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>Опыт работы: 1,5 года</h4>
+                            <h4>Опыт работы: ~1 год</h4>
                             <p>
                                 Отлично владею HTML, CSS/SASS, JavaScript. На данный момент использую в своих проектах и углубляю знания в
                                 стэке React, TypeScript, Styled-Components, Next, Redux
@@ -210,7 +210,7 @@ const CVPage = () => {
                         <>
                             <h2>Daniil Sytaev</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>Work experience: 1,5 years</h4>
+                            <h4>Work experience: ~1 year</h4>
                             <p>
                                 Learned HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
                                 TypeScript, Next, Redux, Styled-Components stack.

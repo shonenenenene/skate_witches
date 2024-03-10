@@ -1,4 +1,4 @@
-import { anime, radio, paint, place, chain } from '../assets/icons';
+import { anime, radio, paint, place, chain, weather } from '../assets/icons';
 import {
     aeth,
     crystal,
@@ -30,6 +30,7 @@ export const ROUTES = {
     LOGO: 'logo',
     HOME: '/',
     SOON: 'soon',
+    WEATHER: 'weather',
     ABOUT: 'about',
 } as const;
 
@@ -63,6 +64,12 @@ export const pages = [
         name: 'tekken 3',
         icon: chain,
         path: ROUTES.TEKKEN,
+    },
+    {
+        id: 6,
+        name: 'weather',
+        icon: weather,
+        path: ROUTES.WEATHER,
     },
 ];
 

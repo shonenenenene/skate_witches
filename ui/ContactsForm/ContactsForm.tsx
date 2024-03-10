@@ -1,68 +1,9 @@
 import { FormEvent, useState } from 'react';
 import FormInput from './FormInput';
-import styled from 'styled-components';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import bonfire from '@/assets/bonfire.gif';
-
-const StyledContactsForm = styled.div`
-    padding: 10px;
-    width: 100%;
-    min-height: 360px;
-    word-wrap: break-word;
-    animation: modal-appearance 0.2s ease-in-out both;
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    @keyframes modal-appearance {
-        0% {
-            transform: scale(1, 0);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-    }
-`;
-
-const StyledSentMessage = styled.h3`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    font-size: 20px;
-`;
-
-const StyledSendContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin-top: 10px;
-    width: 100%;
-    flex-wrap: wrap;
-
-    button {
-        padding: 10px;
-        align-self: center;
-        width: 58px;
-        height: 58px;
-        border-radius: 50%;
-        background-color: #00007cdf;
-        transition: 0.2s;
-        background: linear-gradient(to left, #0400ffb0, #00007cda);
-        &:hover {
-            background-color: #fff;
-        }
-        &:disabled {
-            background: linear-gradient(to left, #ff0000af, #000);
-            cursor: not-allowed;
-        }
-    }
-`;
+import { StyledContactsForm, StyledSendContainer, StyledSentMessage } from './Contacts.styles';
 
 interface ContactsFormProps {
     submitted: boolean;
