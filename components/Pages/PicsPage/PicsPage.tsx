@@ -1,5 +1,4 @@
 import { useState, FC, useEffect } from 'react';
-
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { StyledPicPaginator, StyledPicsForm, StyledPicsPage, StyledPicsPaginatorButton } from './PicsPage.styles';
 import { useHandlePictureIndex } from './useHandlePictureIndex';
@@ -7,6 +6,7 @@ import { PhotoItem } from './types';
 import { Status } from '@/utils/types';
 import { PicComponent } from './PicComponent/PicComponent';
 import { ThumbnailsList } from './ThumbnailsList/ThumbnailsList';
+
 const PicsPage: FC = () => {
     const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_KEY;
 
