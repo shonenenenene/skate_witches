@@ -3,7 +3,8 @@ import { useState, FC, useEffect } from 'react';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { StyledPicPaginator, StyledPicsForm, StyledPicsPage, StyledPicsPaginatorButton } from './PicsPage.styles';
 import { useHandlePictureIndex } from './useHandlePictureIndex';
-import { PhotoItem, Status } from './types';
+import { PhotoItem } from './types';
+import { Status } from '@/utils/types';
 import { PicComponent } from './PicComponent/PicComponent';
 import { ThumbnailsList } from './ThumbnailsList/ThumbnailsList';
 const PicsPage: FC = () => {
@@ -31,9 +32,13 @@ const PicsPage: FC = () => {
             const result = dataJ.results;
             const totalPg = dataJ.total_pages;
             const dataStatus = totalPg === 0 ? 'no-data' : 'success';
-            setRes(result);
-            setStatus(dataStatus);
-            setTotalPages(totalPg);
+            if (result === undefined) {
+                setStatus('error');
+            } else {
+                setRes(result);
+                setStatus(dataStatus);
+                setTotalPages(totalPg);
+            }
         } catch {
             setStatus('error');
         }

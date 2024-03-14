@@ -67,7 +67,7 @@ export const pages = [
     },
     {
         id: 6,
-        name: 'weather',
+        name: 'weather alpha',
         icon: weather,
         path: ROUTES.WEATHER,
     },

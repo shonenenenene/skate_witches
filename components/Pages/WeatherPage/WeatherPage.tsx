@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Status } from '../PicsPage/types';
+import { Status } from '@/utils/types';
 import { StyledLoader } from '@/ui/Loader';
-import { StyledWeatherForm } from './WeatherPage.style';
+import { StyledWeatherForm, StyledWeatherResult } from './WeatherPage.style';
+import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
+import { CityWeather } from './types';
 
 const Weather = () => {
     const [status, setStatus] = useState<Status>('idle');
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
 
-    const [res, setRes] = useState([]);
+    const [res, setRes] = useState<CityWeather | null>(null);
 
     useEffect(() => {
         fetchRequest();
@@ -19,11 +23,14 @@ const Weather = () => {
         try {
             const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=f1c127391a9a4c53902145543240903&q=${citySearch}`);
             const result = await data.json();
-            console.log(result);
-            setRes(result);
-            setStatus('success');
+            if (result.hasOwnProperty('error')) {
+                setStatus('error');
+                setErrorMessage(result.error.message);
+            } else {
+                setRes(result);
+                setStatus('success');
+            }
         } catch {
-            console.log('damn');
             setStatus('error');
         }
     }
@@ -36,8 +43,7 @@ const Weather = () => {
     };
 
     return (
-        <>
-            {' '}
+        <SwitchPageAnimationProvider>
             <StyledWeatherForm onSubmit={(e) => submitForm(e)}>
                 <input
                     placeholder='enter the name of the city?'
@@ -47,16 +53,18 @@ const Weather = () => {
                 />
                 <button type='submit'>🔍</button>
             </StyledWeatherForm>
-            {status === 'success' ? (
-                <div>
+            {status === 'success' && res !== null ? (
+                <StyledWeatherResult>
                     {res.location.name}
-                    <div>{res.current.temp_c}</div>
+                    <div>{res.current.temp_c} ℃</div>
                     <img src={res.current.condition.icon} />
-                </div>
-            ) : (
+                </StyledWeatherResult>
+            ) : status === 'loading' ? (
                 <StyledLoader />
-            )}
-        </>
+            ) : status === 'error' ? (
+                <div>{errorMessage}</div>
+            ) : null}
+        </SwitchPageAnimationProvider>
     );
 };
 

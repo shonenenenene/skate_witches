@@ -6,5 +6,3 @@ export interface PhotoItem {
         regular: string;
     };
 }
-
-export type Status = 'idle' | 'success' | 'error' | 'loading' | 'no-data';

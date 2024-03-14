@@ -24,3 +24,13 @@ export const StyledWeatherForm = styled.form`
         font-size: 26px;
     }
 `;
+
+export const StyledWeatherResult = styled.div`
+    flex-direction: column;
+    gap: 10px;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
