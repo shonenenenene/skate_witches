@@ -21,7 +21,7 @@ const Weather = () => {
     async function fetchRequest() {
         setStatus('loading');
         try {
-            const data = await fetch(`http://api.weatherapi.com/v1/current.json?key=f1c127391a9a4c53902145543240903&q=${citySearch}`);
+            const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=f1c127391a9a4c53902145543240903&q=${citySearch}`);
             const result = await data.json();
             if (result.hasOwnProperty('error')) {
                 setStatus('error');
