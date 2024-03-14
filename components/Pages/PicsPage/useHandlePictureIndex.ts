@@ -1,11 +1,11 @@
 import { SetStateAction, useCallback } from 'react';
 
-interface UseHandlePictureIndexProps {
+interface useHandlePictureIndexProps {
     setPictureIndex: (value: SetStateAction<number | null>) => void;
     resLength: number;
 }
 
-const useHandlePictureIndex = ({ resLength, setPictureIndex }: UseHandlePictureIndexProps) => {
+const useHandlePictureIndex = ({ resLength, setPictureIndex }: useHandlePictureIndexProps) => {
     return useCallback(
         (action?: 'incr' | 'decr') => {
             setPictureIndex((currIndex) => {

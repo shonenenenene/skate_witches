@@ -35,7 +35,7 @@ const AboutPage = () => {
                 </div>
                 <div>
                     Other libs:
-                    <span> react-three, radio-browser-api, react-h5-audio-player, react-yandex-maps, react-to-print</span>
+                    <span> react-three, react-h5-audio-player, react-yandex-maps, react-to-print, react-rainfall</span>
                 </div>
                 <div> Enjoy🪄</div>
             </StyledAboutPageWrapper>

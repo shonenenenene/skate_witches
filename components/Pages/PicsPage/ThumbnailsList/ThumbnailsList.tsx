@@ -1,5 +1,6 @@
 import { StyledPicList, StyledPicsMessage } from './ThumbnailsList.styles';
-import { PhotoItem, Status } from '../types';
+import { PhotoItem } from '../types';
+import { Status } from '@/utils/types';
 import Image from 'next/image';
 import { StyledLoader } from '@/ui/Loader';
 
