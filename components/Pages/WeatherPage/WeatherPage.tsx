@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Status } from '@/utils/types';
 import { StyledLoader } from '@/ui/Loader';
-import { StyledWeatherForm, StyledWeatherResult } from './WeatherPage.style';
+import { StyledWeatherMain, StyledWeatherForm, StyledWeatherInfo, StyledWeatherDetailed } from './WeatherPage.style';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { CityWeather } from './types';
 
 const Weather = () => {
+    const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
+
     const [status, setStatus] = useState<Status>('idle');
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -21,7 +23,7 @@ const Weather = () => {
     async function fetchRequest() {
         setStatus('loading');
         try {
-            const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=f1c127391a9a4c53902145543240903&q=${citySearch}`);
+            const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_KEY}&q=${citySearch}`);
             const result = await data.json();
             if (result.hasOwnProperty('error')) {
                 setStatus('error');
@@ -54,11 +56,14 @@ const Weather = () => {
                 <button type='submit'>🔍</button>
             </StyledWeatherForm>
             {status === 'success' && res !== null ? (
-                <StyledWeatherResult>
-                    {res.location.name}
-                    <div>{res.current.temp_c} ℃</div>
-                    <img src={res.current.condition.icon} />
-                </StyledWeatherResult>
+                <StyledWeatherInfo>
+                    <StyledWeatherMain>
+                        {res.location.name}, {res.location.country}
+                        <div>{res.current.temp_c} ℃</div>
+                        <img src={res.current.condition.icon} />
+                    </StyledWeatherMain>
+                    <StyledWeatherDetailed>detailed info</StyledWeatherDetailed>
+                </StyledWeatherInfo>
             ) : status === 'loading' ? (
                 <StyledLoader />
             ) : status === 'error' ? (
