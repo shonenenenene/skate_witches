@@ -187,8 +187,8 @@ const CVPage = () => {
                             <h3>Frontend Developer</h3>
                             <h4>Опыт работы: ~1 год</h4>
                             <p>
-                                Отлично владею HTML, CSS/SASS, JavaScript. На данный момент использую в своих проектах и углубляю знания в
-                                стэке React, TypeScript, Styled-Components, Next, Redux
+                                На данный момент использую в своих проектах и углубляю знания в стэке React, TypeScript, Styled-Components,
+                                Next, Redux
                             </p>
                             <p>
                                 Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Стремлюсь создавать
@@ -212,8 +212,8 @@ const CVPage = () => {
                             <h3>Frontend Developer</h3>
                             <h4>Work experience: ~1 year</h4>
                             <p>
-                                Learned HTML, CSS/SASS, JavaScript. Currently I use it in my projects and deepen my knowledge in the React,
-                                TypeScript, Next, Redux, Styled-Components stack.
+                                Currently I use it in my projects and deepen my knowledge in the React, TypeScript, Next, Redux,
+                                Styled-Components stack.
                             </p>
                             <p>
                                 I try to improve my use of current technologies and learn new ones. I strive to create beautiful modern

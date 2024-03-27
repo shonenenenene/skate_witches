@@ -25,12 +25,33 @@ export const StyledWeatherForm = styled.form`
     }
 `;
 
-export const StyledWeatherResult = styled.div`
-    flex-direction: column;
-    gap: 10px;
+export const StyledWeatherInfo = styled.div`
     height: 90%;
     width: 100%;
+    padding: 10px;
     display: flex;
+    gap: 10px;
+`;
+
+export const StyledWeatherMain = styled.div`
+    padding: 10px;
+    width: 280px;
+    height: 300px;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
+    border: 2px solid #fff;
+    border-radius: 7px;
+`;
+
+export const StyledWeatherDetailed = styled.div`
+    padding: 10px;
+    width: 200px;
+    height: 300px;
+    border: 2px solid #fff;
+    border-radius: 7px;
 `;

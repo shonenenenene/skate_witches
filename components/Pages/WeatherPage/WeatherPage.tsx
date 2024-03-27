@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Status } from '@/utils/types';
 import { StyledLoader } from '@/ui/Loader';
-import { StyledWeatherForm, StyledWeatherResult } from './WeatherPage.style';
+import { StyledWeatherMain, StyledWeatherForm, StyledWeatherInfo, StyledWeatherDetailed } from './WeatherPage.style';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
-import { CityWeather } from './types';
+import { CityAstronomy, CityWeather } from './types';
 
 const Weather = () => {
+    const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
+
     const [status, setStatus] = useState<Status>('idle');
 
     const [errorMessage, setErrorMessage] = useState('');
 
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
 
-    const [res, setRes] = useState<CityWeather | null>(null);
+    const [mainRes, setMainRes] = useState<CityWeather | null>(null);
+    const [astroRes, setAstroRes] = useState<CityAstronomy | null>(null);
 
     useEffect(() => {
         fetchRequest();
@@ -21,13 +24,16 @@ const Weather = () => {
     async function fetchRequest() {
         setStatus('loading');
         try {
-            const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=f1c127391a9a4c53902145543240903&q=${citySearch}`);
-            const result = await data.json();
-            if (result.hasOwnProperty('error')) {
+            const mainData = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_KEY}&q=${citySearch}`);
+            const astronomyData = await fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${WEATHER_KEY}&q=${citySearch}`);
+            const mainResult = await mainData.json();
+            const astronomyResult = await astronomyData.json();
+            if (mainResult.hasOwnProperty('error') && astronomyResult.hasOwnProperty('error')) {
                 setStatus('error');
-                setErrorMessage(result.error.message);
+                setErrorMessage('oh, some errors on server');
             } else {
-                setRes(result);
+                setMainRes(mainResult);
+                setAstroRes(astronomyResult.astronomy.astro);
                 setStatus('success');
             }
         } catch {
@@ -53,12 +59,25 @@ const Weather = () => {
                 />
                 <button type='submit'>🔍</button>
             </StyledWeatherForm>
-            {status === 'success' && res !== null ? (
-                <StyledWeatherResult>
-                    {res.location.name}
-                    <div>{res.current.temp_c} ℃</div>
-                    <img src={res.current.condition.icon} />
-                </StyledWeatherResult>
+            {status === 'success' ? (
+                <StyledWeatherInfo>
+                    <StyledWeatherMain>
+                        <div>
+                            {mainRes?.location.name}, {mainRes?.location.country}
+                        </div>
+                        <div>{mainRes?.current.temp_c} ℃</div>
+                        <img src={mainRes?.current.condition.icon} />
+                        <div>{mainRes?.location.localtime}</div>
+                    </StyledWeatherMain>
+                    <StyledWeatherDetailed>
+                        <div>sunrise: {astroRes?.sunrise}</div>
+                        <div>sunset: {astroRes?.sunset}</div>
+                        <div>moonrise: {astroRes?.moonrise}</div>
+                        <div>moonset: {astroRes?.moonset}</div>
+                        <div>moon_phase: {astroRes?.moon_phase}</div>
+                        <div>moon_illumination: {astroRes?.moon_illumination}</div>
+                    </StyledWeatherDetailed>
+                </StyledWeatherInfo>
             ) : status === 'loading' ? (
                 <StyledLoader />
             ) : status === 'error' ? (
