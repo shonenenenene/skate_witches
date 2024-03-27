@@ -13,6 +13,9 @@ const StyledHomeItem = styled.div`
         width: 80px;
         filter: saturate(500%) contrast(800%) brightness(600%) invert(80%) sepia(50%) hue-rotate(120deg);
     }
+    p {
+        text-align: center;
+    }
     &:hover {
         background-color: #fff;
         color: black;
