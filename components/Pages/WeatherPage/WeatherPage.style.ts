@@ -25,7 +25,17 @@ export const StyledWeatherForm = styled.form`
     }
 `;
 
+export const StyledCurrentWeather = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export const StyledWeatherInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 90%;
     width: 100%;
     padding: 10px;
@@ -54,4 +64,24 @@ export const StyledWeatherDetailed = styled.div`
     height: 300px;
     border: 2px solid #fff;
     border-radius: 7px;
+`;
+
+export const StyledWeatherForecast = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+`;
+
+export const StyledWeatherForecastCard = styled.div`
+    padding: 10px;
+    width: 300px;
+    gap: 10px;
+    border-radius: 7px;
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 `;

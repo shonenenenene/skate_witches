@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Status } from '@/utils/types';
 import { StyledLoader } from '@/ui/Loader';
-import { StyledWeatherMain, StyledWeatherForm, StyledWeatherInfo, StyledWeatherDetailed } from './WeatherPage.style';
+import {
+    StyledWeatherMain,
+    StyledWeatherForm,
+    StyledWeatherInfo,
+    StyledWeatherDetailed,
+    StyledWeatherForecast,
+    StyledWeatherForecastCard,
+    StyledCurrentWeather,
+} from './WeatherPage.style';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
-import { CityAstronomy, CityWeather } from './types';
+import { WeatherApiData } from './types';
 
 const Weather = () => {
     const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
@@ -14,8 +22,7 @@ const Weather = () => {
 
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
 
-    const [mainRes, setMainRes] = useState<CityWeather | null>(null);
-    const [astroRes, setAstroRes] = useState<CityAstronomy | null>(null);
+    const [weatherRes, setWeatherRes] = useState<WeatherApiData | null>(null);
 
     useEffect(() => {
         fetchRequest();
@@ -24,16 +31,17 @@ const Weather = () => {
     async function fetchRequest() {
         setStatus('loading');
         try {
-            const mainData = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_KEY}&q=${citySearch}`);
-            const astronomyData = await fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${WEATHER_KEY}&q=${citySearch}`);
-            const mainResult = await mainData.json();
-            const astronomyResult = await astronomyData.json();
-            if (mainResult.hasOwnProperty('error') && astronomyResult.hasOwnProperty('error')) {
+            const forecastData = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_KEY}&q=${citySearch}&days=3`);
+
+            const forecastResult = await forecastData.json();
+
+            console.log(forecastResult);
+
+            if (forecastResult.hasOwnProperty('error')) {
                 setStatus('error');
                 setErrorMessage('oh, some errors on server');
             } else {
-                setMainRes(mainResult);
-                setAstroRes(astronomyResult.astronomy.astro);
+                setWeatherRes(forecastResult);
                 setStatus('success');
             }
         } catch {
@@ -61,22 +69,37 @@ const Weather = () => {
             </StyledWeatherForm>
             {status === 'success' ? (
                 <StyledWeatherInfo>
-                    <StyledWeatherMain>
-                        <div>
-                            {mainRes?.location.name}, {mainRes?.location.country}
-                        </div>
-                        <div>{mainRes?.current.temp_c} ℃</div>
-                        <img src={mainRes?.current.condition.icon} />
-                        <div>{mainRes?.location.localtime}</div>
-                    </StyledWeatherMain>
-                    <StyledWeatherDetailed>
-                        <div>sunrise: {astroRes?.sunrise}</div>
-                        <div>sunset: {astroRes?.sunset}</div>
-                        <div>moonrise: {astroRes?.moonrise}</div>
-                        <div>moonset: {astroRes?.moonset}</div>
-                        <div>moon_phase: {astroRes?.moon_phase}</div>
-                        <div>moon_illumination: {astroRes?.moon_illumination}</div>
-                    </StyledWeatherDetailed>
+                    <StyledCurrentWeather>
+                        <StyledWeatherMain>
+                            <div>
+                                {weatherRes?.location.name}, {weatherRes?.location.country}
+                            </div>
+                            <div>{weatherRes?.current.temp_c} ℃</div>
+                            <img src={weatherRes?.current.condition.icon} />
+                            <div>{weatherRes?.location.localtime}</div>
+                        </StyledWeatherMain>
+                        <StyledWeatherDetailed>
+                            <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
+                            <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
+                            <div>moonrise: {weatherRes?.forecast.forecastday[0].astro.moonrise}</div>
+                            <div>moonset: {weatherRes?.forecast.forecastday[0].astro.moonset}</div>
+                            <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
+                            <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
+                        </StyledWeatherDetailed>
+                    </StyledCurrentWeather>
+
+                    <StyledWeatherForecast>
+                        {weatherRes?.forecast.forecastday.slice(1).map((e) => {
+                            return (
+                                <StyledWeatherForecastCard key={e.date}>
+                                    <div>date: {e.date}</div>
+                                    <div>average temperature: {e.day.avgtemp_c} ℃</div>
+                                    <img src={e.day.condition.icon} alt={e.day.condition.text} />
+                                    <div>{e.day.condition.text}</div>
+                                </StyledWeatherForecastCard>
+                            );
+                        })}
+                    </StyledWeatherForecast>
                 </StyledWeatherInfo>
             ) : status === 'loading' ? (
                 <StyledLoader />
