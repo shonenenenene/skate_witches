@@ -5,13 +5,16 @@ import {
     StyledWeatherMain,
     StyledWeatherForm,
     StyledWeatherInfo,
-    StyledWeatherDetailed,
-    StyledWeatherForecast,
-    StyledWeatherForecastCard,
+    StyledWeatherAstro,
+    StyledWeatherHours,
+    StyledWeatherHoursCard,
     StyledCurrentWeather,
+    StyledWeatherDay,
+    StyledWeatherDetailed,
 } from './WeatherPage.style';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { WeatherApiData } from './types';
+import Image from 'next/image';
 
 const Weather = () => {
     const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
@@ -60,7 +63,7 @@ const Weather = () => {
         <SwitchPageAnimationProvider>
             <StyledWeatherForm onSubmit={(e) => submitForm(e)}>
                 <input
-                    placeholder='enter the name of the city?'
+                    placeholder='enter the name of the city'
                     type='text'
                     value={citySearch}
                     onChange={(e) => setCitySearch(e.target.value)}
@@ -69,37 +72,65 @@ const Weather = () => {
             </StyledWeatherForm>
             {status === 'success' ? (
                 <StyledWeatherInfo>
-                    <StyledCurrentWeather>
-                        <StyledWeatherMain>
-                            <div>
-                                {weatherRes?.location.name}, {weatherRes?.location.country}
-                            </div>
-                            <div>{weatherRes?.current.temp_c} ℃</div>
-                            <img src={weatherRes?.current.condition.icon} />
-                            <div>{weatherRes?.location.localtime}</div>
-                        </StyledWeatherMain>
+                    <StyledWeatherDay>
+                        <StyledCurrentWeather>
+                            <StyledWeatherMain>
+                                <h3>
+                                    today's {weatherRes?.location.name}, {weatherRes?.location.country}
+                                    <p>{weatherRes?.location.localtime}</p>
+                                </h3>
+                                <div>
+                                    <p>{weatherRes?.current.temp_c}℃</p>
+                                    <div>
+                                        <Image
+                                            src={weatherRes?.current.condition.icon ?? ''}
+                                            alt={weatherRes?.current.condition.text ?? ''}
+                                            width={120}
+                                            height={120}
+                                        />
+                                        <p>{weatherRes?.current.condition.text}</p>
+                                    </div>
+                                </div>
+                            </StyledWeatherMain>
+                            <StyledWeatherAstro>
+                                <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
+                                <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
+                                <div>moonrise: {weatherRes?.forecast.forecastday[0].astro.moonrise}</div>
+                                <div>moonset: {weatherRes?.forecast.forecastday[0].astro.moonset}</div>
+                                <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
+                                <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
+                            </StyledWeatherAstro>
+                        </StyledCurrentWeather>
                         <StyledWeatherDetailed>
-                            <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
-                            <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
-                            <div>moonrise: {weatherRes?.forecast.forecastday[0].astro.moonrise}</div>
-                            <div>moonset: {weatherRes?.forecast.forecastday[0].astro.moonset}</div>
-                            <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
-                            <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
+                            <div>
+                                <div>average temperature: {weatherRes?.forecast.forecastday[0].day.avgtemp_c}</div>
+                                <div>average humidity: {weatherRes?.forecast.forecastday[0].day.avghumidity}</div>
+                            </div>
+                            <div>
+                                <div>chance of rain: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_rain}</div>
+                                <div>chance of snow: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_snow}</div>
+                            </div>
+                            <div>
+                                <div>max wind: {weatherRes?.forecast.forecastday[0].day.maxwind_kph}</div>
+                                <div>uv: {weatherRes?.forecast.forecastday[0].day.uv}</div>
+                            </div>
                         </StyledWeatherDetailed>
-                    </StyledCurrentWeather>
 
-                    <StyledWeatherForecast>
-                        {weatherRes?.forecast.forecastday.slice(1).map((e) => {
-                            return (
-                                <StyledWeatherForecastCard key={e.date}>
-                                    <div>date: {e.date}</div>
-                                    <div>average temperature: {e.day.avgtemp_c} ℃</div>
-                                    <img src={e.day.condition.icon} alt={e.day.condition.text} />
-                                    <div>{e.day.condition.text}</div>
-                                </StyledWeatherForecastCard>
-                            );
-                        })}
-                    </StyledWeatherForecast>
+                        <StyledWeatherHours>
+                            {weatherRes?.forecast.forecastday[0].hour.map((e, i) => {
+                                return (
+                                    <StyledWeatherHoursCard key={i}>
+                                        <div>{i}</div>
+                                        <div>{e.temp_c}℃</div>
+                                        <div>{e.wind_dir}</div>
+                                        <div>{e.wind_kph}</div>
+                                        <Image src={e.condition.icon} alt={e.condition.text} width={100} height={100} />
+                                        <div>{e.condition.text}</div>
+                                    </StyledWeatherHoursCard>
+                                );
+                            })}
+                        </StyledWeatherHours>
+                    </StyledWeatherDay>
                 </StyledWeatherInfo>
             ) : status === 'loading' ? (
                 <StyledLoader />
