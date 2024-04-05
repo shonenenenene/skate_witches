@@ -11,6 +11,7 @@ import {
     StyledCurrentWeather,
     StyledWeatherDay,
     StyledWeatherDetailed,
+    StyledWeatherDetailedButton,
 } from './WeatherPage.style';
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { WeatherApiData } from './types';
@@ -26,6 +27,8 @@ const Weather = () => {
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
 
     const [weatherRes, setWeatherRes] = useState<WeatherApiData | null>(null);
+
+    const [isShowAstro, setIsShowAstro] = useState(false);
 
     useEffect(() => {
         fetchRequest();
@@ -80,7 +83,9 @@ const Weather = () => {
                                     <p>{weatherRes?.location.localtime}</p>
                                 </h3>
                                 <div>
-                                    <p>{weatherRes?.current.temp_c}℃</p>
+                                    <p>
+                                        {weatherRes?.current.temp_c}℃<span>avg: {weatherRes?.forecast.forecastday[0].day.avgtemp_c}</span>
+                                    </p>
                                     <div>
                                         <Image
                                             src={weatherRes?.current.condition.icon ?? ''}
@@ -92,40 +97,38 @@ const Weather = () => {
                                     </div>
                                 </div>
                             </StyledWeatherMain>
-                            <StyledWeatherAstro>
-                                <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
-                                <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
-                                <div>moonrise: {weatherRes?.forecast.forecastday[0].astro.moonrise}</div>
-                                <div>moonset: {weatherRes?.forecast.forecastday[0].astro.moonset}</div>
-                                <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
-                                <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
-                            </StyledWeatherAstro>
-                        </StyledCurrentWeather>
-                        <StyledWeatherDetailed>
-                            <div>
-                                <div>average temperature: {weatherRes?.forecast.forecastday[0].day.avgtemp_c}</div>
-                                <div>average humidity: {weatherRes?.forecast.forecastday[0].day.avghumidity}</div>
-                            </div>
-                            <div>
-                                <div>chance of rain: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_rain}</div>
-                                <div>chance of snow: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_snow}</div>
-                            </div>
-                            <div>
+                            <StyledWeatherDetailed>
+                                <div>avg humidity: {weatherRes?.forecast.forecastday[0].day.avghumidity}%</div>
+                                <div>chance of rain: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_rain}%</div>
+                                <div>chance of snow: {weatherRes?.forecast.forecastday[0].day.daily_chance_of_snow}%</div>
                                 <div>max wind: {weatherRes?.forecast.forecastday[0].day.maxwind_kph}</div>
                                 <div>uv: {weatherRes?.forecast.forecastday[0].day.uv}</div>
-                            </div>
-                        </StyledWeatherDetailed>
+                                <StyledWeatherDetailedButton onClick={() => setIsShowAstro((state) => !state)}>
+                                    {isShowAstro ? 'hide astronomy' : 'show astronomy'}
+                                </StyledWeatherDetailedButton>
+                                {isShowAstro ? (
+                                    <StyledWeatherAstro>
+                                        <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
+                                        <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
+                                        <div>moonrise: {weatherRes?.forecast.forecastday[0].astro.moonrise}</div>
+                                        <div>moonset: {weatherRes?.forecast.forecastday[0].astro.moonset}</div>
+                                        <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
+                                        <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
+                                    </StyledWeatherAstro>
+                                ) : null}
+                            </StyledWeatherDetailed>
+                        </StyledCurrentWeather>
 
                         <StyledWeatherHours>
                             {weatherRes?.forecast.forecastday[0].hour.map((e, i) => {
                                 return (
                                     <StyledWeatherHoursCard key={i}>
-                                        <div>{i}</div>
+                                        <h6>{e.time.split(' ')[1]}</h6>
                                         <div>{e.temp_c}℃</div>
                                         <div>{e.wind_dir}</div>
-                                        <div>{e.wind_kph}</div>
-                                        <Image src={e.condition.icon} alt={e.condition.text} width={100} height={100} />
-                                        <div>{e.condition.text}</div>
+                                        <div>{e.wind_kph} km/h</div>
+                                        <Image src={e.condition.icon} alt={e.condition.text} width={80} height={80} />
+                                        <p>{e.condition.text}</p>
                                     </StyledWeatherHoursCard>
                                 );
                             })}

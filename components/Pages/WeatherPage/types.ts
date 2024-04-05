@@ -44,6 +44,7 @@ export interface WeatherApiData {
                         temp_c: number;
                         wind_dir: string;
                         wind_kph: number;
+                        time: string;
                     }
                 ];
             }
