@@ -30,6 +30,7 @@ export const StyledCurrentWeather = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: start;
+    height: 50%;
 `;
 
 export const StyledWeatherInfo = styled.div`
@@ -39,7 +40,7 @@ export const StyledWeatherInfo = styled.div`
 
 export const StyledWeatherDay = styled.div`
     height: 98%;
-    width: 70%;
+    width: 80%;
     border: 2px solid #fff;
     border-radius: 8px;
     position: relative;
@@ -123,7 +124,7 @@ export const StyledWeatherAstro = styled.div`
 export const StyledWeatherDetailed = styled.div`
     padding: 10px;
     width: 30%;
-    max-height: 360px;
+    max-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -158,7 +159,7 @@ export const StyledWeatherHours = styled.div`
     justify-content: start;
     align-items: center;
     gap: 10px;
-    height: 40%;
+    height: 45%;
     overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;

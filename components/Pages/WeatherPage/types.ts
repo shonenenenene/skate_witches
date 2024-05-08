@@ -52,3 +52,11 @@ export interface WeatherApiData {
     };
     location: CurrentWeather['location'];
 }
+
+export interface WeatherHoursProps {
+    hourWeatherRes: WeatherApiData['forecast']['forecastday'][0]['hour'];
+}
+
+export interface WeatherHoursCardProps {
+    hourWeatherCardData: WeatherApiData['forecast']['forecastday'][0]['hour'][0];
+}

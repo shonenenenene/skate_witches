@@ -6,8 +6,6 @@ import {
     StyledWeatherForm,
     StyledWeatherInfo,
     StyledWeatherAstro,
-    StyledWeatherHours,
-    StyledWeatherHoursCard,
     StyledCurrentWeather,
     StyledWeatherDay,
     StyledWeatherDetailed,
@@ -16,6 +14,7 @@ import {
 import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { WeatherApiData } from './types';
 import Image from 'next/image';
+import WeatherHours from './WeatherHours/WeatherHours';
 
 const Weather = () => {
     const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
@@ -40,8 +39,6 @@ const Weather = () => {
             const forecastData = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_KEY}&q=${citySearch}&days=3`);
 
             const forecastResult = await forecastData.json();
-
-            console.log(forecastResult);
 
             if (forecastResult.hasOwnProperty('error')) {
                 setStatus('error');
@@ -106,7 +103,7 @@ const Weather = () => {
                                 <StyledWeatherDetailedButton onClick={() => setIsShowAstro((state) => !state)}>
                                     {isShowAstro ? 'hide astronomy' : 'show astronomy'}
                                 </StyledWeatherDetailedButton>
-                                {isShowAstro ? (
+                                {isShowAstro && (
                                     <StyledWeatherAstro>
                                         <div>sunrise: {weatherRes?.forecast.forecastday[0].astro.sunrise}</div>
                                         <div>sunset: {weatherRes?.forecast.forecastday[0].astro.sunset}</div>
@@ -115,24 +112,11 @@ const Weather = () => {
                                         <div>moon phase: {weatherRes?.forecast.forecastday[0].astro.moon_phase}</div>
                                         <div>moon illumination: {weatherRes?.forecast.forecastday[0].astro.moon_illumination}</div>
                                     </StyledWeatherAstro>
-                                ) : null}
+                                )}
                             </StyledWeatherDetailed>
                         </StyledCurrentWeather>
 
-                        <StyledWeatherHours>
-                            {weatherRes?.forecast.forecastday[0].hour.map((e, i) => {
-                                return (
-                                    <StyledWeatherHoursCard key={i}>
-                                        <h6>{e.time.split(' ')[1]}</h6>
-                                        <div>{e.temp_c}℃</div>
-                                        <div>{e.wind_dir}</div>
-                                        <div>{e.wind_kph} km/h</div>
-                                        <Image src={e.condition.icon} alt={e.condition.text} width={80} height={80} />
-                                        <p>{e.condition.text}</p>
-                                    </StyledWeatherHoursCard>
-                                );
-                            })}
-                        </StyledWeatherHours>
+                        {weatherRes && <WeatherHours hourWeatherRes={weatherRes?.forecast.forecastday[0].hour} />}
                     </StyledWeatherDay>
                 </StyledWeatherInfo>
             ) : status === 'loading' ? (
