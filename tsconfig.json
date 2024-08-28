@@ -6,7 +6,8 @@
             "@/assets/*": ["assets/*"],
             "@/components/*": ["components/*"],
             "@/utils/*": ["utils/*"],
-            "@/ui/*": ["ui/*"]
+            "@/ui/*": ["ui/*"],
+            "@/redux/*": ["redux/*"]
         },
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"],

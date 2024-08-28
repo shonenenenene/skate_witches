@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import timeReducer from './slices/WeatherPageSlices/weatherTimeSlice';
 
 export const makeStore = () => {
     return configureStore({
-        reducer: {},
+        reducer: {
+            time: timeReducer,
+        },
     });
 };
 

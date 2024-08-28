@@ -6,8 +6,8 @@ import WeatherHoursCard from './WeatherHoursCard';
 const WeatherHours = ({ hourWeatherRes }: WeatherHoursProps) => {
     return (
         <StyledWeatherHours>
-            {hourWeatherRes.map((e, i) => {
-                return <WeatherHoursCard key={i} hourWeatherCardData={e} />;
+            {hourWeatherRes.map((e) => {
+                return <WeatherHoursCard key={e.time} hourWeatherCardData={e} />;
             })}
         </StyledWeatherHours>
     );

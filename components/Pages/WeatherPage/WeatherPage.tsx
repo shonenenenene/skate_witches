@@ -15,19 +15,21 @@ import { SwitchPageAnimationProvider } from '@/ui/SwitchPageAnimation';
 import { WeatherApiData } from './types';
 import Image from 'next/image';
 import WeatherHours from './WeatherHours/WeatherHours';
+import { useAppDispatch } from '@/redux/hooks';
+import { setCurrentTime } from '@/redux/slices/WeatherPageSlices/weatherTimeSlice';
 
 const Weather = () => {
     const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
     const [status, setStatus] = useState<Status>('idle');
 
-    const [errorMessage, setErrorMessage] = useState('');
-
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
 
     const [weatherRes, setWeatherRes] = useState<WeatherApiData | null>(null);
 
     const [isShowAstro, setIsShowAstro] = useState(false);
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         fetchRequest();
@@ -42,7 +44,6 @@ const Weather = () => {
 
             if (forecastResult.hasOwnProperty('error')) {
                 setStatus('error');
-                setErrorMessage('oh, some errors on server');
             } else {
                 setWeatherRes(forecastResult);
                 setStatus('success');
@@ -51,6 +52,8 @@ const Weather = () => {
             setStatus('error');
         }
     }
+
+    weatherRes && dispatch(setCurrentTime(weatherRes.location.localtime.split(' ')[1]));
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -122,7 +125,16 @@ const Weather = () => {
             ) : status === 'loading' ? (
                 <StyledLoader />
             ) : status === 'error' ? (
-                <div>{errorMessage}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '50px', margin: '20px' }}>
+                    sorry, but something went wrong...
+                    <div style={{ fontStyle: 'italic' }}>
+                        On a withered branch
+                        <br />
+                        A crow has alighted;
+                        <br />
+                        Nightfall in autumn.
+                    </div>
+                </div>
             ) : null}
         </SwitchPageAnimationProvider>
     );

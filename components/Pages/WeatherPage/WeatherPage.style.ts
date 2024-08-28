@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const StyledWeatherForm = styled.form`
     position: relative;
@@ -79,8 +79,8 @@ export const StyledWeatherMain = styled.div`
             align-items: center;
             flex-shrink: 0;
             height: 130px;
-            width: 130px;
-            border-radius: 40%;
+            width: 180px;
+            border-radius: 20%;
             font-size: 50px;
             box-shadow: 0px 0px 94px -36px rgba(255, 255, 255, 1) inset;
             span {
@@ -124,7 +124,7 @@ export const StyledWeatherAstro = styled.div`
 export const StyledWeatherDetailed = styled.div`
     padding: 10px;
     width: 30%;
-    max-height: 350px;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -159,7 +159,7 @@ export const StyledWeatherHours = styled.div`
     justify-content: start;
     align-items: center;
     gap: 10px;
-    height: 45%;
+    height: 50%;
     overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -177,7 +177,7 @@ export const StyledWeatherHours = styled.div`
     }
 `;
 
-export const StyledWeatherHoursCard = styled.div`
+export const StyledWeatherHoursCard = styled.div<{ iscurrenttime: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -188,7 +188,6 @@ export const StyledWeatherHoursCard = styled.div`
     width: 140px;
     height: 100%;
     border-radius: 8px;
-    border: 1px solid #fff;
     box-shadow: rgba(255, 255, 255, 0.17) 0px -23px 25px 0px inset, rgba(255, 255, 255, 0.15) 0px -36px 30px 0px inset,
         rgba(255, 255, 255, 0.1) 0px -79px 40px 0px inset, rgba(255, 255, 255, 0.06) 0px 2px 1px, rgba(255, 255, 255, 0.09) 0px 4px 2px;
 
@@ -206,4 +205,11 @@ export const StyledWeatherHoursCard = styled.div`
         font-size: 13px;
         text-align: center;
     }
+    ${({ iscurrenttime }) => css`
+        border: ${iscurrenttime === true ? '3px solid #ff00ff' : '1px solid #fff'};
+        height: ${iscurrenttime === true ? '98%' : '90%'};
+        h6 {
+            font-size: ${iscurrenttime === true ? '20px' : '16px'};
+        }
+    `}
 `;
