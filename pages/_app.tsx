@@ -8,6 +8,7 @@ import { GlobalStyle } from '@/ui/global.styles';
 import { ContactsModal } from '@/ui/ContactsForm/ContactsModal';
 import favicon from '@/assets/witch.svg';
 import { Background } from '@/ui/Background/Background';
+import StoreProvider from '../redux/StoreProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const [turnOn, setTurnOn] = useState(false);
@@ -35,31 +36,33 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <link rel='icon' href={favicon.src} />
             </Head>
             <GlobalStyle />
-            <StyledWindow
-                fullscreenwindow={fullscreenWindow.toString()}
-                turnonimageflag={turnOnImageFlag === null ? null : turnOnImageFlag.toString()}
-            >
-                {turnOn ? (
-                    <>
-                        <NavBar
-                            setTurnOn={setTurnOn}
-                            turnOnImageFlag={turnOnImageFlag}
-                            setTurnOnImageFlag={setTurnOnImageFlag}
-                            fullscreenWindow={fullscreenWindow}
-                            setFullscreenWindow={setFullscreenWindow}
-                            hideContactsform={hideContactsform}
-                            setHideContactsform={setHideContactsform}
-                        />
-                        <StyledMain>
-                            <Component {...pageProps} />
-                            <ContactsModal hideContactsform={hideContactsform} />
-                        </StyledMain>
-                    </>
-                ) : (
-                    <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />
-                )}
-            </StyledWindow>
-            <Background turnOn={turnOn} />
+            <StoreProvider>
+                <StyledWindow
+                    fullscreenwindow={fullscreenWindow.toString()}
+                    turnonimageflag={turnOnImageFlag === null ? null : turnOnImageFlag.toString()}
+                >
+                    {turnOn ? (
+                        <>
+                            <NavBar
+                                setTurnOn={setTurnOn}
+                                turnOnImageFlag={turnOnImageFlag}
+                                setTurnOnImageFlag={setTurnOnImageFlag}
+                                fullscreenWindow={fullscreenWindow}
+                                setFullscreenWindow={setFullscreenWindow}
+                                hideContactsform={hideContactsform}
+                                setHideContactsform={setHideContactsform}
+                            />
+                            <StyledMain>
+                                <Component {...pageProps} />
+                                <ContactsModal hideContactsform={hideContactsform} />
+                            </StyledMain>
+                        </>
+                    ) : (
+                        <TurnOffScreen turnOnImageFlag={turnOnImageFlag} setTurnOnImageFlag={setTurnOnImageFlag} setTurnOn={setTurnOn} />
+                    )}
+                </StyledWindow>
+                <Background turnOn={turnOn} />
+            </StoreProvider>
         </StyledApp>
     );
 };

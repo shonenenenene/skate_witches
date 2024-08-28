@@ -31,11 +31,14 @@ const AboutPage = () => {
                 <div> At the moment, the project is in active development</div>
                 <div>
                     Tech used:
-                    <span> React, Typescript, Next, Styled-Components</span>
+                    <span> React, Typescript, Next, Redux, Styled-Components</span>
                 </div>
                 <div>
                     Other libs:
-                    <span> react-three, react-h5-audio-player, react-yandex-maps, react-to-print, react-rainfall</span>
+                    <span>
+                        {' '}
+                        react-three, react-h5-audio-player, react-yandex-maps, react-to-print, react-rainfall, react-google-recaptcha
+                    </span>
                 </div>
                 <div> Enjoy🪄</div>
             </StyledAboutPageWrapper>
