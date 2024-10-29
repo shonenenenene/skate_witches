@@ -18,9 +18,9 @@ import WeatherHours from './WeatherHours/WeatherHours';
 import { useAppDispatch } from '@/redux/hooks';
 import { setCurrentTime } from '@/redux/slices/WeatherPageSlices/weatherTimeSlice';
 
-const Weather = () => {
-    const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
+const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
+const Weather = () => {
     const [status, setStatus] = useState<Status>('idle');
 
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
@@ -125,7 +125,17 @@ const Weather = () => {
             ) : status === 'loading' ? (
                 <StyledLoader />
             ) : status === 'error' ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '50px', margin: '20px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '80px',
+                        margin: '20px',
+                        height: '80%',
+                    }}
+                >
                     sorry, but something went wrong...
                     <div style={{ fontStyle: 'italic' }}>
                         On a withered branch

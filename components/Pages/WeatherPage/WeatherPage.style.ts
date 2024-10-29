@@ -154,8 +154,7 @@ export const StyledWeatherHours = styled.div`
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    display: grid;
-    grid-template-columns: repeat(24, 140px);
+    display: flex;
     justify-content: start;
     align-items: center;
     gap: 10px;
