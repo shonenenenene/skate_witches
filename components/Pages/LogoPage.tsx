@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sparkles, Stage, Stars, useCubeTexture } from '@react-three/drei';
+import { Center, OrbitControls, Sparkles, Stage, Stars, useCubeTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { extend, Object3DNode } from '@react-three/fiber';
@@ -56,17 +56,12 @@ const Mesh = () => {
                 <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.7} />
                 {/* <Glitch delay={delayProp} duration={durationProp} strength={strengthProp} mode={GlitchMode.SPORADIC} active ratio={0.85} /> */}
             </EffectComposer>
-            <Stage
-                preset='soft'
-                shadows={{ type: 'contact', color: '#4f68f7', colorBlend: 2, opacity: 0.8, offset: 0.05, scale: 50 }}
-                intensity={1}
-                environment='night'
-            >
+            <Center>
                 <mesh ref={mesh}>
                     <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
                     <meshBasicMaterial attach='material' envMap={spaceTexture} />
                 </mesh>
-            </Stage>
+            </Center>
         </>
     );
 };

@@ -40,7 +40,7 @@ export const StyledWeatherInfo = styled.div`
 
 export const StyledWeatherDay = styled.div`
     height: 98%;
-    width: 80%;
+    width: 99%;
     border: 2px solid #fff;
     border-radius: 8px;
     position: relative;
