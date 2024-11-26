@@ -28,8 +28,7 @@
         "react-three-fiber": "^6.0.13",
         "react-to-print": "^2.14.15",
         "styled-components": "^6.0.7",
-        "three": "^0.157.0",
-        "eslint-plugin-prettier": "^5.2.1"
+        "three": "^0.157.0"
     },
     "devDependencies": {
         "@babel/core": "^7.24.3",
