@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Center, OrbitControls, Sparkles, Stage, Stars, useCubeTexture } from '@react-three/drei';
+import { OrbitControls, Sparkles, Stage, Stars, useCubeTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { extend, Object3DNode } from '@react-three/fiber';
@@ -14,7 +14,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import * as pixelFont from '@/assets/fonts/pixels.json';
 import { useRef } from 'react';
 import { styled } from 'styled-components';
-import { EffectComposer, Noise } from '@react-three/postprocessing';
+import { Bloom, EffectComposer, Noise, Pixelation } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
 
 const StyledLogoWrapper = styled.div`
@@ -49,19 +49,34 @@ const Mesh = () => {
             <ambientLight />
             <pointLight position={[5, 5, 5]} intensity={1} />
             <pointLight position={[-3, -3, 2]} />
-            <OrbitControls autoRotate autoRotateSpeed={0.2} enablePan={false} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 2} />
+            <OrbitControls
+                autoRotate
+                autoRotateSpeed={0.2}
+                enablePan={false}
+                minPolarAngle={Math.PI / 4}
+                maxPolarAngle={Math.PI / 2}
+                maxDistance={530}
+                minDistance={7}
+            />
             <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+
             <Sparkles count={50} scale={20} size={4} speed={1} color={'#dd8eb8'} />
             <EffectComposer>
                 <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.7} />
-                {/* <Glitch delay={delayProp} duration={durationProp} strength={strengthProp} mode={GlitchMode.SPORADIC} active ratio={0.85} /> */}
+                <Bloom intensity={0.6} luminanceThreshold={0.2} luminanceSmoothing={0.2} />
+                <Pixelation granularity={0.3} />
             </EffectComposer>
-            <Center>
+            <Stage
+                preset='soft'
+                shadows={{ type: 'contact', color: '#4f68f7', colorBlend: 2, opacity: 0.8, offset: 0.05, scale: 50 }}
+                intensity={1}
+                environment={null}
+            >
                 <mesh ref={mesh}>
                     <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
                     <meshBasicMaterial attach='material' envMap={spaceTexture} />
                 </mesh>
-            </Center>
+            </Stage>
         </>
     );
 };
