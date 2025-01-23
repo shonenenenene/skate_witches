@@ -42,7 +42,7 @@ const Weather = () => {
 
             const forecastResult = await forecastData.json();
 
-            if (forecastResult.hasOwnProperty('error')) {
+            if (Object.prototype.hasOwnProperty.call(forecastResult, 'error')) {
                 setStatus('error');
             } else {
                 setWeatherRes(forecastResult);
@@ -57,7 +57,7 @@ const Weather = () => {
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!!citySearch) {
+        if (citySearch) {
             fetchRequest();
         }
     };

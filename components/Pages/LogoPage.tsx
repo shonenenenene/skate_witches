@@ -70,7 +70,7 @@ const Mesh = () => {
                 preset='soft'
                 shadows={{ type: 'contact', color: '#4f68f7', colorBlend: 2, opacity: 0.8, offset: 0.05, scale: 50 }}
                 intensity={1}
-                environment={null}
+                environment={'night'}
             >
                 <mesh ref={mesh}>
                     <textGeometry attach='geometry' args={['skat3_w1tches', textOptions]} />
