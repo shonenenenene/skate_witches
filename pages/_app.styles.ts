@@ -7,6 +7,7 @@ export const StyledWindow = styled.div<{ fullscreenwindow: string; turnonimagefl
     display: flex;
     flex-direction: column;
     border: 2px solid rgba(255, 255, 255, 0);
+
     ${({ fullscreenwindow }) =>
         fullscreenwindow === 'true'
             ? css`

@@ -50,7 +50,7 @@ const PicsPage: FC = () => {
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setCurrPage(1);
-        if (!!picSearch) {
+        if (picSearch) {
             fetchRequest();
         }
     };

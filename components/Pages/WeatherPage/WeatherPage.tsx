@@ -18,9 +18,9 @@ import WeatherHours from './WeatherHours/WeatherHours';
 import { useAppDispatch } from '@/redux/hooks';
 import { setCurrentTime } from '@/redux/slices/WeatherPageSlices/weatherTimeSlice';
 
-const Weather = () => {
-    const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
+const WEATHER_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
+const Weather = () => {
     const [status, setStatus] = useState<Status>('idle');
 
     const [citySearch, setCitySearch] = useState<string>('Saint Petersburg');
@@ -42,7 +42,7 @@ const Weather = () => {
 
             const forecastResult = await forecastData.json();
 
-            if (forecastResult.hasOwnProperty('error')) {
+            if (Object.prototype.hasOwnProperty.call(forecastResult, 'error')) {
                 setStatus('error');
             } else {
                 setWeatherRes(forecastResult);
@@ -57,7 +57,7 @@ const Weather = () => {
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!!citySearch) {
+        if (citySearch) {
             fetchRequest();
         }
     };
@@ -125,7 +125,17 @@ const Weather = () => {
             ) : status === 'loading' ? (
                 <StyledLoader />
             ) : status === 'error' ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '50px', margin: '20px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '80px',
+                        margin: '20px',
+                        height: '80%',
+                    }}
+                >
                     sorry, but something went wrong...
                     <div style={{ fontStyle: 'italic' }}>
                         On a withered branch

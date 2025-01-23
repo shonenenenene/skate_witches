@@ -40,7 +40,7 @@ export const StyledWeatherInfo = styled.div`
 
 export const StyledWeatherDay = styled.div`
     height: 98%;
-    width: 80%;
+    width: 99%;
     border: 2px solid #fff;
     border-radius: 8px;
     position: relative;
@@ -154,8 +154,7 @@ export const StyledWeatherHours = styled.div`
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    display: grid;
-    grid-template-columns: repeat(24, 140px);
+    display: flex;
     justify-content: start;
     align-items: center;
     gap: 10px;

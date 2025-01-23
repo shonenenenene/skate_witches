@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 .next
 next-env.d.ts
+.env
 
 node_modules
 dist
