@@ -1,3 +1,4 @@
+// pages/_app.tsx
 import { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -10,16 +11,16 @@ import favicon from '@/assets/witch.svg';
 import { Background } from '@/ui/Background/Background';
 import StoreProvider from '../redux/StoreProvider';
 
-const App = ({ Component, pageProps }: AppProps) => {
+function App({ Component, pageProps }: AppProps) {
     const [turnOn, setTurnOn] = useState(false);
-
     const [turnOnImageFlag, setTurnOnImageFlag] = useState<boolean | null>(null);
-
     const [fullscreenWindow, setFullscreenWindow] = useState<boolean>(false);
-
     const [hideContactsform, setHideContactsform] = useState<boolean>(false);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+
         if (!fullscreenWindow) {
             setFullscreenWindow(false);
         } else if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -28,6 +29,10 @@ const App = ({ Component, pageProps }: AppProps) => {
             document.documentElement.requestFullscreen().catch((e) => console.error(e));
         }
     }, [fullscreenWindow]);
+
+    if (!mounted) {
+        return null;
+    }
 
     return (
         <StyledApp>
@@ -65,6 +70,6 @@ const App = ({ Component, pageProps }: AppProps) => {
             </StoreProvider>
         </StyledApp>
     );
-};
+}
 
 export default App;
