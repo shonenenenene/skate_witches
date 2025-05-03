@@ -31,11 +31,22 @@ export const StyledCurrentWeather = styled.div`
     justify-content: space-between;
     align-items: start;
     height: 50%;
+
+    @media (max-width: 770px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        margin-bottom: 20px;
+    }
 `;
 
 export const StyledWeatherInfo = styled.div`
     height: 94.3%;
     width: 100%;
+    @media (max-width: 770px) {
+        height: auto;
+    }
 `;
 
 export const StyledWeatherDay = styled.div`
@@ -72,6 +83,7 @@ export const StyledWeatherMain = styled.div`
         gap: 70px;
         align-items: center;
         justify-content: center;
+
         p:first-child {
             position: relative;
             display: flex;
@@ -132,6 +144,9 @@ export const StyledWeatherDetailed = styled.div`
     gap: 4px;
     font-size: 18px;
     box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 1) inset;
+    @media (max-width: 770px) {
+        width: 100%;
+    }
 `;
 
 export const StyledWeatherDetailedButton = styled.button`
@@ -144,6 +159,9 @@ export const StyledWeatherDetailedButton = styled.button`
     transition: 0.2s;
     &:hover {
         background-color: rgba(255, 255, 255, 0.4);
+    }
+    @media (max-width: 770px) {
+        width: 100%;
     }
 `;
 
@@ -165,6 +183,7 @@ export const StyledWeatherHours = styled.div`
 
     &::-webkit-scrollbar {
         height: 10px;
+        pointer-events: none;
     }
     &::-webkit-scrollbar-track {
         background: #0000e9;
@@ -172,6 +191,13 @@ export const StyledWeatherHours = styled.div`
     }
     &::-webkit-scrollbar-thumb {
         background-color: #00007c;
+        border-radius: 8px;
+    }
+    @media (max-width: 770px) {
+        position: relative;
+        &::-webkit-scrollbar {
+            display: none;
+        }
         border-radius: 8px;
     }
 `;
@@ -187,13 +213,19 @@ export const StyledWeatherHoursCard = styled.div<{ iscurrenttime: boolean }>`
     width: 140px;
     height: 100%;
     border-radius: 8px;
-    box-shadow: rgba(255, 255, 255, 0.17) 0px -23px 25px 0px inset, rgba(255, 255, 255, 0.15) 0px -36px 30px 0px inset,
-        rgba(255, 255, 255, 0.1) 0px -79px 40px 0px inset, rgba(255, 255, 255, 0.06) 0px 2px 1px, rgba(255, 255, 255, 0.09) 0px 4px 2px;
+    box-shadow:
+        rgba(255, 255, 255, 0.17) 0px -23px 25px 0px inset,
+        rgba(255, 255, 255, 0.15) 0px -36px 30px 0px inset,
+        rgba(255, 255, 255, 0.1) 0px -79px 40px 0px inset,
+        rgba(255, 255, 255, 0.06) 0px 2px 1px,
+        rgba(255, 255, 255, 0.09) 0px 4px 2px;
 
     h6 {
         font-size: 16px;
         border-radius: 8px;
-        box-shadow: rgba(255, 255, 255, 0.4) 0px 2px 4px, rgba(255, 255, 255, 0.3) 0px 7px 13px -3px,
+        box-shadow:
+            rgba(255, 255, 255, 0.4) 0px 2px 4px,
+            rgba(255, 255, 255, 0.3) 0px 7px 13px -3px,
             rgba(255, 255, 255, 0.2) 0px -3px 0px inset;
         padding: 2px 6px;
     }
