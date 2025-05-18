@@ -64,7 +64,7 @@ export const StyledWeatherMain = styled.div`
     position: relative;
     padding: 20px;
     width: 70%;
-    height: 360px;
+    /* height: 360px; */
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -112,6 +112,9 @@ export const StyledWeatherMain = styled.div`
                 top: -20px;
                 font-size: 20px;
             }
+        }
+        @media (max-width: 539px) {
+            flex-direction: column;
         }
     }
 `;
