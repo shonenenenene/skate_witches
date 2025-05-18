@@ -118,8 +118,18 @@ const ASCII_RAIN = [
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
     ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
-
-    ,
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    ' ｀、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
+    '｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ、ヽ｀ヽ｀、ヽ ｀、ヽ｀ヽ｀、ヽ',
 ].join('\n');
 
 const ASCII_STARS = [
@@ -172,18 +182,18 @@ class ComponentToPrint extends React.PureComponent {
             <StyledTextToPrint>
                 <div style={{ position: 'absolute' }}>{ASCII_RAIN}</div>
                 <div>♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰♰</div>
-                <pre style={{ position: 'absolute' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', top: '300px', left: '190px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '400px', left: '90px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '100px', right: '200px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '500px', right: '30px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '600px', left: '300px' }}>{ASCII_STARS}</pre>
-                <pre style={{ position: 'absolute', top: '900px', left: '100px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', top: '450px', left: '100px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', bottom: '40px', left: '100px' }}>{ASCII_STARS}</pre>
-                <pre style={{ position: 'absolute', bottom: '-40px', left: '700px' }}>{ASCII_STARS}</pre>
-                <pre style={{ position: 'absolute', top: '1000px', left: '600px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', bottom: '0px', left: '700px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', top: '640px', left: '600px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '400px', right: '100px' }}>{ASCII_STARS}</pre>
-                <pre style={{ position: 'absolute', top: '200px', left: '900px' }}>{ASCII_STARS}</pre>
-                <pre style={{ position: 'absolute', top: '1200px', left: '130px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', top: '200px', left: '530px' }}>{ASCII_STARS}</pre>
+                <pre style={{ position: 'absolute', top: '730px', left: '130px' }}>{ASCII_STARS}</pre>
                 <pre style={{ position: 'absolute', top: '700px', left: '60px' }}>{ASCII_STARS}</pre>
                 <pre style={{ marginTop: '100px' }}>{ASCII_SATURN}</pre>
                 <pre style={{ marginLeft: '25%', paddingTop: '300px' }}>{ASCII_WITCH}</pre>

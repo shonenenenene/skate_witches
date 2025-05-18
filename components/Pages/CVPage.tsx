@@ -111,27 +111,61 @@ const StyledLangSwitcherForm = styled.form`
         -webkit-tap-highlight-color: transparent;
         &:first-child input {
             border-radius: 0.5em 0 0 0.5em;
-            box-shadow: 0.1em 0 0 #2726267f inset, -0.1em 0 0 #27262600 inset, 0 0.1em 0 #afa490 inset, 0 -0.1em 0 #ffffff3f,
-                0 0.2em 0.5em #0000007f, 0 -0.1em 0 #926086 inset, -0.1em -0.2em 0 #ffffff7f inset, 0.2em 0 0 #ffffff7f inset;
+            box-shadow:
+                0.1em 0 0 #2726267f inset,
+                -0.1em 0 0 #27262600 inset,
+                0 0.1em 0 #afa490 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.2em 0.5em #0000007f,
+                0 -0.1em 0 #926086 inset,
+                -0.1em -0.2em 0 #ffffff7f inset,
+                0.2em 0 0 #ffffff7f inset;
         }
         &:last-child input {
             border-radius: 0 0.5em 0.5em 0;
-            box-shadow: 0 -0.1em 0 #926086 inset, 0.1em 0 0 #2726267f inset, -0.1em 0 0 #2726267f inset, 0 0.1em 0 #afa490 inset,
-                -0.1em 0 0 #afa490 inset, 0 -0.1em 0 #ffffff3f, 0 0.2em 0.5em #0000007f, -0.1em -0.1em 0 0.1em #ffffff7f inset;
+            box-shadow:
+                0 -0.1em 0 #926086 inset,
+                0.1em 0 0 #2726267f inset,
+                -0.1em 0 0 #2726267f inset,
+                0 0.1em 0 #afa490 inset,
+                -0.1em 0 0 #afa490 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.2em 0.5em #0000007f,
+                -0.1em -0.1em 0 0.1em #ffffff7f inset;
         }
         &:first-child input:checked {
-            box-shadow: 0.1em 0 0 #272626af inset, -0.1em 0 0 #272626 inset, 0 0.1em 0 #847a62 inset, 0 -0.1em 0 #ffffff3f,
-                0 0.1em 0 #ffffff7f, 0 -0.1em 0 #722257 inset, -0.1em -0.2em 0 #ffffff7f inset, 0.2em 0 0 #ffffff7f inset;
+            box-shadow:
+                0.1em 0 0 #272626af inset,
+                -0.1em 0 0 #272626 inset,
+                0 0.1em 0 #847a62 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.1em 0 #ffffff7f,
+                0 -0.1em 0 #722257 inset,
+                -0.1em -0.2em 0 #ffffff7f inset,
+                0.2em 0 0 #ffffff7f inset;
         }
         &:last-child input:checked {
-            box-shadow: 0.1em 0 0 #272626af inset, -0.1em 0 0 #272626 inset, 0 -0.1em 0 #722257 inset, 0 0.1em 0 #847a62 inset,
-                -0.1em 0 0 #847a62 inset, 0 -0.1em 0 #ffffff3f, 0 0.1em 0 #ffffff7f, -0.1em -0.1em 0 0.1em #ffffff7f inset;
+            box-shadow:
+                0.1em 0 0 #272626af inset,
+                -0.1em 0 0 #272626 inset,
+                0 -0.1em 0 #722257 inset,
+                0 0.1em 0 #847a62 inset,
+                -0.1em 0 0 #847a62 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.1em 0 #ffffff7f,
+                -0.1em -0.1em 0 0.1em #ffffff7f inset;
         }
         input {
             background-image: linear-gradient(#ffffff 33%, #414751 58%, #837b52, #c5baa1, #c3adaa);
             border-radius: 0;
-            box-shadow: 0.1em 0 0 #2726267f inset, -0.1em 0 0 #27262600 inset, 0 0.1em 0 #afa490 inset, 0 -0.1em 0 #ffffff3f,
-                0 0.2em 0.5em #0000007f, 0 -0.1em 0 #926086 inset, -0.1em -0.2em 0 #ffffff7f inset;
+            box-shadow:
+                0.1em 0 0 #2726267f inset,
+                -0.1em 0 0 #27262600 inset,
+                0 0.1em 0 #afa490 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.2em 0.5em #0000007f,
+                0 -0.1em 0 #926086 inset,
+                -0.1em -0.2em 0 #ffffff7f inset;
             cursor: pointer;
             display: block;
             margin-bottom: 0.5em;
@@ -145,8 +179,14 @@ const StyledLangSwitcherForm = styled.form`
         }
         input:checked {
             background-image: linear-gradient(#ffffff 33%, #414751 58%, #827a7b, #c0b6ac, #c3adaa);
-            box-shadow: 0.1em 0 0 #272626af inset, -0.1em 0 0 #272626 inset, 0 0.1em 0 #847a62 inset, 0 -0.1em 0 #ffffff3f,
-                0 0.1em 0 #ffffff7f, 0 -0.1em 0 #722257 inset, -0.1em -0.2em 0 #ffffff7f inset;
+            box-shadow:
+                0.1em 0 0 #272626af inset,
+                -0.1em 0 0 #272626 inset,
+                0 0.1em 0 #847a62 inset,
+                0 -0.1em 0 #ffffff3f,
+                0 0.1em 0 #ffffff7f,
+                0 -0.1em 0 #722257 inset,
+                -0.1em -0.2em 0 #ffffff7f inset;
         }
         input:checked + span {
             opacity: 1;
@@ -185,14 +225,11 @@ const CVPage = () => {
                         <>
                             <h2>Даниил Сытаев</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>Опыт работы: ~1 год</h4>
+                            <h4>Опыт работы: ~3 года</h4>
+                            <p>Использую в своих проектах React, TypeScript, Styled-Components, Next, Redux</p>
                             <p>
-                                На данный момент использую в своих проектах и углубляю знания в стэке React, TypeScript, Styled-Components,
-                                Next, Redux
-                            </p>
-                            <p>
-                                Стараюсь усовершенствоваться в использовании текущих технологий и изучить новые. Стремлюсь создавать
-                                красивые современные приложения.
+                                Стремлюсь создавать приложения сочетающие в себе современные технологии, красивый дизайн и дух
+                                интернет-культуры.
                             </p>
                             <h4>Контакты:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>
@@ -201,23 +238,22 @@ const CVPage = () => {
                             <a href='https://t.me/shonethegrappler' target='_blank' draggable={false}>
                                 tg: @shonethegrappler
                             </a>
-                            <span>mail: danya.sytaev@gmail.com</span>
-                            <a href='/CV_Sytaev_Daniil.pdf' target='_blank' rel='noopener noreferrer' draggable={false} download>
-                                скачать PDF
+                            <a href='mailto:danya.sytaev@gmail.com' target='_blank' draggable={false}>
+                                mail: danya.sytaev@gmail.com
                             </a>
+                            {/* <a href='/CV_Sytaev_Daniil.pdf' target='_blank' rel='noopener noreferrer' draggable={false} download>
+                                скачать PDF
+                            </a> */}
                         </>
                     ) : lang === 'EN' ? (
                         <>
                             <h2>Daniil Sytaev</h2>
                             <h3>Frontend Developer</h3>
-                            <h4>Work experience: ~1 year</h4>
+                            <h4>Work experience: ~3 year</h4>
+                            <p>Using React, TypeScript, Next, Redux, Styled-Components stack.</p>
                             <p>
-                                Currently I use it in my projects and deepen my knowledge in the React, TypeScript, Next, Redux,
-                                Styled-Components stack.
-                            </p>
-                            <p>
-                                I try to improve my use of current technologies and learn new ones. I strive to create beautiful modern
-                                applications.
+                                I strive to create applications that combine modern technology, beautiful design and the spirit of Internet
+                                culture.
                             </p>
                             <h4>Links:</h4>
                             <a href='https://github.com/shonenenenene' target='_blank' draggable={false}>
@@ -229,9 +265,9 @@ const CVPage = () => {
                             <a href='mailto:danya.sytaev@gmail.com' target='_blank' draggable={false}>
                                 mail: danya.sytaev@gmail.com
                             </a>
-                            <a href='/CV_Sytaev_Daniil.pdf' target='_blank' rel='noopener noreferrer' draggable={false} download>
+                            {/* <a href='/CV_Sytaev_Daniil.pdf' target='_blank' rel='noopener noreferrer' draggable={false} download>
                                 download PDF
-                            </a>
+                            </a> */}
                         </>
                     ) : null}
                 </StyledAboutMeWrapper>
@@ -249,8 +285,9 @@ const CVPage = () => {
 
                         <StyledTechStackList>
                             <StyledTechStackItem>next</StyledTechStackItem>
-                            <StyledTechStackItem>redux</StyledTechStackItem>
-                            <StyledTechStackItem>react-three</StyledTechStackItem>
+                            <StyledTechStackItem>redux, react-hook-form, zod</StyledTechStackItem>
+                            <StyledTechStackItem>axios, graphql</StyledTechStackItem>
+                            <StyledTechStackItem>react-three, GSAP</StyledTechStackItem>
                             <StyledTechStackItem>scss/sass</StyledTechStackItem>
                             <StyledTechStackItem>git</StyledTechStackItem>
                         </StyledTechStackList>
@@ -283,8 +320,9 @@ const CVPage = () => {
 
                         <StyledTechStackList>
                             <StyledTechStackItem>next</StyledTechStackItem>
-                            <StyledTechStackItem>redux</StyledTechStackItem>
-                            <StyledTechStackItem>react-three</StyledTechStackItem>
+                            <StyledTechStackItem>redux, react-hook-form, zod</StyledTechStackItem>
+                            <StyledTechStackItem>axios, graphql</StyledTechStackItem>
+                            <StyledTechStackItem>react-three, GSAP</StyledTechStackItem>
                             <StyledTechStackItem>scss/sass</StyledTechStackItem>
                             <StyledTechStackItem>git</StyledTechStackItem>
                         </StyledTechStackList>
@@ -297,7 +335,7 @@ const CVPage = () => {
                             </StyledTechStackItem>
                             <StyledTechStackItem>adaptive/responsive layout (flex, grid)</StyledTechStackItem>
                             <StyledTechStackItem>use documentation, incl. in English</StyledTechStackItem>
-                            <StyledTechStackItem>I know how to use Google :) and solve problems on my own</StyledTechStackItem>
+                            <StyledTechStackItem>I know how to use Google and solve problems on my own</StyledTechStackItem>
                             <StyledTechStackItem>creativity</StyledTechStackItem>
                             <StyledTechStackItem>Русский, English (B1)</StyledTechStackItem>
                         </StyledTechStackList>
