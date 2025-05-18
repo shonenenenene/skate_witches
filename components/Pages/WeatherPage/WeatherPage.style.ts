@@ -32,10 +32,11 @@ export const StyledCurrentWeather = styled.div`
     align-items: start;
     height: 50%;
 
-    @media (max-width: 770px) {
+    @media (max-width: 650px) {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         height: auto;
         margin-bottom: 20px;
     }
@@ -44,7 +45,7 @@ export const StyledCurrentWeather = styled.div`
 export const StyledWeatherInfo = styled.div`
     height: 94.3%;
     width: 100%;
-    @media (max-width: 770px) {
+    @media (max-width: 650px) {
         height: auto;
     }
 `;
@@ -113,7 +114,7 @@ export const StyledWeatherMain = styled.div`
                 font-size: 20px;
             }
         }
-        @media (max-width: 539px) {
+        @media (max-width: 650px) {
             flex-direction: column;
         }
     }
